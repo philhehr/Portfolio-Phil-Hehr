@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phil Hehr - Designer & Motorrad-Enthusiast</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bahnschrift&display=swap" rel="stylesheet">
+    <style>        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7cb342;
+            --secondary: #1a1a1a;
+            --accent: #8bc34a;
+            --text-light: #f0f0f0;
+            --text-dark: #333;
+            --design-primary: #505050;
+            --design-light: #f5f5f5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            height: 100vh;
+        }
+
+        /* Split Layout */
+        .split-container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .split-section {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .split-section:hover {
+            flex: 1.1;
+        }
+
+        /* Left Section - PRODUKTDESIGN */
+        .design-section {
+            background: #4a4a4a;
+            color: var(--text-light);
+        }
+
+        .design-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .design-header {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            z-index: 100;
+            text-align: left;
+        }
+
+        .design-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+            align-items: flex-start;
+        }
+
+        .design-logo span:last-child {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .design-projects {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 100%;
+            gap: 0;
+        }
+
+        .design-project {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            border: none;
+            overflow: hidden;
+        }
+
+        .design-project:hover {
+            transform: scale(1.02);
+            z-index: 10;
+        }
+
+
+
+        .design-project > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .design-showcase {
+            flex: 1;
+            /* HIER DEIN ERSTES PROJEKT-BILD EINFÜGEN */
+            background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .design-showcase::after {
+            content: attr(data-number);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 25rem;
+            font-weight: 700;
+            font-family: 'Bahnschrift', Arial, sans-serif;
+            color: rgba(200, 200, 200, 0.4);
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+            line-height: 0.7;
+            letter-spacing: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .design-project:hover .design-showcase::after {
+            opacity: 0;
+        }
+
+        /* White text overlay in front of numbers */
+        .design-text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 10;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+
+        .design-text-overlay h4 {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Bahnschrift', Arial, sans-serif;
+            margin: 0 0 0.5rem 0;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .design-text-overlay p {
+            font-size: 1rem;
+            font-weight: 400;
+            font-family: 'Bahnschrift', Arial, sans-serif;
+            margin: 0;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
+            opacity: 0.9;
+        }
+
+        .design-project:hover .design-text-overlay {
+            opacity: 0;
+        }
+
+        .design-project:nth-child(2) .design-showcase {
+            /* HIER DEIN ZWEITES PROJEKT-BILD */
+            background-image: url('https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=800&h=600&fit=crop');
+        }
+
+        .design-project:nth-child(3) .design-showcase {
+            /* HIER DEIN DRITTES PROJEKT-BILD */
+            background-image: url('https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&h=600&fit=crop');
+        }
+
+        .design-project:nth-child(4) .design-showcase {
+            /* HIER DEIN VIERTES PROJEKT-BILD */
+            background-image: url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800&h=600&fit=crop');
+        }
+
+        /* Right Section - CAVEMAN MOTO */
+        .caveman-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1b1b 50%, #1a1a1a 100%);
+            color: var(--text-light);
+        }
+
+        .caveman-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .caveman-header {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            z-index: 100;
+        }
+
+        .caveman-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .caveman-logo span:last-child {
+            font-size: 0.54rem;
+        }
+
+        .caveman-project {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .caveman-project:hover {
+            transform: scale(1.02);
+        }
+
+        .caveman-image {
+            flex: 1;
+            /* HIER DEIN MOTORRAD-BILD EINFÜGEN */
+            background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&crop=center');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .caveman-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .caveman-text {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 400px;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .caveman-text h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 0 0 0.5rem 0;
+            color: white;
+        }
+
+        .caveman-text p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Pencil Line between logos */
+        .pencil-line {
+            position: fixed; 
+            top: 2.8rem; 
+            left: 18%; 
+            width: 64%; 
+            height: 2px; 
+            background: linear-gradient(90deg, #888 0%, #666 20%, #999 40%, #777 60%, #888 80%, #666 100%);
+            z-index: 9999; 
+            pointer-events: none;
+            box-shadow: 
+                0 1px 0 rgba(255,255,255,0.1),
+                0 -1px 0 rgba(0,0,0,0.2),
+                inset 0 0 1px rgba(0,0,0,0.3);
+            border-radius: 1px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            width: 90%;
+            max-width: 1000px;
+            height: 80%;
+            background: white;
+            border-radius: 0;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            padding: 2rem;
+            background: var(--design-primary);
+            color: white;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .modal-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .modal-image {
+            height: 250px;
+            background: #f0f0f0;
+            background-size: cover;
+            background-position: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-image:hover {
+            transform: scale(1.05);
+        }
+
+        .modal-text-blocks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .text-block {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        .text-block.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .text-block:hover {
+            background: var(--design-primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .text-block h4 {
+            margin: 0 0 1rem 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .text-block p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Animated Background Elements */
+        .bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .caveman-section .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, var(--primary) 2px, transparent 2px),
+                radial-gradient(circle at 80% 20%, var(--accent) 1px, transparent 1px);
+            background-size: 100px 100px, 80px 80px;
+            animation: drift 20s ease-in-out infinite;
+        }
+
+        .design-section .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 120px 120px, 90px 90px;
+            animation: drift 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+            25% { transform: translateX(10px) translateY(-10px) rotate(1deg); }
+            50% { transform: translateX(-5px) translateY(15px) rotate(-1deg); }
+            75% { transform: translateX(-10px) translateY(-5px) rotate(0.5deg); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .split-container {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .split-section {
+                min-height: 100vh;
+                flex: none;
+            }
+
+            .split-section:hover {
+                flex: none;
+            }
+
+            .caveman-header,
+            .design-header {
+                top: 1rem;
+                left: 1rem;
+                right: 1rem;
+            }
+
+            .design-header {
+                text-align: left;
+            }
+
+            .design-logo {
+                align-items: flex-start;
+            }
+
+            .caveman-text {
+                width: 100%;
+                left: 0;
+                right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="split-container">
+        <!-- Left Section - PRODUKTDESIGN -->
+        <section class="split-section design-section">
+            <div class="bg-animation"></div>
+            <div class="design-content">
+                <div class="design-header">
+                    <div class="design-logo">
+                        <span>PHIL HEHR</span>
+                        <span>PRODUCT DESIGNER</span>
+                    </div>
+                </div>
+                
+                <div class="design-projects">
+                    <div class="design-project" data-project="babyphone">
+                        <div class="design-showcase" data-number="01">
+                            <div class="design-text-overlay">
+                                <h4>Babyphone</h4>
+                                <p>Smart Baby Monitor</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="design-project" data-project="glasses">
+                        <div class="design-showcase" data-number="02">
+                            <div class="design-text-overlay">
+                                <h4>Glasses</h4>
+                                <p>Smart AR Interface</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="design-project" data-project="portfolio">
+                        <div class="design-showcase" data-number="03">
+                            <div class="design-text-overlay">
+                                <h4>Project 3</h4>
+                                <p>Innovation Design</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="design-project" data-project="hyperloop">
+                        <div class="design-showcase" data-number="04">
+                            <div class="design-text-overlay">
+                                <h4>Hyperloop</h4>
+                                <p>Future Transport</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal" id="projectModal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 id="modalTitle">Projekt Details</h2>
+                            <button class="modal-close">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="modal-images" id="modalImages">
+                                <!-- Images will be dynamically inserted -->
+                            </div>
+                            <div class="modal-text-blocks" id="modalTextBlocks">
+                                <!-- Text blocks will be dynamically inserted -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pencil Line between logos -->
+        <div class="pencil-line"></div>
+
+        <!-- Right Section - CAVEMAN MOTO -->
+        <section class="split-section caveman-section">
+            <div class="bg-animation"></div>
+            <div class="caveman-content">
+                <div class="caveman-header">
+                    <div class="caveman-logo">
+                        <span>CAVEMAN</span>
+                        <span>MOTO</span>
+                    </div>
+                </div>
+                
+                <a href="#" class="caveman-project">
+                    <!-- Video statt statischem Bild -->
+                    <div class="caveman-image">
+                        <video class="caveman-video" autoplay muted loop playsinline>
+                            <source src="https://cdn.pixabay.com/vimeo/328940142/motorcycle-23126.mp4?width=1280&hash=e7e4a0b6c8d9f3a6b8c9d0e1f2g3h4i5j6k7l8m9" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="caveman-text">
+                        <h2>Kawasaki Zephyr 750 Cafe Racer Umbau</h2>
+                        <p>Kompletter Umbau mit custom Sitzbank und Auspuffanlage.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Project data
+        const projectData = {
+            babyphone: {
+                title: 'Babyphone Design',
+                images: [
+                    'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=600&fit=crop',
+                    'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=800&h=600&fit=crop',
+                    'https://images.unsplash.com/photo-1519947486511-46149fa0a254?w=800&h=600&fit=crop'
+                ],
+                textBlocks: [
+                    { title: 'Smart Monitoring', text: 'Intelligente Überwachung mit KI-gestützter Geräusch- und Bewegungserkennung.' },
+                    { title: 'Mobile App', text: 'Intuitive Smartphone-App für Echtzeitübertragung und Benachrichtigungen.' },
+                    { title: 'Sicherheit', text: 'Ende-zu-Ende Verschlüsselung und lokale Datenspeicherung für maximale Sicherheit.' },
+                    { title: 'Benutzerfreundlichkeit', text: 'Einfache Installation und bedienungsfreundliche Oberfläche für alle Eltern.' }
+                ]
+            },
+            glasses: {
+                title: 'Smart Glasses Interface',
+                images: [
+                    'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=800&h=600&fit=crop',
+                    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop',
+                    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop'
+                ],
+                textBlocks: [
+                    { title: 'AR Display', text: 'Hochauflösendes Augmented Reality Display mit natürlicher Farbwiedergabe.' },
+                    { title: 'Gesture Control', text: 'Intuitive Gestensteuerung für nahtlose Interaktion ohne Berührung.' },
+                    { title: 'Voice Integration', text: 'Sprachsteuerung mit KI-Assistant für freihändige Bedienung.' },
+                    { title: 'Ergonomisches Design', text: 'Leichtes und komfortables Design für ganztägiges Tragen.' }
+                ]
+            },
+            portfolio: {
+                title: 'Project 3',
+                images: [
+                    'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&h=600&fit=crop',
+                    'https://images.unsplash.com/photo-1586717799252-bd134ad00e26?w=800&h=600&fit=crop',
+                    'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop'
+                ],
+                textBlocks: [
+                    { title: 'Innovation', text: 'Innovative Lösungsansätze für komplexe Design-Herausforderungen.' },
+                    { title: 'User Experience', text: 'Nutzerzentrierte Gestaltung mit Fokus auf Benutzerfreundlichkeit.' },
+                    { title: 'Technologie', text: 'Integration neuester Technologien in zeitlose Designkonzepte.' },
+                    { title: 'Nachhaltigkeit', text: 'Umweltbewusste Materialwahl und nachhaltige Produktionsprozesse.' }
+                ]
+            },
+            hyperloop: {
+                title: 'Hyperloop Transportation',
+                images: [
+                    'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800&h=600&fit=crop',
+                    'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=600&fit=crop',
+                    'https://images.unsplash.com/photo-1515378791036-0648a814c963?w=800&h=600&fit=crop'
+                ],
+                textBlocks: [
+                    { title: 'Passenger Experience', text: 'Komfortable und sichere Reiseerfahrung bei Höchstgeschwindigkeit.' },
+                    { title: 'Interface Design', text: 'Futuristische Bedienoberfläche für nahtlose Buchung und Navigation.' },
+                    { title: 'Safety Systems', text: 'Modernste Sicherheitstechnik und Notfallprotokolle für alle Szenarien.' },
+                    { title: 'Sustainable Transport', text: 'Umweltfreundliche Transportlösung mit minimaler CO2-Bilanz.' }
+                ]
+            }
+        };
+
+        // Modal functionality
+        const modal = document.getElementById('projectModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalImages = document.getElementById('modalImages');
+        const modalTextBlocks = document.getElementById('modalTextBlocks');
+        const closeBtn = document.querySelector('.modal-close');
+
+        document.querySelectorAll('.design-project').forEach(project => {
+            project.addEventListener('click', (e) => {
+                e.preventDefault();
+                const projectId = project.dataset.project;
+                const data = projectData[projectId];
+                
+                // Set modal title
+                modalTitle.textContent = data.title;
+                
+                // Clear and populate images
+                modalImages.innerHTML = '';
+                data.images.forEach(img => {
+                    const imageDiv = document.createElement('div');
+                    imageDiv.className = 'modal-image';
+                    imageDiv.style.backgroundImage = `url(${img})`;
+                    modalImages.appendChild(imageDiv);
+                });
+                
+                // Clear and populate text blocks
+                modalTextBlocks.innerHTML = '';
+                data.textBlocks.forEach(block => {
+                    const textDiv = document.createElement('div');
+                    textDiv.className = 'text-block';
+                    textDiv.innerHTML = `<h4>${block.title}</h4><p>${block.text}</p>`;
+                    modalTextBlocks.appendChild(textDiv);
+                });
+                
+                // Show modal
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                // Animate text blocks on scroll
+                setTimeout(animateTextBlocks, 100);
+            });
+        });
+
+        // Close modal
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Animate text blocks on scroll
+        function animateTextBlocks() {
+            const blocks = document.querySelectorAll('.text-block');
+            const modalBody = document.querySelector('.modal-body');
+            
+            function checkVisibility() {
+                blocks.forEach(block => {
+                    const rect = block.getBoundingClientRect();
+                    const modalRect = modalBody.getBoundingClientRect();
+                    
+                    if (rect.top < modalRect.bottom && rect.bottom > modalRect.top) {
+                        block.classList.add('visible');
+                    }
+                });
+            }
+            
+            modalBody.addEventListener('scroll', checkVisibility);
+            checkVisibility(); // Initial check
+        }
+
+        // Smooth hover effects for caveman project
+        document.querySelector('.caveman-project').addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Caveman project clicked');
+        });
+
+        // ESC key to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
