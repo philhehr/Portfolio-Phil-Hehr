@@ -432,10 +432,24 @@
         /* Animated Background Elements */
         .bg-animation {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                rgba(0, 0, 0, 0.08) 0%, 
+                rgba(0, 0, 0, 0.12) 50%, 
+                rgba(0, 0, 0, 0.08) 100%);            
+            z-index: 0;
+            opacity: 1;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: translateY(-50%);
+            border-radius: 1px;
+        }
+
+        .background-line.hover-active {
+            background: linear-gradient(90deg, 
+                rgba(0, 0, 0, 0.1) 0%, 
+                rgba(0, 0, 0, 0.15) 50%, 
+                rgba(0, 0, 0, 0.1) 100%);
             z-index: 1;
             opacity: 0.1;
             pointer-events: none;
