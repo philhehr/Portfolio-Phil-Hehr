@@ -6,7 +6,7 @@
     <title>Phil Hehr - Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bahnschrift:wght@400;600;700;800&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bahnschrift:wght@400;600;700;800&family=Caveat:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -65,11 +65,183 @@
 
         .logo {
             font-family: 'Bahnschrift', Arial, sans-serif;
-            font-size: 1.4rem;
-            font-weight: 600;
+            font-size: 1.2rem;
+            font-weight: 800;
             color: var(--text-dark);
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logo-overlay {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 100;
+            cursor: pointer;
+        }
+
+        .logo:hover .logo-overlay {
+            opacity: 1;
+            transform: translateY(5px);
+            pointer-events: all;
+        }
+
+        .logo-overlay:hover {
+            background: rgba(124, 179, 66, 0.9);
+        }
+
+        /* Header Animation - FIXED VISIBILITY */
+        .header-animation {
+            position: fixed;
+            top: 4%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 200px;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .animation-container {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(124, 179, 66, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .animation-shape {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            animation: defaultPulse 3s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(124, 179, 66, 0.3);
+        }
+
+        .animation-shape::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: all 0.6s ease;
+        }
+
+        .animation-text {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Bahnschrift', Arial, sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        /* Animation States */
+        .animation-container.babyphone .animation-shape {
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            border-radius: 20px;
+            transform: rotate(0deg);
+            animation: babyphone 2s ease-in-out infinite;
+        }
+
+        .animation-container.glasses .animation-shape {
+            background: linear-gradient(45deg, #2196F3, #03DAC6);
+            border-radius: 10px;
+            width: 120px;
+            height: 40px;
+            animation: glasses 2.5s ease-in-out infinite;
+        }
+
+        .animation-container.portfolio .animation-shape {
+            background: linear-gradient(45deg, #FF9800, #FFC107);
+            border-radius: 8px;
+            width: 100px;
+            height: 100px;
+            animation: portfolio 2s linear infinite;
+        }
+
+        .animation-container.hyperloop .animation-shape {
+            background: linear-gradient(45deg, #E91E63, #9C27B0);
+            border-radius: 50px;
+            width: 150px;
+            height: 30px;
+            animation: hyperloop 1.8s ease-in-out infinite;
+        }
+
+        .animation-container.caveman .animation-shape {
+            background: linear-gradient(45deg, #795548, #8D6E63);
+            border-radius: 50%;
+            width: 90px;
+            height: 90px;
+            animation: caveman 2.2s ease-in-out infinite;
+        }
+
+        /* Keyframe Animations */
+        @keyframes defaultPulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        @keyframes babyphone {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.1) rotate(5deg); }
+            75% { transform: scale(0.9) rotate(-5deg); }
+        }
+
+        @keyframes glasses {
+            0%, 100% { transform: scaleX(1); }
+            50% { transform: scaleX(1.2); }
+        }
+
+        @keyframes portfolio {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes hyperloop {
+            0%, 100% { transform: translateX(-20px); }
+            50% { transform: translateX(20px); }
+        }
+
+        @keyframes caveman {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            33% { transform: scale(1.1) rotate(120deg); }
+            66% { transform: scale(0.9) rotate(240deg); }
         }
 
         .portfolio-text {
@@ -112,7 +284,7 @@
         .project-pill {
             width: 144px;
             height: 576px;
-            background: #e0e1e2;
+            background: rgba(224, 225, 226, 0.85);
             border-radius: 72px;
             display: flex;
             align-items: center;
@@ -160,7 +332,7 @@
         /* Timer */
         .timer-container {
             position: absolute;
-            top: 80%;
+            top: 96%;
             left: 50%;
             transform: translateX(-50%);
             z-index: 5;
@@ -169,15 +341,20 @@
 
         .flip-clock {
             display: flex;
-            gap: 0.5rem;
             align-items: center;
+            background: rgba(245, 245, 245, 0.9);
+            border-radius: 25px;
+            padding: 0.8rem 1.5rem;
+            box-shadow: 
+                inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+                inset -3px -3px 6px rgba(255, 255, 255, 0.7);
         }
 
         .flip-digit {
-            width: 24px;
-            height: 32px;
-            background: #f5f5f5;
-            border-radius: 4px;
+            width: 20px;
+            height: 28px;
+            background: transparent;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -186,21 +363,12 @@
             color: #2c2c2c;
             position: relative;
             overflow: hidden;
-            box-shadow: 
-                inset 0 2px 4px rgba(0, 0, 0, 0.1),
-                0 2px 8px rgba(0, 0, 0, 0.1);
-            border: 1px solid #e0e0e0;
+            box-shadow: none;
+            border: none;
         }
 
         .flip-digit::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: rgba(0, 0, 0, 0.1);
-            z-index: 1;
+            display: none;
         }
 
         .flip-digit.changing {
@@ -211,7 +379,7 @@
             font-size: 0.8rem;
             font-weight: 600;
             color: #2c2c2c;
-            margin: 0 0.2rem;
+            margin: 0 0.3rem;
         }
 
         .timer-label {
@@ -222,6 +390,30 @@
             0% { transform: rotateX(0deg); }
             50% { transform: rotateX(-90deg); }
             100% { transform: rotateX(0deg); }
+        }
+
+        /* Background Line - RESTORED */
+        .background-line {
+            position: absolute;
+            top: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                rgba(0, 0, 0, 0.08) 0%, 
+                rgba(0, 0, 0, 0.12) 50%, 
+                rgba(0, 0, 0, 0.08) 100%);
+            z-index: 0;
+            opacity: 1;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: translateY(-50%);
+            border-radius: 1px;
+        }
+
+        .background-line.hover-active {
+            background: linear-gradient(90deg, 
+                rgba(0, 0, 0, 0.1) 0%, 
+                rgba(0, 0, 0, 0.15) 50%, 
+                rgba(0, 0, 0, 0.1) 100%);
+            z-index: 1;
         }
 
         .project-pill.focused {
@@ -239,7 +431,8 @@
 
         .project-number {
             font-size: 7.2rem;
-            font-weight: 800;
+            font-weight: 600;
+            font-family: 'Barlow Condensed', 'Arial Narrow', 'Franklin Gothic Medium', sans-serif;
             color: rgba(0, 0, 0, 0.08);
             user-select: none;
             transition: all 0.6s ease;
@@ -512,24 +705,27 @@
 
         /* Floating Animation */
         .project-pill:nth-child(1) {
-            animation: float 6s ease-in-out infinite;
+            /* Animation entfernt */
         }
 
         .project-pill:nth-child(2) {
-            animation: float 6s ease-in-out infinite 1.5s;
+            /* Animation entfernt */
         }
 
         .project-pill:nth-child(3) {
-            animation: float 6s ease-in-out infinite 3s;
+            /* Animation entfernt */
         }
 
         .project-pill:nth-child(4) {
-            animation: float 6s ease-in-out infinite 4.5s;
+            /* Animation entfernt */
+        }
+
+        .project-pill:nth-child(5) {
+            /* Animation entfernt */
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            /* Animation deaktiviert */
         }
 
         /* Responsive Design */
@@ -547,6 +743,8 @@
                 width: 120px;
                 height: 480px;
                 border-radius: 60px;
+                align-items: flex-end;
+                padding-bottom: 3rem;
                 box-shadow: 
                     inset 8px 8px 16px rgba(0, 0, 0, 0.15),
                     inset -8px -8px 16px rgba(255, 255, 255, 0.7);
@@ -563,6 +761,8 @@
             
             .project-number {
                 font-size: 6rem;
+                font-family: 'Bahnschrift', Arial, sans-serif;
+                font-weight: 800;
             }
         }
 
@@ -806,6 +1006,73 @@
         updateDate();
         setInterval(updateDate, 60000);
 
+        // CV Modal functionality - FIXED
+        document.addEventListener('DOMContentLoaded', function() {
+            const cvModal = document.getElementById('cvModal');
+            const logoContainer = document.getElementById('logoContainer');
+            const whoAmI = document.getElementById('whoAmI');
+            const cvClose = document.getElementById('cvClose');
+
+            // Debug: Check if elements exist
+            console.log('CV Modal elements found:', { 
+                cvModal: !!cvModal, 
+                logoContainer: !!logoContainer, 
+                whoAmI: !!whoAmI, 
+                cvClose: !!cvClose 
+            });
+
+            if (whoAmI && cvModal) {
+                whoAmI.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Who Am I clicked - opening modal');
+                    cvModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+
+                // Also add click to logo container for better UX
+                logoContainer.addEventListener('click', (e) => {
+                    if (e.target === whoAmI) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('Who Am I clicked via logo container');
+                        cvModal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            } else {
+                console.error('CV Modal elements not found!', { whoAmI, cvModal });
+            }
+
+            if (cvClose && cvModal) {
+                cvClose.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    console.log('Close CV clicked');
+                    cvModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+
+            if (cvModal) {
+                cvModal.addEventListener('click', (e) => {
+                    if (e.target === cvModal) {
+                        console.log('Outside CV clicked');
+                        cvModal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+
+            // ESC key to close CV modal
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && cvModal && cvModal.classList.contains('active')) {
+                    console.log('ESC pressed - closing CV');
+                    cvModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
         // Project data (gleiche Daten wie vorher)
         const projectData = {
             babyphone: {
@@ -978,6 +1245,90 @@
             line.style.width = `${endX - startX}px`;
         }
 
+        // Initialize background line on page load
+        function initializeBackgroundLine() {
+            const line = document.getElementById('backgroundLine');
+            const logo = document.querySelector('.logo');
+            const portfolioText = document.querySelector('.portfolio-text');
+            
+            if (!line || !logo || !portfolioText) return;
+
+            const logoRect = logo.getBoundingClientRect();
+            const portfolioRect = portfolioText.getBoundingClientRect();
+            const containerRect = document.querySelector('.container').getBoundingClientRect();
+            
+            // Standard-Position der Linie (näher an Logo und Portfolio)
+            const startX = logoRect.right - containerRect.left + 15; // 15px nach Logo
+            const endX = portfolioRect.left - containerRect.left - 15; // 15px vor Portfolio
+            
+            line.style.left = `${startX}px`;
+            line.style.width = `${endX - startX}px`;
+        }
+
+        // Animation control - FIXED
+        let animationContainer = null;
+        let animationText = null;
+
+        const animationTexts = {
+            babyphone: 'Smart Baby Monitor',
+            glasses: 'AR Glasses Interface', 
+            portfolio: 'Innovation Design',
+            hyperloop: 'Future Transport',
+            caveman: 'Custom Motorcycles'
+        };
+
+        function initializeAnimationElements() {
+            animationContainer = document.getElementById('animationContainer');
+            animationText = document.getElementById('animationText');
+            
+            console.log('Animation elements initialized:', { 
+                container: !!animationContainer, 
+                text: !!animationText 
+            });
+            
+            if (animationContainer) {
+                console.log('Animation container found and ready!');
+            } else {
+                console.error('Animation container NOT found!');
+            }
+        }
+
+        function showProjectAnimation(projectId) {
+            console.log('Showing animation for:', projectId);
+            if (animationContainer && animationText) {
+                // Remove all animation classes
+                animationContainer.className = 'animation-container';
+                
+                // Add new animation class
+                setTimeout(() => {
+                    animationContainer.classList.add(projectId);
+                    animationText.textContent = animationTexts[projectId] || 'Project Animation';
+                    console.log('Animation applied successfully:', projectId);
+                }, 50);
+            } else {
+                console.error('Animation elements not available:', { 
+                    container: !!animationContainer, 
+                    text: !!animationText 
+                });
+            }
+        }
+
+        function resetToDefaultAnimation() {
+            console.log('Resetting to default animation');
+            if (animationContainer && animationText) {
+                animationContainer.className = 'animation-container';
+                animationText.textContent = 'Hover über Projekte';
+            }
+        }
+
+        // Initialize animation on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Initializing animations...'); // Debug
+            const container = document.getElementById('animationContainer');
+            const text = document.getElementById('animationText');
+            console.log('Animation elements found:', { container: !!container, text: !!text }); // Debug
+        });
+
         // Add smooth scrolling and interaction feedback
         document.querySelectorAll('.project-pill').forEach((pill, index) => {
             pill.addEventListener('mouseenter', (e) => {
@@ -1055,16 +1406,16 @@
             }
         }
 
-        // Initialize line on page load and window resize
-        window.addEventListener('load', initializeBackgroundLine);
-        window.addEventListener('resize', initializeBackgroundLine);
+        // Window load events for background line
+        window.addEventListener('load', function() {
+            console.log('Window loaded - updating background line');
+            setTimeout(initializeBackgroundLine, 200);
+        });
         
-        // Initialize immediately if DOM is already loaded
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initializeBackgroundLine);
-        } else {
+        window.addEventListener('resize', function() {
+            console.log('Window resized - updating background line');
             initializeBackgroundLine();
-        }
+        });
     </script>
 </body>
 </html>
