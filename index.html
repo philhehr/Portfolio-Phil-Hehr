@@ -274,7 +274,7 @@
 
         .projects-container {
             display: flex;
-            gap: 3rem;
+            gap: 6rem;
             align-items: center;
             justify-content: center;
             width: 100%;
@@ -298,6 +298,7 @@
             overflow: hidden;
             z-index: 2;
         }
+
              .pill-image {
         position: absolute;
         top: 0;
@@ -309,6 +310,11 @@
         z-index: 1;
         pointer-events: none;
         }
+
+            .project-pill:hover .pill-image {
+        opacity: 0;
+        transition: opacity 0.4s;
+        }   
 
         .project-pill::before {
             content: '';
@@ -509,21 +515,21 @@
 
         /* Special styling for different projects */
         .project-pill[data-project="babyphone"] {
-            background: #e8f0e8;
+            background: #ffffff;
             box-shadow: 
                 inset 8px 8px 16px rgba(0, 0, 0, 0.12),
                 inset -8px -8px 16px rgba(255, 255, 255, 0.8);
         }
 
         .project-pill[data-project="glasses"] {
-            background: #e8f0ff;
+            background: #ffffff;
             box-shadow: 
                 inset 8px 8px 16px rgba(0, 0, 0, 0.12),
                 inset -8px -8px 16px rgba(255, 255, 255, 0.8);
         }
 
         .project-pill[data-project="portfolio"] {
-            background: #fff8e8;
+            background: #ffffff;
             box-shadow: 
                 inset 8px 8px 16px rgba(0, 0, 0, 0.12),
                 inset -8px -8px 16px rgba(255, 255, 255, 0.8);
