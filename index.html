@@ -329,69 +329,7 @@
             transform: scale(0.95);
         }
 
-        /* Timer */
-        .timer-container {
-            position: absolute;
-            top: 96%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 5;
-            font-family: 'Bahnschrift', Arial, sans-serif;
-        }
-
-        .flip-clock {
-            display: flex;
-            align-items: center;
-            background: rgba(245, 245, 245, 0.9);
-            border-radius: 25px;
-            padding: 0.8rem 1.5rem;
-            box-shadow: 
-                inset 3px 3px 6px rgba(0, 0, 0, 0.1),
-                inset -3px -3px 6px rgba(255, 255, 255, 0.7);
-        }
-
-        .flip-digit {
-            width: 20px;
-            height: 28px;
-            background: transparent;
-            border-radius: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #2c2c2c;
-            position: relative;
-            overflow: hidden;
-            box-shadow: none;
-            border: none;
-        }
-
-        .flip-digit::before {
-            display: none;
-        }
-
-        .flip-digit.changing {
-            animation: flip 0.3s ease-in-out;
-        }
-
-        .flip-separator {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #2c2c2c;
-            margin: 0 0.3rem;
-        }
-
-        .timer-label {
-            display: none;
-        }
-
-        @keyframes flip {
-            0% { transform: rotateX(0deg); }
-            50% { transform: rotateX(-90deg); }
-            100% { transform: rotateX(0deg); }
-        }
-
+      
         /* Background Line - RESTORED */
         .background-line {
             position: absolute;
