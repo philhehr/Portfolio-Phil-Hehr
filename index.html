@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phil Hehr - Portfolio</title>
+    <title>Phil Hehr - Product Designer & Motorcycle Novice</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bahnschrift:wght@400;600;700;800&family=Caveat:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
-    <style>
+    <link href="https://fonts.googleapis.com/css2?family=Bahnschrift&display=swap" rel="stylesheet">
+    <style>        
         * {
             margin: 0;
             padding: 0;
@@ -16,461 +16,300 @@
 
         :root {
             --primary: #7cb342;
-            --background: #f8f9fa;
-            --text-dark: #2c2c2c;
-            --text-light: #666;
-            --pill-bg: #e8e9ea;
-            --pill-hover: #d0d1d2;
-            --shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --secondary: #1a1a1a;
+            --accent: #8bc34a;
+            --text-light: #f0f0f0;
+            --text-dark: #333;
+            --design-primary: #505050;
+            --design-light: #f5f5f5;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Bahnschrift', Arial, sans-serif;
-            background: #fafafa;
-            color: var(--text-dark);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
             overflow-x: hidden;
-            min-height: 100vh;
+            height: 100vh;
         }
 
-        .container {
+        /* Split Layout */
+        .split-container {
+            display: flex;
+            height: 100vh;
             width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            min-height: 100vh;
+        }
+
+        .split-section {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .split-section:hover {
+            flex: 1.1;
+        }
+
+        /* Left Section - PRODUKTDESIGN */
+        .design-section {
+            background: #4a4a4a;
+            color: var(--text-light);
+        }
+
+        .design-content {
+            height: 100%;
             display: flex;
             flex-direction: column;
             position: relative;
         }
 
-        /* Header */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 3rem 0;
+        .design-header {
             position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            transform: translateY(-50%);
-            z-index: 20;
-            pointer-events: none;
+            top: 2rem;
+            left: 2rem;
+            z-index: 100;
+            text-align: left;
         }
 
-        .header > * {
-            pointer-events: auto;
-        }
-
-        .logo {
-            font-family: 'Bahnschrift', Arial, sans-serif;
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .logo-overlay {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: rgba(0, 0, 0, 0.9);
+        .design-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
             color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            white-space: nowrap;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            pointer-events: none;
-            z-index: 100;
-            cursor: pointer;
-        }
-
-        .logo:hover .logo-overlay {
-            opacity: 1;
-            transform: translateY(5px);
-            pointer-events: all;
-        }
-
-        .logo-overlay:hover {
-            background: rgba(124, 179, 66, 0.9);
-        }
-
-        /* Header Animation - FIXED VISIBILITY */
-        .header-animation {
-            position: fixed;
-            top: 4%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 300px;
-            height: 200px;
-            z-index: 100;
-            pointer-events: none;
-        }
-
-        .animation-container {
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 3px solid rgba(124, 179, 66, 0.5);
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
+            line-height: 1.2;
+            align-items: flex-start;
+        }
+
+        .design-logo span:last-child {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .design-projects {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 100%;
+            gap: 0;
+        }
+
+        .design-project {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
             position: relative;
+            border: none;
             overflow: hidden;
-            transition: all 0.6s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .animation-shape {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        .design-project:hover {
+            transform: scale(1.02);
+            z-index: 10;
+        }
+
+
+
+        .design-project > * {
             position: relative;
-            animation: defaultPulse 3s ease-in-out infinite;
-            box-shadow: 0 0 20px rgba(124, 179, 66, 0.3);
+            z-index: 2;
         }
 
-        .animation-shape::before {
-            content: '';
+        .design-showcase {
+            flex: 1;
+            /* HIER DEIN ERSTES PROJEKT-BILD EINFÜGEN */
+            background-image: url('images/front.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .design-showcase::after {
+            content: attr(data-number);
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transition: all 0.6s ease;
-        }
-
-        .animation-text {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
+            font-size: 25rem;
+            font-weight: 700;
             font-family: 'Bahnschrift', Arial, sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.8);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            opacity: 0.7;
-        }
-
-        /* Animation States */
-        .animation-container.babyphone .animation-shape {
-            background: linear-gradient(45deg, #4CAF50, #8BC34A);
-            border-radius: 20px;
-            transform: rotate(0deg);
-            animation: babyphone 2s ease-in-out infinite;
-        }
-
-        .animation-container.glasses .animation-shape {
-            background: linear-gradient(45deg, #2196F3, #03DAC6);
-            border-radius: 10px;
-            width: 120px;
-            height: 40px;
-            animation: glasses 2.5s ease-in-out infinite;
-        }
-
-        .animation-container.portfolio .animation-shape {
-            background: linear-gradient(45deg, #FF9800, #FFC107);
-            border-radius: 8px;
-            width: 100px;
-            height: 100px;
-            animation: portfolio 2s linear infinite;
-        }
-
-        .animation-container.hyperloop .animation-shape {
-            background: linear-gradient(45deg, #E91E63, #9C27B0);
-            border-radius: 50px;
-            width: 150px;
-            height: 30px;
-            animation: hyperloop 1.8s ease-in-out infinite;
-        }
-
-        .animation-container.caveman .animation-shape {
-            background: linear-gradient(45deg, #795548, #8D6E63);
-            border-radius: 50%;
-            width: 90px;
-            height: 90px;
-            animation: caveman 2.2s ease-in-out infinite;
-        }
-
-        /* Keyframe Animations */
-        @keyframes defaultPulse {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 1; }
-        }
-
-        @keyframes babyphone {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            25% { transform: scale(1.1) rotate(5deg); }
-            75% { transform: scale(0.9) rotate(-5deg); }
-        }
-
-        @keyframes glasses {
-            0%, 100% { transform: scaleX(1); }
-            50% { transform: scaleX(1.2); }
-        }
-
-        @keyframes portfolio {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes hyperloop {
-            0%, 100% { transform: translateX(-20px); }
-            50% { transform: translateX(20px); }
-        }
-
-        @keyframes caveman {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            33% { transform: scale(1.1) rotate(120deg); }
-            66% { transform: scale(0.9) rotate(240deg); }
-        }
-
-        .portfolio-text {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: var(--text-dark);
-            text-transform: uppercase;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-
-        .portfolio-date {
-            font-size: 0.8rem;
-            font-weight: 300;
-            color: #999;
-            margin-top: 0.3rem;
-            letter-spacing: 1px;
-        }
-
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-        }
-
-        .projects-container {
-            display: flex;
-            gap: 3rem;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            max-width: 2000px;
-        }
-
-        .project-pill {
-            width: 144px;
-            height: 576px;
-            background: rgba(224, 225, 226, 0.85);
-            border-radius: 72px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: 
-                inset 10px 10px 20px rgba(0, 0, 0, 0.15),
-                inset -10px -10px 20px rgba(255, 255, 255, 0.7);
-            overflow: hidden;
+            color: rgba(200, 200, 200, 0.4);
+            pointer-events: none;
+            transition: opacity 0.3s ease;
             z-index: 2;
-        }
-
-        .project-pill::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, 
-                rgba(124, 179, 66, 0.1) 0%, 
-                rgba(139, 195, 74, 0.1) 50%, 
-                rgba(124, 179, 66, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .project-pill:hover {
-            transform: translateY(-8px) scale(1.15);
-            box-shadow: 
-                inset 15px 15px 30px rgba(0, 0, 0, 0.2),
-                inset -15px -15px 30px rgba(255, 255, 255, 0.8),
-                0 25px 50px rgba(0, 0, 0, 0.15);
-            z-index: 10;
-        }
-
-        .project-pill.dimmed {
-            opacity: 0.4;
-            filter: grayscale(0.3);
-            transform: scale(0.95);
-        }
-
-      
-        /* Background Line - RESTORED */
-        .background-line {
-            position: absolute;
-            top: 50%;
-            height: 2px;
-            background: linear-gradient(90deg, 
-                rgba(0, 0, 0, 0.08) 0%, 
-                rgba(0, 0, 0, 0.12) 50%, 
-                rgba(0, 0, 0, 0.08) 100%);
-            z-index: 0;
-            opacity: 1;
-            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-            transform: translateY(-50%);
-            border-radius: 1px;
-        }
-
-        .background-line.hover-active {
-            background: linear-gradient(90deg, 
-                rgba(0, 0, 0, 0.1) 0%, 
-                rgba(0, 0, 0, 0.15) 50%, 
-                rgba(0, 0, 0, 0.1) 100%);
-            z-index: 1;
-        }
-
-        .project-pill.focused {
-            transform: translateY(-8px) scale(1.15);
-            box-shadow: 
-                inset 15px 15px 30px rgba(0, 0, 0, 0.2),
-                inset -15px -15px 30px rgba(255, 255, 255, 0.8),
-                0 25px 50px rgba(0, 0, 0, 0.15);
-            z-index: 10;
-        }
-
-        .project-pill:hover::before {
-            opacity: 1;
-        }
-
-        .project-number {
-            font-size: 7.2rem;
-            font-weight: 600;
-            font-family: 'Barlow Condensed', 'Arial Narrow', 'Franklin Gothic Medium', sans-serif;
-            color: rgba(0, 0, 0, 0.08);
-            user-select: none;
-            transition: all 0.6s ease;
-            text-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
-        }
-
-        .project-pill:hover .project-number,
-        .project-pill.focused .project-number {
-            color: rgba(0, 0, 0, 0.15);
-            transform: scale(1.1);
-            text-shadow: 0 8px 22px rgba(255, 255, 255, 0.4);
-        }255, 0.3);
-        }
-
-        .project-pill:hover .project-number {
-            color: rgba(0, 0, 0, 0.12);
-            transform: scale(1.05);
-            text-shadow: 0 4px 12px rgba(255, 255, 255, 0.4);
-        }
-
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 120px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: all 0.4s ease;
-            padding: 2rem;
+            line-height: 0.7;
+            letter-spacing: 0;
+            width: 100%;
             text-align: center;
         }
 
-        .project-pill:hover .project-overlay {
-            opacity: 1;
+        .design-project:hover .design-showcase::after {
+            opacity: 0;
         }
 
-        .project-title {
+        /* White text overlay in front of numbers */
+        .design-text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
             color: white;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            transform: translateY(20px);
-            transition: transform 0.4s ease 0.1s;
+            z-index: 10;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
         }
 
-        .project-subtitle {
-            color: rgba(255, 255, 255, 0.8);
+        .design-text-overlay h4 {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Bahnschrift', Arial, sans-serif;
+            margin: 0 0 0.5rem 0;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .design-text-overlay p {
             font-size: 1rem;
             font-weight: 400;
-            transform: translateY(20px);
-            transition: transform 0.4s ease 0.2s;
+            font-family: 'Bahnschrift', Arial, sans-serif;
+            margin: 0;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
+            opacity: 0.9;
         }
 
-        .project-pill:hover .project-title,
-        .project-pill:hover .project-subtitle {
-            transform: translateY(0);
+        .design-project:hover .design-text-overlay {
+            opacity: 0;
         }
 
-        /* Special styling for different projects */
-        .project-pill[data-project="babyphone"] {
-            background: #e8f0e8;
+        .design-project:nth-child(2) .design-showcase {
+            /* HIER DEIN ZWEITES PROJEKT-BILD */
+            background-image: url('https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=800&h=600&fit=crop');
+        }
+
+        .design-project:nth-child(3) .design-showcase {
+            /* HIER DEIN DRITTES PROJEKT-BILD */
+            background-image: url('https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&h=600&fit=crop');
+        }
+
+        .design-project:nth-child(4) .design-showcase {
+            /* HIER DEIN VIERTES PROJEKT-BILD */
+            background-image: url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800&h=600&fit=crop');
+        }
+
+        /* Right Section - CAVEMAN MOTO */
+        .caveman-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1b1b 50%, #1a1a1a 100%);
+            color: var(--text-light);
+        }
+
+        .caveman-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .caveman-header {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            z-index: 100;
+        }
+
+        .caveman-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .caveman-logo span:last-child {
+            font-size: 0.54rem;
+        }
+
+        .caveman-project {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .caveman-project:hover {
+            transform: scale(1.02);
+        }
+
+        .caveman-image {
+            flex: 1;
+            /* HIER DEIN MOTORRAD-BILD EINFÜGEN */
+            background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&crop=center');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .caveman-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .caveman-text {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 400px;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .caveman-text h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 0 0 0.5rem 0;
+            color: white;
+        }
+
+        .caveman-text p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Pencil Line between logos */
+        .pencil-line {
+            position: fixed; 
+            top: 2.8rem; 
+            left: 18%; 
+            width: 64%; 
+            height: 2px; 
+            background: linear-gradient(90deg, #888 0%, #666 20%, #999 40%, #777 60%, #888 80%, #666 100%);
+            z-index: 9999; 
+            pointer-events: none;
             box-shadow: 
-                inset 8px 8px 16px rgba(0, 0, 0, 0.12),
-                inset -8px -8px 16px rgba(255, 255, 255, 0.8);
-        }
-
-        .project-pill[data-project="glasses"] {
-            background: #e8f0ff;
-            box-shadow: 
-                inset 8px 8px 16px rgba(0, 0, 0, 0.12),
-                inset -8px -8px 16px rgba(255, 255, 255, 0.8);
-        }
-
-        .project-pill[data-project="portfolio"] {
-            background: #fff8e8;
-            box-shadow: 
-                inset 8px 8px 16px rgba(0, 0, 0, 0.12),
-                inset -8px -8px 16px rgba(255, 255, 255, 0.8);
-        }
-
-        .project-pill[data-project="babyphone"]:hover,
-        .project-pill[data-project="glasses"]:hover,
-        .project-pill[data-project="portfolio"]:hover,
-        .project-pill[data-project="hyperloop"]:hover,
-        .project-pill[data-project="caveman"]:hover,
-        .project-pill[data-project="babyphone"].focused,
-        .project-pill[data-project="glasses"].focused,
-        .project-pill[data-project="portfolio"].focused,
-        .project-pill[data-project="hyperloop"].focused,
-        .project-pill[data-project="caveman"].focused {
-            box-shadow: 
-                inset 15px 15px 30px rgba(0, 0, 0, 0.2),
-                inset -15px -15px 30px rgba(255, 255, 255, 0.8),
-                0 25px 50px rgba(0, 0, 0, 0.15);
+                0 1px 0 rgba(255,255,255,0.1),
+                0 -1px 0 rgba(0,0,0,0.2),
+                inset 0 0 1px rgba(0,0,0,0.3);
+            border-radius: 1px;
         }
 
         /* Modal Styles */
@@ -483,8 +322,7 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.9);
             z-index: 1000;
-            backdrop-filter: blur(20px);
-            animation: fadeIn 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .modal.active {
@@ -498,17 +336,16 @@
             max-width: 1000px;
             height: 80%;
             background: white;
-            border-radius: 20px;
+            border-radius: 0;
             overflow: hidden;
             position: relative;
             display: flex;
             flex-direction: column;
-            animation: slideUp 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .modal-header {
             padding: 2rem;
-            background: var(--text-dark);
+            background: var(--design-primary);
             color: white;
             position: relative;
         }
@@ -523,17 +360,10 @@
             font-size: 2rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .modal-close:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: rotate(90deg);
+            transform: scale(1.1);
         }
 
         .modal-body {
@@ -557,7 +387,6 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            border-radius: 10px;
         }
 
         .modal-image:hover {
@@ -571,9 +400,8 @@
         }
 
         .text-block {
-            padding: 2rem;
+            padding: 1.5rem;
             background: #f8f9fa;
-            border-radius: 15px;
             transition: all 0.3s ease;
             transform: translateY(50px);
             opacity: 0;
@@ -585,453 +413,244 @@
         }
 
         .text-block:hover {
-            background: var(--primary);
+            background: var(--design-primary);
             color: white;
             transform: translateY(-5px);
         }
 
         .text-block h4 {
             margin: 0 0 1rem 0;
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .text-block p {
             margin: 0;
             line-height: 1.6;
-            font-weight: 400;
         }
 
-        /* Background Line */
-        .background-line {
+        /* Animated Background Elements */
+        .bg-animation {
             position: absolute;
-            top: 25%;
-            height: 2px;
-            background: linear-gradient(90deg, 
-                rgba(0, 0, 0, 0.08) 0%, 
-                rgba(0, 0, 0, 0.12) 50%, 
-                rgba(0, 0, 0, 0.08) 100%);            
-            z-index: 0;
-            opacity: 1;
-            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-            transform: translateY(-50%);
-            border-radius: 1px;
-        }
-
-        .background-line.hover-active {
-            background: linear-gradient(90deg, 
-                rgba(0, 0, 0, 0.1) 0%, 
-                rgba(0, 0, 0, 0.15) 50%, 
-                rgba(0, 0, 0, 0.1) 100%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 1;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            opacity: 0.1;
+            pointer-events: none;
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .caveman-section .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, var(--primary) 2px, transparent 2px),
+                radial-gradient(circle at 80% 20%, var(--accent) 1px, transparent 1px);
+            background-size: 100px 100px, 80px 80px;
+            animation: drift 20s ease-in-out infinite;
         }
 
-        /* Floating Animation */
-        .project-pill:nth-child(1) {
-            /* Animation entfernt */
+        .design-section .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 120px 120px, 90px 90px;
+            animation: drift 25s ease-in-out infinite reverse;
         }
 
-        .project-pill:nth-child(2) {
-            /* Animation entfernt */
+        @keyframes drift {
+            0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+            25% { transform: translateX(10px) translateY(-10px) rotate(1deg); }
+            50% { transform: translateX(-5px) translateY(15px) rotate(-1deg); }
+            75% { transform: translateX(-10px) translateY(-5px) rotate(0.5deg); }
         }
 
-        .project-pill:nth-child(3) {
-            /* Animation entfernt */
-        }
-
-        .project-pill:nth-child(4) {
-            /* Animation entfernt */
-        }
-
-        .project-pill:nth-child(5) {
-            /* Animation entfernt */
-        }
-
-        @keyframes float {
-            /* Animation deaktiviert */
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .projects-container {
-                gap: 2.5rem;
-                max-width: 1200px;
-            }
-            
-            .header {
-                padding: 2rem 0;
-            }
-            
-            .project-pill {
-                width: 120px;
-                height: 480px;
-                border-radius: 60px;
-                align-items: flex-end;
-                padding-bottom: 3rem;
-                box-shadow: 
-                    inset 8px 8px 16px rgba(0, 0, 0, 0.15),
-                    inset -8px -8px 16px rgba(255, 255, 255, 0.7);
-            }
-            
-            .project-pill:hover,
-            .project-pill.focused {
-                transform: translateY(-6px) scale(1.12);
-                box-shadow: 
-                    inset 12px 12px 24px rgba(0, 0, 0, 0.2),
-                    inset -12px -12px 24px rgba(255, 255, 255, 0.8),
-                    0 18px 42px rgba(0, 0, 0, 0.12);
-            }
-            
-            .project-number {
-                font-size: 6rem;
-                font-family: 'Bahnschrift', Arial, sans-serif;
-                font-weight: 800;
-            }
-        }
-
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 0 1rem;
+            .split-container {
+                flex-direction: column;
+                height: auto;
             }
-            
-            .header {
-                position: relative;
-                top: auto;
-                transform: none;
-                padding: 2rem 0;
-            }
-            
-            .main-content {
-                padding: 1rem 0 3rem 0;
-            }
-            
-            .logo, .portfolio-text {
-                font-size: 1.2rem;
-            }
-            
-            .background-line {
-                display: none; /* Linie auf mobile ausblenden */
-            }
-            
-            .portfolio-date {
-                font-size: 0.6rem;
-            }
-            
-            .projects-container {
-                flex-direction: row;
-                justify-content: center;
-                gap: 2rem;
-                max-width: 100%;
-            }
-            
-            .project-pill {
-                width: 80px;
-                height: 320px;
-                border-radius: 40px;
-                box-shadow: 
-                    inset 5px 5px 10px rgba(0, 0, 0, 0.15),
-                    inset -5px -5px 10px rgba(255, 255, 255, 0.7);
-            }
-            
-            .project-pill:hover,
-            .project-pill.focused {
-                transform: translateY(-5px) scale(1.1);
-                box-shadow: 
-                    inset 8px 8px 16px rgba(0, 0, 0, 0.2),
-                    inset -8px -8px 16px rgba(255, 255, 255, 0.8),
-                    0 12px 30px rgba(0, 0, 0, 0.12);
-            }
-            
-            .project-number {
-                font-size: 3.5rem;
-            }
-        }
 
-        @media (max-width: 480px) {
-            .projects-container {
-                gap: 1.5rem;
+            .split-section {
+                min-height: 100vh;
+                flex: none;
             }
-            
-            .header {
-                position: relative;
-                top: auto;
-                transform: none;
+
+            .split-section:hover {
+                flex: none;
             }
-            
-            .project-pill {
-                width: 65px;
-                height: 260px;
-                border-radius: 32px;
-                box-shadow: 
-                    inset 4px 4px 8px rgba(0, 0, 0, 0.15),
-                    inset -4px -4px 8px rgba(255, 255, 255, 0.7);
+
+            .caveman-header,
+            .design-header {
+                top: 1rem;
+                left: 1rem;
+                right: 1rem;
             }
-            
-            .project-pill:hover,
-            .project-pill.focused {
-                transform: translateY(-4px) scale(1.08);
-                box-shadow: 
-                    inset 6px 6px 12px rgba(0, 0, 0, 0.2),
-                    inset -6px -6px 12px rgba(255, 255, 255, 0.8),
-                    0 8px 20px rgba(0, 0, 0, 0.1);
+
+            .design-header {
+                text-align: left;
             }
-            
-            .project-number {
-                font-size: 2.8rem;
+
+            .design-logo {
+                align-items: flex-start;
             }
-            
-            .project-title {
-                font-size: 1.4rem;
-            }
-            
-            .project-subtitle {
-                font-size: 0.9rem;
+
+            .caveman-text {
+                width: 100%;
+                left: 0;
+                right: 0;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="logo">Phil Hehr</div>
-            <div class="portfolio-text">
-                PORTFOLIO
-                <div class="portfolio-date" id="currentDate"></div>
-            </div>
-        </div>
+    <div class="split-container">
+        <!-- Left Section - PRODUKTDESIGN -->
+        <section class="split-section design-section">
+            <div class="bg-animation"></div>
+            <div class="design-content">
+                <div class="design-header">
+                    <div class="design-logo">
+                        <span>PHIL HEHR</span>
+                        <span>PRODUCT DESIGNER</span>
+                    </div>
+                </div>
+                
+                <div class="design-projects">
+                    <div class="design-project" data-project="babyphone">
+                        <div class="design-showcase" data-number="01">
+                            <div class="design-text-overlay">
+                                <h4>Babyphone</h4>
+                                <p>Smart Baby Monitor</p>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <!-- Background Line -->
-            <div class="background-line" id="backgroundLine"></div>
-            
-            <div class="projects-container">
-                <div class="project-pill" data-project="babyphone">
-                    <div class="project-number">01</div>
-                    <div class="project-overlay">
-                        <div class="project-title">Babyphone</div>
-                        <div class="project-subtitle">Smart Baby Monitor</div>
+                    <div class="design-project" data-project="glasses">
+                        <div class="design-showcase" data-number="02">
+                            <div class="design-text-overlay">
+                                <h4>Glasses</h4>
+                                <p>Smart AR Interface</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="design-project" data-project="portfolio">
+                        <div class="design-showcase" data-number="03">
+                            <div class="design-text-overlay">
+                                <h4>Project 3</h4>
+                                <p>Innovation Design</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="design-project" data-project="hyperloop">
+                        <div class="design-showcase" data-number="04">
+                            <div class="design-text-overlay">
+                                <h4>Hyperloop</h4>
+                                <p>Future Transport</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="project-pill" data-project="glasses">
-                    <div class="project-number">02</div>
-                    <div class="project-overlay">
-                        <div class="project-title">Smart Glasses</div>
-                        <div class="project-subtitle">AR Interface Design</div>
-                    </div>
-                </div>
-
-                <div class="project-pill" data-project="portfolio">
-                    <div class="project-number">03</div>
-                    <div class="project-overlay">
-                        <div class="project-title">Innovation</div>
-                        <div class="project-subtitle">Design Thinking</div>
-                    </div>
-                </div>
-
-                <div class="project-pill" data-project="hyperloop">
-                    <div class="project-number">04</div>
-                    <div class="project-overlay">
-                        <div class="project-title">Hyperloop</div>
-                        <div class="project-subtitle">Future Transport</div>
-                    </div>
-                </div>
-
-                <div class="project-pill" data-project="caveman">
-                    <div class="project-number">05</div>
-                    <div class="project-overlay">
-                        <div class="project-title">Caveman Moto</div>
-                        <div class="project-subtitle">Custom Builds</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal" id="projectModal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 id="modalTitle">Projekt Details</h2>
-                    <button class="modal-close">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-images" id="modalImages">
-                        <!-- Images will be dynamically inserted -->
-                    </div>
-                    <div class="modal-text-blocks" id="modalTextBlocks">
-                        <!-- Text blocks will be dynamically inserted -->
+                <!-- Modal -->
+                <div class="modal" id="projectModal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 id="modalTitle">Projekt Details</h2>
+                            <button class="modal-close">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="modal-images" id="modalImages">
+                                <!-- Images will be dynamically inserted -->
+                            </div>
+                            <div class="modal-text-blocks" id="modalTextBlocks">
+                                <!-- Text blocks will be dynamically inserted -->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Pencil Line between logos -->
+        <div class="pencil-line"></div>
+
+        <!-- Right Section - CAVEMAN MOTO -->
+        <section class="split-section caveman-section">
+            <div class="bg-animation"></div>
+            <div class="caveman-content">
+                <div class="caveman-header">
+                    <div class="caveman-logo">
+                        <span>CAVEMAN</span>
+                        <span>MOTO</span>
+                    </div>
+                </div>
+                
+                <a href="#" class="caveman-project">
+                    <!-- Video statt statischem Bild -->
+                    <div class="caveman-image">
+                        <video class="caveman-video" autoplay muted loop playsinline>
+                            <source src="https://cdn.pixabay.com/vimeo/328940142/motorcycle-23126.mp4?width=1280&hash=e7e4a0b6c8d9f3a6b8c9d0e1f2g3h4i5j6k7l8m9" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="caveman-text">
+                        <h2>Kawasaki Zephyr 750 Cafe Racer Umbau</h2>
+                        <p>Kompletter Umbau mit custom Sitzbank und Auspuffanlage.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
     </div>
 
     <script>
-        // Timer functionality
-        let startTime = Date.now();
-        let timerInterval;
-
-        function updateTimer() {
-            const elapsed = Math.floor((Date.now() - startTime) / 1000);
-            const minutes = Math.floor(elapsed / 60);
-            const seconds = elapsed % 60;
-
-            const minutesStr = minutes.toString().padStart(2, '0');
-            const secondsStr = seconds.toString().padStart(2, '0');
-
-            updateFlipDigit('minutes1', minutesStr[0]);
-            updateFlipDigit('minutes2', minutesStr[1]);
-            updateFlipDigit('seconds1', secondsStr[0]);
-            updateFlipDigit('seconds2', secondsStr[1]);
-        }
-
-        function updateFlipDigit(id, newValue) {
-            const digit = document.getElementById(id);
-            if (digit && digit.textContent !== newValue) {
-                digit.classList.add('changing');
-                setTimeout(() => {
-                    digit.textContent = newValue;
-                    digit.classList.remove('changing');
-                }, 150);
-            }
-        }
-
-        // Start timer
-        timerInterval = setInterval(updateTimer, 1000);
-        updateTimer(); // Initial update
-
-        // Update current date
-        function updateDate() {
-            const now = new Date();
-            const months = [
-                'JANUAR', 'FEBRUAR', 'MÄRZ', 'APRIL', 'MAI', 'JUNI',
-                'JULI', 'AUGUST', 'SEPTEMBER', 'OKTOBER', 'NOVEMBER', 'DEZEMBER'
-            ];
-            const month = months[now.getMonth()];
-            const year = now.getFullYear();
-            document.getElementById('currentDate').textContent = `${month} ${year}`;
-        }
-
-        // Update date on load and every minute
-        updateDate();
-        setInterval(updateDate, 60000);
-
-        // CV Modal functionality - FIXED
-        document.addEventListener('DOMContentLoaded', function() {
-            const cvModal = document.getElementById('cvModal');
-            const logoContainer = document.getElementById('logoContainer');
-            const whoAmI = document.getElementById('whoAmI');
-            const cvClose = document.getElementById('cvClose');
-
-            // Debug: Check if elements exist
-            console.log('CV Modal elements found:', { 
-                cvModal: !!cvModal, 
-                logoContainer: !!logoContainer, 
-                whoAmI: !!whoAmI, 
-                cvClose: !!cvClose 
-            });
-
-            if (whoAmI && cvModal) {
-                whoAmI.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('Who Am I clicked - opening modal');
-                    cvModal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
-
-                // Also add click to logo container for better UX
-                logoContainer.addEventListener('click', (e) => {
-                    if (e.target === whoAmI) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        console.log('Who Am I clicked via logo container');
-                        cvModal.classList.add('active');
-                        document.body.style.overflow = 'hidden';
-                    }
-                });
-            } else {
-                console.error('CV Modal elements not found!', { whoAmI, cvModal });
-            }
-
-            if (cvClose && cvModal) {
-                cvClose.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    console.log('Close CV clicked');
-                    cvModal.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
-            }
-
-            if (cvModal) {
-                cvModal.addEventListener('click', (e) => {
-                    if (e.target === cvModal) {
-                        console.log('Outside CV clicked');
-                        cvModal.classList.remove('active');
-                        document.body.style.overflow = '';
-                    }
-                });
-            }
-
-            // ESC key to close CV modal
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && cvModal && cvModal.classList.contains('active')) {
-                    console.log('ESC pressed - closing CV');
-                    cvModal.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            });
-        });
-
-        // Project data (gleiche Daten wie vorher)
-        const projectData = {
+        // Project data
+        const         projectData = {
             babyphone: {
-                title: 'Babyphone',
+                title: 'Babyphone Design',
                 images: [
-                    'https://github.com/philhehr/Portfolio-Phil-Hehr/blob/main/images/front.png?raw=true',
-                    'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=800&h=600&fit=crop',
-                    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop'
+                    /* ↓ HIER DIE 3 BABYPHONE DETAIL-BILDER EINFÜGEN ↓ */
+                    'images/babyphone-detail-1.jpg',  /* Ändere diese URLs! */
+                    'images/babyphone-detail-2.jpg',
+                    'images/babyphone-detail-3.jpg'
+                    /* ↑ ENDE BABYPHONE BILDER ↑ */
                 ],
                 textBlocks: [
-                    { title: 'Smart Monitoring', text: 'Intelligente Überwachung mit KI-gestützter Geräusch- und Bewegungserkennung für maximale Sicherheit.' },
+                    { title: 'Smart Monitoring', text: 'Intelligente Überwachung mit KI-gestützter Geräusch- und Bewegungserkennung.' },
                     { title: 'Mobile App', text: 'Intuitive Smartphone-App für Echtzeitübertragung und Benachrichtigungen.' },
                     { title: 'Sicherheit', text: 'Ende-zu-Ende Verschlüsselung und lokale Datenspeicherung für maximale Sicherheit.' },
                     { title: 'Benutzerfreundlichkeit', text: 'Einfache Installation und bedienungsfreundliche Oberfläche für alle Eltern.' }
                 ]
             },
             glasses: {
-                title: 'Glasses',
+                title: 'Smart Glasses Interface',
                 images: [
                     'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=800&h=600&fit=crop',
                     'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop',
                     'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop'
                 ],
                 textBlocks: [
-                    { title: 'Platzhalter', text: 'Platzhalter.' },
+                    { title: 'AR Display', text: 'Hochauflösendes Augmented Reality Display mit natürlicher Farbwiedergabe.' },
                     { title: 'Gesture Control', text: 'Intuitive Gestensteuerung für nahtlose Interaktion ohne Berührung.' },
                     { title: 'Voice Integration', text: 'Sprachsteuerung mit KI-Assistant für freihändige Bedienung.' },
                     { title: 'Ergonomisches Design', text: 'Leichtes und komfortables Design für ganztägiges Tragen.' }
                 ]
             },
             portfolio: {
-                title: 'Platzhalter',
+                title: 'Project 3',
                 images: [
                     'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&h=600&fit=crop',
                     'https://images.unsplash.com/photo-1586717799252-bd134ad00e26?w=800&h=600&fit=crop',
@@ -1045,7 +664,7 @@
                 ]
             },
             hyperloop: {
-                title: 'Hyperloop',
+                title: 'Hyperloop Transportation',
                 images: [
                     'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800&h=600&fit=crop',
                     'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=600&fit=crop',
@@ -1053,19 +672,9 @@
                 ],
                 textBlocks: [
                     { title: 'Passenger Experience', text: 'Komfortable und sichere Reiseerfahrung bei Höchstgeschwindigkeit.' },
-                    { title: 'Platzhalter', text: 'Platzhalter.' },
+                    { title: 'Interface Design', text: 'Futuristische Bedienoberfläche für nahtlose Buchung und Navigation.' },
                     { title: 'Safety Systems', text: 'Modernste Sicherheitstechnik und Notfallprotokolle für alle Szenarien.' },
                     { title: 'Sustainable Transport', text: 'Umweltfreundliche Transportlösung mit minimaler CO2-Bilanz.' }
-                ]
-            },
-            caveman: {
-                title: 'Caveman Moto',
-                images: [
-                    'https://raw.githubusercontent.com/philhehr/Portfolio-Phil-Hehr/c489381a6f20326a7db203b847646d8a63cfac46/images/MellowXKawasaki-Zephyr750_SilverSmurf_EXAMPLE.jpeg',
-            
-                ],
-                textBlocks: [
-                    { title: 'Custom Builds', text: 'Platzhalter.' },
                 ]
             }
         };
@@ -1077,7 +686,7 @@
         const modalTextBlocks = document.getElementById('modalTextBlocks');
         const closeBtn = document.querySelector('.modal-close');
 
-        document.querySelectorAll('.project-pill').forEach(project => {
+        document.querySelectorAll('.design-project').forEach(project => {
             project.addEventListener('click', (e) => {
                 e.preventDefault();
                 const projectId = project.dataset.project;
@@ -1108,7 +717,7 @@
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden';
                 
-                // Animate text blocks
+                // Animate text blocks on scroll
                 setTimeout(animateTextBlocks, 100);
             });
         });
@@ -1130,10 +739,13 @@
             const modalBody = document.querySelector('.modal-body');
             
             function checkVisibility() {
-                blocks.forEach((block, index) => {
-                    setTimeout(() => {
+                blocks.forEach(block => {
+                    const rect = block.getBoundingClientRect();
+                    const modalRect = modalBody.getBoundingClientRect();
+                    
+                    if (rect.top < modalRect.bottom && rect.bottom > modalRect.top) {
                         block.classList.add('visible');
-                    }, index * 100);
+                    }
                 });
             }
             
@@ -1141,203 +753,17 @@
             checkVisibility(); // Initial check
         }
 
+        // Smooth hover effects for caveman project
+        document.querySelector('.caveman-project').addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Caveman project clicked');
+        });
+
         // ESC key to close modal
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && modal.classList.contains('active')) {
                 closeModal();
             }
-        });
-
-        // Initialize background line on page load
-        function initializeBackgroundLine() {
-            const line = document.getElementById('backgroundLine');
-            const logo = document.querySelector('.logo');
-            const portfolioText = document.querySelector('.portfolio-text');
-            
-            if (!line || !logo || !portfolioText) return;
-
-            const logoRect = logo.getBoundingClientRect();
-            const portfolioRect = portfolioText.getBoundingClientRect();
-            const containerRect = document.querySelector('.container').getBoundingClientRect();
-            
-            // Standard-Position der Linie (näher an Logo und Portfolio)
-            const startX = logoRect.right - containerRect.left + 15; // 15px nach Logo
-            const endX = portfolioRect.left - containerRect.left - 15; // 15px vor Portfolio
-            
-            line.style.left = `${startX}px`;
-            line.style.width = `${endX - startX}px`;
-        }
-
-        // Initialize background line on page load
-        function initializeBackgroundLine() {
-            const line = document.getElementById('backgroundLine');
-            const logo = document.querySelector('.logo');
-            const portfolioText = document.querySelector('.portfolio-text');
-            
-            if (!line || !logo || !portfolioText) return;
-
-            const logoRect = logo.getBoundingClientRect();
-            const portfolioRect = portfolioText.getBoundingClientRect();
-            const containerRect = document.querySelector('.container').getBoundingClientRect();
-            
-            // Standard-Position der Linie (näher an Logo und Portfolio)
-            const startX = logoRect.right - containerRect.left + 15; // 15px nach Logo
-            const endX = portfolioRect.left - containerRect.left - 15; // 15px vor Portfolio
-            
-            line.style.left = `${startX}px`;
-            line.style.width = `${endX - startX}px`;
-        }
-
-        // Animation control - FIXED
-        let animationContainer = null;
-        let animationText = null;
-
-        const animationTexts = {
-            babyphone: 'Smart Baby Monitor',
-            glasses: 'AR Glasses Interface', 
-            portfolio: 'Innovation Design',
-            hyperloop: 'Future Transport',
-            caveman: 'Custom Motorcycles'
-        };
-
-        function initializeAnimationElements() {
-            animationContainer = document.getElementById('animationContainer');
-            animationText = document.getElementById('animationText');
-            
-            console.log('Animation elements initialized:', { 
-                container: !!animationContainer, 
-                text: !!animationText 
-            });
-            
-            if (animationContainer) {
-                console.log('Animation container found and ready!');
-            } else {
-                console.error('Animation container NOT found!');
-            }
-        }
-
-        function showProjectAnimation(projectId) {
-            console.log('Showing animation for:', projectId);
-            if (animationContainer && animationText) {
-                // Remove all animation classes
-                animationContainer.className = 'animation-container';
-                
-                // Add new animation class
-                setTimeout(() => {
-                    animationContainer.classList.add(projectId);
-                    animationText.textContent = animationTexts[projectId] || 'Project Animation';
-                    console.log('Animation applied successfully:', projectId);
-                }, 50);
-            } else {
-                console.error('Animation elements not available:', { 
-                    container: !!animationContainer, 
-                    text: !!animationText 
-                });
-            }
-        }
-
-        function resetToDefaultAnimation() {
-            console.log('Resetting to default animation');
-            if (animationContainer && animationText) {
-                animationContainer.className = 'animation-container';
-                animationText.textContent = 'Hover über Projekte';
-            }
-        }
-
-        // Initialize animation on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Initializing animations...'); // Debug
-            const container = document.getElementById('animationContainer');
-            const text = document.getElementById('animationText');
-            console.log('Animation elements found:', { container: !!container, text: !!text }); // Debug
-        });
-
-        // Add smooth scrolling and interaction feedback
-        document.querySelectorAll('.project-pill').forEach((pill, index) => {
-            pill.addEventListener('mouseenter', (e) => {
-                pill.style.animationPlayState = 'paused';
-                
-                // Add focused class to current pill and dimmed to others
-                document.querySelectorAll('.project-pill').forEach((otherPill, otherIndex) => {
-                    if (otherPill !== pill) {
-                        otherPill.classList.add('dimmed');
-                    } else {
-                        otherPill.classList.add('focused');
-                    }
-                });
-
-                // Update background line for hover effect
-                updateBackgroundLineOnHover(index);
-            });
-            
-            pill.addEventListener('mouseleave', (e) => {
-                pill.style.animationPlayState = 'running';
-                
-                // Remove all hover classes
-                document.querySelectorAll('.project-pill').forEach(otherPill => {
-                    otherPill.classList.remove('dimmed', 'focused');
-                });
-
-                // Reset background line to default
-                resetBackgroundLineToDefault();
-            });
-        });
-
-        function updateBackgroundLineOnHover(hoveredIndex) {
-            const line = document.getElementById('backgroundLine');
-            const logo = document.querySelector('.logo');
-            const portfolioText = document.querySelector('.portfolio-text');
-            const pills = document.querySelectorAll('.project-pill');
-            
-            if (!line || !logo || !portfolioText || pills.length === 0) return;
-
-            const logoRect = logo.getBoundingClientRect();
-            const portfolioRect = portfolioText.getBoundingClientRect();
-            const containerRect = document.querySelector('.container').getBoundingClientRect();
-            
-            // Calculate start and end positions (näher an Logo und Portfolio)
-            const startX = logoRect.right - containerRect.left + 15; // 15px nach Logo
-            const endX = portfolioRect.left - containerRect.left - 15; // 15px vor Portfolio
-            
-            // Calculate which pills to cover (all except hovered one)
-            const pillsArray = Array.from(pills);
-            const nonHoveredPills = pillsArray.filter((_, index) => index !== hoveredIndex);
-            
-            if (nonHoveredPills.length > 0) {
-                const firstPill = nonHoveredPills[0];
-                const lastPill = nonHoveredPills[nonHoveredPills.length - 1];
-                
-                const firstPillRect = firstPill.getBoundingClientRect();
-                const lastPillRect = lastPill.getBoundingClientRect();
-                
-                // Position line to cover non-hovered pills area
-                const lineStartX = Math.max(startX, firstPillRect.left - containerRect.left - 50);
-                const lineEndX = Math.min(endX, lastPillRect.right - containerRect.left + 50);
-                
-                line.style.left = `${lineStartX}px`;
-                line.style.width = `${lineEndX - lineStartX}px`;
-                line.classList.add('hover-active');
-            }
-        }
-
-        function resetBackgroundLineToDefault() {
-            const line = document.getElementById('backgroundLine');
-            if (line) {
-                line.classList.remove('hover-active');
-                // Reset to default position
-                initializeBackgroundLine();
-            }
-        }
-
-        // Window load events for background line
-        window.addEventListener('load', function() {
-            console.log('Window loaded - updating background line');
-            setTimeout(initializeBackgroundLine, 200);
-        });
-        
-        window.addEventListener('resize', function() {
-            console.log('Window resized - updating background line');
-            initializeBackgroundLine();
         });
     </script>
 </body>
