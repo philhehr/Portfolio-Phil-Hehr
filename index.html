@@ -141,150 +141,7 @@
             width: 100%;
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
         /* Background Line */
-=======
-        .project-pill {
-            width: 144px;
-            height: 700px;
-            background: rgba(224, 225, 226, 0.85);
-            border-radius: 72px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: 
-                inset 10px 10px 20px rgba(0, 0, 0, 0.15),
-                inset -10px -10px 20px rgba(255, 255, 255, 0.7);
-            overflow: hidden;
-            z-index: 2;
-            border: 4px solid #fff; /* <--- Weißer Rand für Wandstärke */
-        }
-
-         .pill-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 72px;
-            z-index: 1;
-            pointer-events: none;
-            opacity: 0.7;
-            filter: brightness(0.85);
-        }
-        .project-number {
-            position: relative;
-            z-index: 2; /* Nummer liegt über dem Bild */
-        }
-
-            .project-pill:hover .pill-image {
-        opacity: 0;
-        transition: opacity 0.4s;
-        }   
-
-        .project-pill::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, 
-                rgba(124, 179, 66, 0.1) 0%, 
-                rgba(139, 195, 74, 0.1) 50%, 
-                rgba(124, 179, 66, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .project-pill:hover {
-            transform: translateY(-8px) scale(1.15);
-            box-shadow: 
-                inset 15px 15px 30px rgba(0, 0, 0, 0.2),
-                inset -15px -15px 30px rgba(255, 255, 255, 0.8),
-                0 25px 50px rgba(0, 0, 0, 0.15);
-            z-index: 10;
-        }
-
-        .project-pill.dimmed {
-            opacity: 0.4;
-            filter: grayscale(0.3);
-            transform: scale(0.95);
-        }
-
-        /* Timer */
-        .timer-container {
-            position: absolute;
-            top: 96%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 5;
-            font-family: 'Bahnschrift', Arial, sans-serif;
-        }
-
-        .flip-clock {
-            display: flex;
-            align-items: center;
-            background: rgba(245, 245, 245, 0.9);
-            border-radius: 25px;
-            padding: 0.8rem 1.5rem;
-            box-shadow: 
-                inset 3px 3px 6px rgba(0, 0, 0, 0.1),
-                inset -3px -3px 6px rgba(255, 255, 255, 0.7);
-        }
-
-        .flip-digit {
-            width: 20px;
-            height: 28px;
-            background: transparent;
-            border-radius: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #2c2c2c;
-            position: relative;
-            overflow: hidden;
-            box-shadow: none;
-            border: none;
-        }
-
-        .flip-digit::before {
-            display: none;
-        }
-
-        .flip-digit.changing {
-            animation: flip 0.3s ease-in-out;
-        }
-
-        .flip-separator {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #2c2c2c;
-            margin: 0 0.3rem;
-        }
-
-        .timer-label {
-            display: none;
-        }
-
-        @keyframes flip {
-            0% { transform: rotateX(0deg); }
-            50% { transform: rotateX(-90deg); }
-            100% { transform: rotateX(0deg); }
-        }
-
-        /* Background Line - RESTORED */
->>>>>>> 434187e66aa6ba81db061154001b29caaedcc753
-=======
-        /* Background Line */
->>>>>>> b4231c5f802e12305a436491a8f95f1cdb6e8e45
         .background-line {
             position: absolute;
             top: 50%;
@@ -343,6 +200,7 @@
         .project-pill:hover .project-number {
             color: rgba(0, 0, 0, 0.15);
             transform: scale(1.1);
+            text-shadow: 0 8px 22px rgba(255, 255, 255, 0.4);
         }
 
         .project-pill.dimmed {
@@ -940,10 +798,6 @@
         </div>
 
         <div class="main-content">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> b4231c5f802e12305a436491a8f95f1cdb6e8e45
             <div class="background-line" id="backgroundLine"></div>
             
             <div class="projects-container">
@@ -952,64 +806,6 @@
                     <div class="project-overlay">
                         <div class="project-title">Babyphone</div>
                         <div class="project-subtitle">Smart Baby Monitor</div>
-<<<<<<< HEAD
-=======
-    <!-- Background Line -->
-    <div class="background-line" id="backgroundLine"></div>
-    <div class="projects-container">
-        <div class="project-pill" data-project="babyphone">
-            <img src="https://raw.githubusercontent.com/philhehr/Portfolio-Phil-Hehr/c489381a6f20326a7db203b847646d8a63cfac46/images/front.png" alt="Babyphone Bild" class="pill-image">
-            <div class="project-number">01</div>
-            <div class="project-overlay">
-                <div class="project-title">Babyphone</div>
-                <div class="project-subtitle">Smart Baby Monitor</div>
-            </div>
-        </div>
-        <div class="project-pill" data-project="glasses">
-            <div class="project-number">02</div>
-            <div class="project-overlay">
-                <div class="project-title">Smart Glasses</div>
-                <div class="project-subtitle">AR Interface Design</div>
-            </div>
-        </div>
-        <div class="project-pill" data-project="portfolio">
-            <div class="project-number">03</div>
-            <div class="project-overlay">
-                <div class="project-title">Innovation</div>
-                <div class="project-subtitle">Design Thinking</div>
-            </div>
-        </div>
-        <div class="project-pill" data-project="hyperloop">
-            <div class="project-number">04</div>
-            <div class="project-overlay">
-                <div class="project-title">Hyperloop</div>
-                <div class="project-subtitle">Future Transport</div>
-            </div>
-        </div>
-       <div class="project-pill" data-project="caveman">
-    <img src="https://raw.githubusercontent.com/philhehr/Portfolio-Phil-Hehr/c489381a6f20326a7db203b847646d8a63cfac46/images/MellowXKawasaki-Zephyr750_SilverSmurf_EXAMPLE.jpeg" alt="Caveman Moto Bild" class="pill-image">
-    <div class="project-number">05</div>
-    <div class="project-overlay">
-        <div class="project-title">Caveman Moto</div>
-        <div class="project-subtitle">Custom Builds</div>
-    </div>
-</div>
-    </div>
-</div>
-
-        <!-- Modal -->
-        <div class="modal" id="projectModal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 id="modalTitle">Projekt Details</h2>
-                    <button class="modal-close">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-images" id="modalImages">
-                        <!-- Images will be dynamically inserted -->
->>>>>>> 434187e66aa6ba81db061154001b29caaedcc753
-=======
->>>>>>> b4231c5f802e12305a436491a8f95f1cdb6e8e45
                     </div>
                 </div>
 
@@ -1038,11 +834,11 @@
                 </div>
 
                 <div class="project-pill" data-project="caveman">
-                    <div class="project-number">05</div>
-                    <img src="images/MellowXKawasaki-Zephyr750_SilverSmurf_EXAMPLE.jpeg" alt="Caveman Moto Bild" class="pill-image">
                     <div class="gear">
-                </div>
-        </div>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.98C19.47,12.66 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11.02L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.65 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11.02C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.66 4.57,12.98L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.98Z"/>
+                        </svg>
+                    </div>
                     <div class="project-overlay">
                         <div class="project-title">Caveman Moto</div>
                         <div class="project-subtitle">Custom Builds</div>
@@ -1137,69 +933,12 @@
     </div>
 
     <script>
-<<<<<<< HEAD
-<<<<<<< HEAD
         // Project data
-=======
-        // Timer functionality
-        let startTime = Date.now();
-        let timerInterval;
-
-        function updateTimer() {
-            const elapsed = Math.floor((Date.now() - startTime) / 1000);
-            const minutes = Math.floor(elapsed / 60);
-            const seconds = elapsed % 60;
-
-            const minutesStr = minutes.toString().padStart(2, '0');
-            const secondsStr = seconds.toString().padStart(2, '0');
-
-            updateFlipDigit('minutes1', minutesStr[0]);
-            updateFlipDigit('minutes2', minutesStr[1]);
-            updateFlipDigit('seconds1', secondsStr[0]);
-            updateFlipDigit('seconds2', secondsStr[1]);
-        }
-
-        function updateFlipDigit(id, newValue) {
-            const digit = document.getElementById(id);
-            if (digit && digit.textContent !== newValue) {
-                digit.classList.add('changing');
-                setTimeout(() => {
-                    digit.textContent = newValue;
-                    digit.classList.remove('changing');
-                }, 150);
-            }
-        }
-
-        // Start timer
-        timerInterval = setInterval(updateTimer, 1000);
-        updateTimer(); // Initial update
-
-        // Update current date
-        function updateDate() {
-            const now = new Date();
-            const months = [
-                'JANUAR', 'FEBRUAR', 'MÄRZ', 'APRIL', 'MAI', 'JUNI',
-                'JULI', 'AUGUST', 'SEPTEMBER', 'OKTOBER', 'NOVEMBER', 'DEZEMBER'
-            ];
-            const month = months[now.getMonth()];
-            const year = now.getFullYear();
-            document.getElementById('currentDate').textContent = `${month} ${year}`;
-        }
-
-        // Update date on load and every minute
-        updateDate();
-        setInterval(updateDate, 60000);
-
-        // Project data (gleiche Daten wie vorher)
->>>>>>> 434187e66aa6ba81db061154001b29caaedcc753
-=======
-        // Project data
->>>>>>> b4231c5f802e12305a436491a8f95f1cdb6e8e45
         const projectData = {
             babyphone: {
                 title: 'Babyphone Design',
                 images: [
-                    'https://raw.githubusercontent.com/philhehr/Portfolio-Phil-Hehr/c489381a6f20326a7db203b847646d8a63cfac46/images/front.png',
+                    'https://github.com/philhehr/Portfolio-Phil-Hehr/blob/main/images/front.png?raw=true',
                     'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=800&h=600&fit=crop',
                     'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop'
                 ],
@@ -1299,46 +1038,7 @@
             line.style.width = `${endX - startX}px`;
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
         function updateBackgroundLine(hoveredIndex) {
-=======
-        // Add smooth scrolling and interaction feedback
-        document.querySelectorAll('.project-pill').forEach((pill, index) => {
-            pill.addEventListener('mouseenter', (e) => {
-                pill.style.animationPlayState = 'paused';
-                
-                // Add focused class to current pill and dimmed to others
-                document.querySelectorAll('.project-pill').forEach((otherPill, otherIndex) => {
-                    if (otherPill !== pill) {
-                        otherPill.classList.add('dimmed');
-                    } else {
-                        otherPill.classList.add('focused');
-                    }
-                });
-
-                // Update background line for hover effect
-                updateBackgroundLineOnHover(index);
-            });
-            
-            pill.addEventListener('mouseleave', (e) => {
-                pill.style.animationPlayState = 'running';
-                
-                // Remove all hover classes
-                document.querySelectorAll('.project-pill').forEach(otherPill => {
-                    otherPill.classList.remove('dimmed', 'focused');
-                });
-
-                // Reset background line to default
-                resetBackgroundLineToDefault();
-            });
-        });
-
-        function updateBackgroundLineOnHover(hoveredIndex) {
->>>>>>> 434187e66aa6ba81db061154001b29caaedcc753
-=======
-        function updateBackgroundLine(hoveredIndex) {
->>>>>>> b4231c5f802e12305a436491a8f95f1cdb6e8e45
             const line = document.getElementById('backgroundLine');
             const logo = document.querySelector('.logo');
             const portfolioText = document.querySelector('.portfolio-text');
