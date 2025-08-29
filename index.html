@@ -350,25 +350,63 @@
             box-shadow: 0 50px 100px rgba(0, 0, 0, 0.4);
         }
 
-        .cv-header {
-            padding: 2rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            color: white;
+        .cv-modal-header {
             position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 2rem 1.5rem 2rem;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 2rem;
+            overflow: hidden;
         }
 
-        .cv-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin: 0;
+        .cv-modal-header span {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 7rem;
+            font-weight: 900;
+            letter-spacing: 8px;
+            color: #333;
+            opacity: 0.08;
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .cv-modal-header div {
             font-family: 'Bahnschrift', Arial, sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #333;
+            z-index: 1;
         }
 
-        .cv-subtitle {
-            font-size: 1.2rem;
-            font-weight: 400;
-            margin: 0.5rem 0 0 0;
-            opacity: 0.9;
+        .cv-modal-header .cv-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .cv-modal-header .cv-subtitle {
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        .cv-modal-header .cv-date {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #999;
+            letter-spacing: 1px;
+        }
+
+        .cv-header {
+            padding: 0;
+            background: none;
+            color: inherit;
         }
 
         .cv-close {
@@ -764,14 +802,23 @@
                 height: 10px !important;
             }
         }
+
+        /* Im <style>-Block ergänzen oder anpassen: */
+        .logo.whoami-hover {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+            cursor: pointer;
+            color: var(--primary);
+            background: #f6fff0;
+            transition: outline 0.2s, color 0.2s, background 0.2s;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo" id="logoContainer">
+            <div class="logo" id="logoContainer" tabindex="0" style="outline: none;">
                 PHIL HEHR
-                <div class="logo-overlay" id="whoAmI">WHO AM I</div>
             </div>
             <div class="portfolio-text">
                 PORTFOLIO
@@ -833,15 +880,30 @@
         <!-- CV Modal -->
         <div class="cv-modal" id="cvModal">
             <div class="cv-content">
-                <div class="cv-header">
-                    <h2 class="cv-title">Phil Hehr</h2>
-                    <p class="cv-subtitle">Product Designer & Motorrad-Enthusiast</p>
-                    <button class="cv-close" id="cvClose">&times;</button>
+                <div class="cv-modal-header" style="position:relative;display:flex;justify-content:space-between;align-items:center;padding:2rem 2rem 1.5rem 2rem;border-bottom:1px solid #e0e0e0;margin-bottom:2rem;overflow:hidden;">
+                    <span style="position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:7rem;font-weight:900;letter-spacing:8px;color:#333;opacity:0.08;pointer-events:none;user-select:none;z-index:0;width:100%;text-align:center;">
+                        CV
+                    </span>
+                    <div style="font-family:'Bahnschrift',Arial,sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#333;z-index:1;">
+                        Phil Hehr
+                    </div>
+                    <div style="text-align:right;z-index:1;">
+                        <div style="font-size:0.9rem;font-weight:300;color:#999;letter-spacing:1px;">
+                            <span id="cvModalDate"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cv-header" style="padding:0; background:none; color:inherit;">
+                    <button class="cv-close" id="cvClose" style="top:1rem;right:1rem;position:absolute;"></button>
                 </div>
                 <div class="cv-body">
-                    <div class="cv-section">
-                        <h3>Über mich</h3>
-                        <p>Leidenschaftlicher Product Designer mit Fokus auf innovative Benutzerfreundlichkeit und ästhetisches Design. Neben dem Design beschäftige ich mich intensiv mit Custom Motorrad-Builds unter der Marke Caveman Moto.</p>
+                    <div style="display:flex;align-items:flex-start;gap:2rem;margin-bottom:2rem;">
+                        <img src="images/front.png" alt="Phil Hehr Portrait"
+                            style="width:220px;height:320px;object-fit:cover;object-position:left;display:block;border-radius:0;box-shadow:none;flex-shrink:0;">
+                        <div>
+                            <h3>Über mich</h3>
+                            <p>Leidenschaftlicher Product Designer mit Fokus auf innovative Benutzerfreundlichkeit und ästhetisches Design. Neben dem Design beschäftige ich mich intensiv mit Custom Motorrad-Builds unter der Marke Caveman Moto.</p>
+                        </div>
                     </div>
                     
                     <div class="cv-section">
@@ -977,7 +1039,7 @@
             caveman: {
                 title: 'Caveman Moto',
                 images: [
-                    'https://raw.githubusercontent.com/philhehr/Portfolio-Phil-Hehr/c489381a6f20326a7db203b847646d8a63cfac46/images/MellowXKawasaki-Zephyr750_SilverSmurf_EXAMPLE.jpeg',
+                    'https://raw.githubusercontent.com/philhehr/Portfolio-Phil-Hehr/c489381a6f20326a7db203847646d8a63cfac46/images/MellowXKawasaki-Zephyr750_SilverSmurf_EXAMPLE.jpeg',
                     'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop',
                     'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=800&h=600&fit=crop'
                 ],
@@ -1199,24 +1261,44 @@
             initializePills();
             setTimeout(initializeBackgroundLine, 100);
             
-            // CV Modal
+            // Optional: change header text on hover without opening modal
+            const logo = document.getElementById('logoContainer');
             const cvModal = document.getElementById('cvModal');
-            const whoAmI = document.getElementById('whoAmI');
-            const cvClose = document.getElementById('cvClose');
+            let original = 'PHIL HEHR';
+            let isWhoAmI = false;
 
-            if (whoAmI && cvModal) {
-                whoAmI.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    cvModal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
+            if (logo) {
+                // Textnode finden
+                const getTextNode = () => Array.from(logo.childNodes).find(n => n.nodeType === Node.TEXT_NODE);
+
+                logo.addEventListener('mouseenter', () => {
+                    const textNode = getTextNode();
+                    if (textNode) textNode.textContent = ' WHO AM I ';
+                    logo.classList.add('whoami-hover');
+                    isWhoAmI = true;
                 });
-            }
-
-            if (cvClose && cvModal) {
-                cvClose.addEventListener('click', () => {
-                    cvModal.classList.remove('active');
-                    document.body.style.overflow = '';
+                logo.addEventListener('mouseleave', () => {
+                    const textNode = getTextNode();
+                    if (textNode) textNode.textContent = ' ' + original + ' ';
+                    logo.classList.remove('whoami-hover');
+                    isWhoAmI = false;
+                });
+                logo.addEventListener('click', (e) => {
+                    if (isWhoAmI && cvModal) {
+                        e.preventDefault();
+                        cvModal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+                // Optional: Tastaturzugänglichkeit
+                logo.addEventListener('keydown', (e) => {
+                    if (isWhoAmI && (e.key === 'Enter' || e.key === ' ')) {
+                        e.preventDefault();
+                        if (cvModal) {
+                            cvModal.classList.add('active');
+                            document.body.style.overflow = 'hidden';
+                        }
+                    }
                 });
             }
 
