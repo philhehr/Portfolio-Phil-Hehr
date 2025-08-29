@@ -509,7 +509,7 @@
             background: rgba(224, 225, 226, 0.85);
             border-radius: 72px;
             z-index: 1001;
-            transition: all 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             box-shadow: 
                 inset 10px 10px 20px rgba(0, 0, 0, 0.15),
                 inset -10px -10px 20px rgba(255, 255, 255, 0.7),
@@ -517,16 +517,16 @@
         }
 
         .pill-expanding.mid-expand {
-            border-radius: 200px;
+            border-radius: 75px;
         }
 
         .pill-expanding.expanded {
-            width: 700px !important;
-            height: 150% !important;
-            top: 10% !important;
+            width: 400px !important;
+            height: 90% !important;
+            top: 5% !important;
             left: 5% !important;
-            transform: translateX(-50%);
-            border-radius: 700px;
+            transform: none;
+            border-radius: 200px;
         }
 
         .pill-content {
@@ -536,7 +536,7 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 0.2s ease 0,1s;
+            transition: opacity 0.05s ease 0.025s;
             overflow: hidden;
             border-radius: inherit;
             display: flex;
@@ -722,7 +722,7 @@
             
             .project-pill {
                 width: 70px;
-                height: 280px;
+                height: 320px; /* Erhöhe die Höhe, z.B. auf 320px */
                 border-radius: 35px;
                 flex-shrink: 0;
                 align-items: flex-end;
@@ -755,7 +755,7 @@
             
             .project-pill {
                 width: 58px;
-                height: 232px;
+                height: 300px; /* Erhöhe die Höhe, z.B. auf 300px */
                 border-radius: 29px;
                 align-items: flex-end;
                 padding-bottom: 1.5rem;
@@ -782,62 +782,6 @@
             color: var(--primary);
             background: #f6fff0;
             transition: outline 0.2s, color 0.2s, background 0.2s;
-        }
-
-        .cv-modal-header {
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem 2rem 1.5rem 2rem;
-            border-bottom: 1px solid #e0e0e0;
-            margin-top: 1rem;
-            margin-bottom: 2rem;
-            overflow: hidden;
-        }
-
-        .cv-modal-header span {
-            position: absolute;
-            top: 0;
-            right: 0;
-            font-size: 7rem;
-            font-weight: 900;
-            letter-spacing: 8px;
-            color: #333;
-            opacity: 0.08;
-            pointer-events: none;
-            user-select: none;
-            z-index: 0;
-            width: 100%;
-            text-align: right;
-            overflow: hidden;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-right: 2rem;
-        }
-
-        .cv-modal-header div {
-            font-family: 'Bahnschrift', Arial, sans-serif;
-            font-size: 1.3rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #333;
-            z-index: 1;
-        }
-
-        .cv-modal-header div:last-child {
-            text-align: right;
-            z-index: 1;
-        }
-
-        .cv-modal-header div:last-child span {
-            font-size: 0.9rem;
-            font-weight: 300;
-            color: #999;
-            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -903,19 +847,6 @@
                 <div class="cv-header" style="padding:0; background:none; color:inherit;">
                     <button class="cv-close" id="cvClose" style="top:1rem;right:1rem;position:absolute;"></button>
                 </div>
-                <div class="cv-modal-header" style="position:relative;display:flex;justify-content:space-between;align-items:center;padding:2rem 2rem 1.5rem 2rem;border-bottom:1px solid #e0e0e0;margin-bottom:2rem;overflow:hidden;">
-                    <span style="position:absolute;top:0;right:0;font-size:7rem;font-weight:900;letter-spacing:8px;color:#333;opacity:0.08;pointer-events:none;user-select:none;z-index:0;width:100%;text-align:right;overflow:hidden;height:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:2rem;">
-                        CV
-                    </span>
-                    <div style="font-family:'Bahnschrift',Arial,sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#333;z-index:1;">
-                        Phil Hehr
-                    </div>
-                    <div style="text-align:right;z-index:1;">
-                        <div style="font-size:0.9rem;font-weight:300;color:#999;letter-spacing:1px;">
-                            <span id="cvModalDate"></span>
-                        </div>
-                    </div>
-                </div>
                 <div class="cv-body">
                     <div style="display:flex;align-items:flex-start;gap:2rem;margin-bottom:2rem;">
                         <img src="images/PH.png" alt="Phil Hehr Portrait"
@@ -930,12 +861,22 @@
                         <h3>Berufserfahrung</h3>
                         <div class="cv-item">
                             <div class="cv-item-header">
-                                <h4>Product Designer</h4>
+                                <h4>Senior Product Designer</h4>
                                 <span class="cv-date">2022 - heute</span>
                             </div>
-                            <p class="cv-company">Company - Not Public</p>
-                            <p>Entwicklung innovativer Produktkonzepte. Spezialisiert auf CAS Modelling und Erstellung von 3D Assets.</p>
+                            <p class="cv-company">Design Studio Hannover</p>
+                            <p>Entwicklung innovativer Produktkonzepte für Smart Home und IoT-Geräte. Spezialisiert auf User Experience Design und Prototyping.</p>
                         </div>
+                        
+                        <div class="cv-item">
+                            <div class="cv-item-header">
+                                <h4>Product Designer</h4>
+                                <span class="cv-date">2019 - 2022</span>
+                            </div>
+                            <p class="cv-company">TechStart GmbH</p>
+                            <p>Design und Entwicklung von Benutzeroberflächen für mobile Apps und Web-Anwendungen. Fokus auf moderne, minimalistische Designs.</p>
+                        </div>
+                    </div>
                     
                     <div class="cv-section">
                         <h3>Ausbildung</h3>
@@ -952,18 +893,19 @@
                     <div class="cv-section">
                         <h3>Fähigkeiten</h3>
                         <div class="cv-skills">
-                            <span class="skill-tag">Sketching</span>
-                            <span class="skill-tag">CAS Modeling (Alias Autodesk)</span>
-                            <span class="skill-tag">3D Modeling (Blender)</span>
-                            <span class="skill-tag">Unreal Engine (Basic Knowledge)</span>
+                            <span class="skill-tag">Product Design</span>
+                            <span class="skill-tag">UI/UX Design</span>
+                            <span class="skill-tag">Prototyping</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Adobe Creative Suite</span>
+                            <span class="skill-tag">3D Modeling</span>
                             <span class="skill-tag">User Research</span>
                         </div>
                     </div>
-                
-
+                    
                     <div class="cv-section">
-                        <h3>Hobbys</h3>
-                        <p>Powerlifting/Functional Fitness, Gitarre spielen und Malen.</p>
+                        <h3>Caveman Moto</h3>
+                        <p>Nebenprojekt für individuelle Motorrad-Umbauten. Spezialisierung auf Cafe Racer Style und Vintage-Restaurationen. Jedes Bike wird nach persönlichen Wünschen designed und handgefertigt.</p>
                     </div>
                 </div>
             </div>
@@ -1100,33 +1042,32 @@
             if (!line || pills.length === 0 || !container) return;
             
             const containerRect = container.getBoundingClientRect();
-            const pillArray = Array.from(pills);
             
-            if (hoveredIndex !== -1) {
-                // Finde die äußersten nicht-gehoverten Pills
-                let leftmostX = Number.MAX_VALUE;
-                let rightmostX = 0;
-                
-                pillArray.forEach((pill, index) => {
-                    if (index !== hoveredIndex) {
-                        const rect = pill.getBoundingClientRect();
-                        const leftEdge = rect.left - containerRect.left;
-                        const rightEdge = rect.right - containerRect.left;
-                        
-                        if (leftEdge < leftmostX) leftmostX = leftEdge;
-                        if (rightEdge > rightmostX) rightmostX = rightEdge;
-                    }
+            // Alle nicht-gehoverten Pillen sammeln und nach Position sortieren
+            const nonHoveredPills = Array.from(pills)
+                .filter((_, index) => index !== hoveredIndex)
+                .sort((a, b) => {
+                    const rectA = a.getBoundingClientRect();
+                    const rectB = b.getBoundingClientRect();
+                    return rectA.left - rectB.left;
                 });
+            
+            if (nonHoveredPills.length > 0) {
+                // Linkes-/rechtestes Pill finden
+                const firstPill = nonHoveredPills[0];
+                const lastPill = nonHoveredPills[nonHoveredPills.length - 1];
                 
-                // Setze die Linie, nur wenn wir tatsächlich Pills gefunden haben
-                if (leftmostX < Number.MAX_VALUE && rightmostX > 0) {
-                    line.style.left = `${leftmostX}px`;
-                    line.style.width = `${rightmostX - leftmostX}px`;
-                    line.classList.add('hover-active');
-                }
-            } else {
-                // Defaultzustand zwischen Logo und Portfoliotext
-                resetBackgroundLineToDefault();
+                const firstRect = firstPill.getBoundingClientRect();
+                const lastRect = lastPill.getBoundingClientRect();
+                
+                // Von linkem Rand des linkesten bis rechter Rand des rechtesten Pills
+                const startX = firstRect.left - containerRect.left;
+                const endX = lastRect.left + lastRect.width - containerRect.left;
+                
+                // Linie positionieren
+                line.style.left = `${startX}px`;
+                line.style.width = `${endX - startX}px`;
+                line.classList.add('hover-active');
             }
         }
 
@@ -1201,17 +1142,17 @@
             
             setTimeout(() => {
                 expandingPill.classList.add('mid-expand');
-            }, 150);
-            
+            }, 10); // War: 150
+
             setTimeout(() => {
                 expandingPill.classList.add('expanded');
-            }, 300);
-            
+            }, 20); // War: 300
+
             setTimeout(() => {
                 setupPillContent(data);
                 pillContent.classList.add('visible');
                 animatePillTextBlocks();
-            }, 1500);
+            }, 150); // War: 1500
         }
 
         function setupPillContent(data) {
@@ -1239,7 +1180,7 @@
             blocks.forEach((block, index) => {
                 setTimeout(() => {
                     block.classList.add('visible');
-                }, index * 100);
+                }, index * 25); // War: index * 100
             });
         }
 
@@ -1248,11 +1189,11 @@
             
             setTimeout(() => {
                 expandingPill.classList.remove('expanded');
-            }, 400);
+            }, 50); // War: 400
             
             setTimeout(() => {
                 expandingPill.classList.remove('mid-expand');
-            }, 1200);
+            }, 200); // War: 1200
             
             setTimeout(() => {
                 pillModal.classList.remove('active');
@@ -1263,7 +1204,7 @@
                 document.querySelectorAll('.project-pill').forEach(pill => {
                     pill.style.opacity = '';
                 });
-            }, 2200);
+            }, 550); // War: 2200
         }
 
         // Initialize everything
