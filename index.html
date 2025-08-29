@@ -503,10 +503,11 @@
             background: rgba(224, 225, 226, 0.85);
             border-radius: 72px;
             z-index: 1001;
-            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             box-shadow: 
                 inset 10px 10px 20px rgba(0, 0, 0, 0.15),
                 inset -10px -10px 20px rgba(255, 255, 255, 0.7),
+                0 30px 80px rgba(0, 0, 0, 0.3);
         }
 
         .pill-expanding.mid-expand {
@@ -529,7 +530,7 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 0.6s ease 0.2s;
+            transition: opacity 0.6s ease 1.2s;
             overflow: hidden;
             border-radius: inherit;
             display: flex;
@@ -540,14 +541,21 @@
             opacity: 1;
         }
 
+        .pill-header {
+            position: center;
+            border-radius: 200px 200px 0 0;
+            flex-shrink: 0;
+            text-align: center;
+        }
+
         .pill-title {
             font-size: 1.8rem;
             font-weight: 800;
             color: #333;
-            margin: 1 rem;
+            margin: 0;
             font-family: 'Bahnschrift', Arial, sans-serif;
             text-align: center;
-            line-height: 1.6;
+            line-height: 0.8;
         }
 
         .pill-close {
@@ -559,7 +567,7 @@
             color: #666;
             font-size: 1.8rem;
             cursor: pointer;
-            transition: all 0.1s ease;
+            transition: all 0.3s ease;
             width: 35px;
             height: 35px;
             border-radius: 50%;
@@ -723,8 +731,8 @@
             }
             
             .gear {
-                width: 20px !important;
-                height: 20px !important;
+                width: 40px !important;
+                height: 40px !important;
             }
         }
 
