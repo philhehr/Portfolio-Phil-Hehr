@@ -282,7 +282,6 @@
         }
 
         .project-pill {
-           .project-pill {
             width: 144px;
             height: 700px;
             background: rgba(224, 225, 226, 0.85);
@@ -299,7 +298,6 @@
             overflow: hidden;
             z-index: 2;
             border: 4px solid #fff; /* <--- Weißer Rand für Wandstärke */
-}
         }
 
          .pill-image {
@@ -900,7 +898,7 @@
     <div class="background-line" id="backgroundLine"></div>
     <div class="projects-container">
         <div class="project-pill" data-project="babyphone">
-            <img src="images/front.png" alt="Babyphone Bild" class="pill-image">
+            <img src="https://raw.githubusercontent.com/philhehr/Portfolio-Phil-Hehr/c489381a6f20326a7db203b847646d8a63cfac46/images/front.png" alt="Babyphone Bild" class="pill-image">
             <div class="project-number">01</div>
             <div class="project-overlay">
                 <div class="project-title">Babyphone</div>
@@ -929,11 +927,13 @@
             </div>
         </div>
        <div class="project-pill" data-project="caveman">
-    <img src="images/MellowXKawasaki-Zephyr750_SilverSmurf_EXAMPLE.jpeg" alt="Caveman Moto Bild" class="pill-image">
+    <img src="https://raw.githubusercontent.com/philhehr/Portfolio-Phil-Hehr/c489381a6f20326a7db203b847646d8a63cfac46/images/MellowXKawasaki-Zephyr750_SilverSmurf_EXAMPLE.jpeg" alt="Caveman Moto Bild" class="pill-image">
     <div class="project-number">05</div>
     <div class="project-overlay">
         <div class="project-title">Caveman Moto</div>
         <div class="project-subtitle">Custom Builds</div>
+    </div>
+</div>
     </div>
 </div>
 
@@ -1006,79 +1006,12 @@
         updateDate();
         setInterval(updateDate, 60000);
 
-        // CV Modal functionality - FIXED
-        document.addEventListener('DOMContentLoaded', function() {
-            const cvModal = document.getElementById('cvModal');
-            const logoContainer = document.getElementById('logoContainer');
-            const whoAmI = document.getElementById('whoAmI');
-            const cvClose = document.getElementById('cvClose');
-
-            // Debug: Check if elements exist
-            console.log('CV Modal elements found:', { 
-                cvModal: !!cvModal, 
-                logoContainer: !!logoContainer, 
-                whoAmI: !!whoAmI, 
-                cvClose: !!cvClose 
-            });
-
-            if (whoAmI && cvModal) {
-                whoAmI.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('Who Am I clicked - opening modal');
-                    cvModal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
-
-                // Also add click to logo container for better UX
-                logoContainer.addEventListener('click', (e) => {
-                    if (e.target === whoAmI) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        console.log('Who Am I clicked via logo container');
-                        cvModal.classList.add('active');
-                        document.body.style.overflow = 'hidden';
-                    }
-                });
-            } else {
-                console.error('CV Modal elements not found!', { whoAmI, cvModal });
-            }
-
-            if (cvClose && cvModal) {
-                cvClose.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    console.log('Close CV clicked');
-                    cvModal.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
-            }
-
-            if (cvModal) {
-                cvModal.addEventListener('click', (e) => {
-                    if (e.target === cvModal) {
-                        console.log('Outside CV clicked');
-                        cvModal.classList.remove('active');
-                        document.body.style.overflow = '';
-                    }
-                });
-            }
-
-            // ESC key to close CV modal
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && cvModal && cvModal.classList.contains('active')) {
-                    console.log('ESC pressed - closing CV');
-                    cvModal.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            });
-        });
-
         // Project data (gleiche Daten wie vorher)
         const projectData = {
             babyphone: {
                 title: 'Babyphone Design',
                 images: [
-                    'https://github.com/philhehr/Portfolio-Phil-Hehr/blob/main/images/front.png?raw=true',
+                    'https://raw.githubusercontent.com/philhehr/Portfolio-Phil-Hehr/c489381a6f20326a7db203b847646d8a63cfac46/images/front.png',
                     'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=800&h=600&fit=crop',
                     'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop'
                 ],
@@ -1244,90 +1177,6 @@
             line.style.left = `${startX}px`;
             line.style.width = `${endX - startX}px`;
         }
-
-        // Initialize background line on page load
-        function initializeBackgroundLine() {
-            const line = document.getElementById('backgroundLine');
-            const logo = document.querySelector('.logo');
-            const portfolioText = document.querySelector('.portfolio-text');
-            
-            if (!line || !logo || !portfolioText) return;
-
-            const logoRect = logo.getBoundingClientRect();
-            const portfolioRect = portfolioText.getBoundingClientRect();
-            const containerRect = document.querySelector('.container').getBoundingClientRect();
-            
-            // Standard-Position der Linie (näher an Logo und Portfolio)
-            const startX = logoRect.right - containerRect.left + 15; // 15px nach Logo
-            const endX = portfolioRect.left - containerRect.left - 15; // 15px vor Portfolio
-            
-            line.style.left = `${startX}px`;
-            line.style.width = `${endX - startX}px`;
-        }
-
-        // Animation control - FIXED
-        let animationContainer = null;
-        let animationText = null;
-
-        const animationTexts = {
-            babyphone: 'Smart Baby Monitor',
-            glasses: 'AR Glasses Interface', 
-            portfolio: 'Innovation Design',
-            hyperloop: 'Future Transport',
-            caveman: 'Custom Motorcycles'
-        };
-
-        function initializeAnimationElements() {
-            animationContainer = document.getElementById('animationContainer');
-            animationText = document.getElementById('animationText');
-            
-            console.log('Animation elements initialized:', { 
-                container: !!animationContainer, 
-                text: !!animationText 
-            });
-            
-            if (animationContainer) {
-                console.log('Animation container found and ready!');
-            } else {
-                console.error('Animation container NOT found!');
-            }
-        }
-
-        function showProjectAnimation(projectId) {
-            console.log('Showing animation for:', projectId);
-            if (animationContainer && animationText) {
-                // Remove all animation classes
-                animationContainer.className = 'animation-container';
-                
-                // Add new animation class
-                setTimeout(() => {
-                    animationContainer.classList.add(projectId);
-                    animationText.textContent = animationTexts[projectId] || 'Project Animation';
-                    console.log('Animation applied successfully:', projectId);
-                }, 50);
-            } else {
-                console.error('Animation elements not available:', { 
-                    container: !!animationContainer, 
-                    text: !!animationText 
-                });
-            }
-        }
-
-        function resetToDefaultAnimation() {
-            console.log('Resetting to default animation');
-            if (animationContainer && animationText) {
-                animationContainer.className = 'animation-container';
-                animationText.textContent = 'Hover über Projekte';
-            }
-        }
-
-        // Initialize animation on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Initializing animations...'); // Debug
-            const container = document.getElementById('animationContainer');
-            const text = document.getElementById('animationText');
-            console.log('Animation elements found:', { container: !!container, text: !!text }); // Debug
-        });
 
         // Add smooth scrolling and interaction feedback
         document.querySelectorAll('.project-pill').forEach((pill, index) => {
