@@ -191,9 +191,34 @@
             font-family: 'Bahnschrift', Arial, sans-serif;
             color: rgba(0, 0, 0, 0.08);
             user-select: none;
-            transition: all 0.6s ease
-            z-index: 10;
+            transition: all 0.6s ease;
+            z-index: 2; /* Zahl immer über dem Bild */
             position: relative;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 72px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s ease;
+            padding: 2rem;
+            text-align: center;
+            z-index: 3; /* Overlay über der Zahl beim Hover */
+            pointer-events: none;
+        }
+
+        .project-pill:hover .project-overlay {
+            opacity: 1;
+            pointer-events: all;
         }
 
         .project-pill:hover .project-number {
@@ -220,7 +245,6 @@
             background-image: url('https://github.com/philhehr/Portfolio-Phil-Hehr/blob/main/images/front.png?raw=true');
             background-size: cover;
             background-position: center;
-            background-blend-mode: overlay;
         }
 
         .project-pill[data-project="babyphone"]::before {
@@ -348,59 +372,6 @@
             display: flex;
             flex-direction: column;
             box-shadow: 0 50px 100px rgba(0, 0, 0, 0.4);
-        }
-
-        .cv-modal-header {
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem 2rem 1.5rem 2rem;
-            border-bottom: 1px solid #e0e0e0;
-            margin-bottom: 2rem;
-            overflow: hidden;
-        }
-
-        .cv-modal-header span {
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 7rem;
-            font-weight: 900;
-            letter-spacing: 8px;
-            color: #333;
-            opacity: 0.08;
-            pointer-events: none;
-            user-select: none;
-            z-index: 0;
-            width: 100%;
-            text-align: center;
-        }
-
-        .cv-modal-header div {
-            font-family: 'Bahnschrift', Arial, sans-serif;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #333;
-            z-index: 1;
-        }
-
-        .cv-modal-header .cv-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-        }
-
-        .cv-modal-header .cv-subtitle {
-            font-size: 1.1rem;
-            font-weight: 800;
-        }
-
-        .cv-modal-header .cv-date {
-            font-size: 0.9rem;
-            font-weight: 300;
-            color: #999;
-            letter-spacing: 1px;
         }
 
         .cv-header {
@@ -812,6 +783,62 @@
             background: #f6fff0;
             transition: outline 0.2s, color 0.2s, background 0.2s;
         }
+
+        .cv-modal-header {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 2rem 1.5rem 2rem;
+            border-bottom: 1px solid #e0e0e0;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .cv-modal-header span {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 7rem;
+            font-weight: 900;
+            letter-spacing: 8px;
+            color: #333;
+            opacity: 0.08;
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+            width: 100%;
+            text-align: right;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 2rem;
+        }
+
+        .cv-modal-header div {
+            font-family: 'Bahnschrift', Arial, sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #333;
+            z-index: 1;
+        }
+
+        .cv-modal-header div:last-child {
+            text-align: right;
+            z-index: 1;
+        }
+
+        .cv-modal-header div:last-child span {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #999;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
@@ -866,13 +893,6 @@
                      <div class="project-number">05</div>
                     <div class="gear">
                         <svg viewBox="0 0 24 24">
-                            <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.98C19.47,12.66 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11.02L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.65 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11.02C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.66 4.57,12.98L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.98Z"/>
-                        </svg>
-                    </div>
-                    <div class="project-overlay">
-                        <div class="project-title">Caveman Moto</div>
-                        <div class="project-subtitle">Custom Builds</div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -880,8 +900,11 @@
         <!-- CV Modal -->
         <div class="cv-modal" id="cvModal">
             <div class="cv-content">
+                <div class="cv-header" style="padding:0; background:none; color:inherit;">
+                    <button class="cv-close" id="cvClose" style="top:1rem;right:1rem;position:absolute;"></button>
+                </div>
                 <div class="cv-modal-header" style="position:relative;display:flex;justify-content:space-between;align-items:center;padding:2rem 2rem 1.5rem 2rem;border-bottom:1px solid #e0e0e0;margin-bottom:2rem;overflow:hidden;">
-                    <span style="position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:7rem;font-weight:900;letter-spacing:8px;color:#333;opacity:0.08;pointer-events:none;user-select:none;z-index:0;width:100%;text-align:center;">
+                    <span style="position:absolute;top:0;right:0;font-size:7rem;font-weight:900;letter-spacing:8px;color:#333;opacity:0.08;pointer-events:none;user-select:none;z-index:0;width:100%;text-align:right;overflow:hidden;height:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:2rem;">
                         CV
                     </span>
                     <div style="font-family:'Bahnschrift',Arial,sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#333;z-index:1;">
@@ -893,13 +916,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="cv-header" style="padding:0; background:none; color:inherit;">
-                    <button class="cv-close" id="cvClose" style="top:1rem;right:1rem;position:absolute;"></button>
-                </div>
                 <div class="cv-body">
                     <div style="display:flex;align-items:flex-start;gap:2rem;margin-bottom:2rem;">
-                        <img src="images/front.png" alt="Phil Hehr Portrait"
-                            style="width:220px;height:320px;object-fit:cover;object-position:left;display:block;border-radius:0;box-shadow:none;flex-shrink:0;">
+                        <img src="images/PH.png" alt="Phil Hehr Portrait"
+                            style="width:180px;height:400px;object-fit:cover;object-position:center;display:block;border-radius:0;box-shadow:none;flex-shrink:0;">
                         <div>
                             <h3>Über mich</h3>
                             <p>Leidenschaftlicher Product Designer mit Fokus auf innovative Benutzerfreundlichkeit und ästhetisches Design. Neben dem Design beschäftige ich mich intensiv mit Custom Motorrad-Builds unter der Marke Caveman Moto.</p>
@@ -910,22 +930,12 @@
                         <h3>Berufserfahrung</h3>
                         <div class="cv-item">
                             <div class="cv-item-header">
-                                <h4>Senior Product Designer</h4>
+                                <h4>Product Designer</h4>
                                 <span class="cv-date">2022 - heute</span>
                             </div>
-                            <p class="cv-company">Design Studio Hannover</p>
-                            <p>Entwicklung innovativer Produktkonzepte für Smart Home und IoT-Geräte. Spezialisiert auf User Experience Design und Prototyping.</p>
+                            <p class="cv-company">Company - Not Public</p>
+                            <p>Entwicklung innovativer Produktkonzepte. Spezialisiert auf CAS Modelling und Erstellung von 3D Assets.</p>
                         </div>
-                        
-                        <div class="cv-item">
-                            <div class="cv-item-header">
-                                <h4>Product Designer</h4>
-                                <span class="cv-date">2019 - 2022</span>
-                            </div>
-                            <p class="cv-company">TechStart GmbH</p>
-                            <p>Design und Entwicklung von Benutzeroberflächen für mobile Apps und Web-Anwendungen. Fokus auf moderne, minimalistische Designs.</p>
-                        </div>
-                    </div>
                     
                     <div class="cv-section">
                         <h3>Ausbildung</h3>
@@ -942,19 +952,18 @@
                     <div class="cv-section">
                         <h3>Fähigkeiten</h3>
                         <div class="cv-skills">
-                            <span class="skill-tag">Product Design</span>
-                            <span class="skill-tag">UI/UX Design</span>
-                            <span class="skill-tag">Prototyping</span>
-                            <span class="skill-tag">Figma</span>
-                            <span class="skill-tag">Adobe Creative Suite</span>
-                            <span class="skill-tag">3D Modeling</span>
+                            <span class="skill-tag">Sketching</span>
+                            <span class="skill-tag">CAS Modeling (Alias Autodesk)</span>
+                            <span class="skill-tag">3D Modeling (Blender)</span>
+                            <span class="skill-tag">Unreal Engine (Basic Knowledge)</span>
                             <span class="skill-tag">User Research</span>
                         </div>
                     </div>
-                    
+                
+
                     <div class="cv-section">
-                        <h3>Caveman Moto</h3>
-                        <p>Nebenprojekt für individuelle Motorrad-Umbauten. Spezialisierung auf Cafe Racer Style und Vintage-Restaurationen. Jedes Bike wird nach persönlichen Wünschen designed und handgefertigt.</p>
+                        <h3>Hobbys</h3>
+                        <p>Powerlifting/Functional Fitness, Gitarre spielen und Malen.</p>
                     </div>
                 </div>
             </div>
@@ -1085,35 +1094,39 @@
 
         function updateBackgroundLine(hoveredIndex) {
             const line = document.getElementById('backgroundLine');
-            const logo = document.querySelector('.logo');
-            const portfolioText = document.querySelector('.portfolio-text');
             const pills = document.querySelectorAll('.project-pill');
+            const container = document.querySelector('.container');
             
-            if (!line || !logo || !portfolioText || pills.length === 0) return;
-
-            const logoRect = logo.getBoundingClientRect();
-            const portfolioRect = portfolioText.getBoundingClientRect();
-            const containerRect = document.querySelector('.container').getBoundingClientRect();
+            if (!line || pills.length === 0 || !container) return;
             
-            const startX = logoRect.right - containerRect.left + 15;
-            const endX = portfolioRect.left - containerRect.left - 15;
+            const containerRect = container.getBoundingClientRect();
+            const pillArray = Array.from(pills);
             
-            const pillsArray = Array.from(pills);
-            const nonHoveredPills = pillsArray.filter((_, index) => index !== hoveredIndex);
-            
-            if (nonHoveredPills.length > 0) {
-                const firstPill = nonHoveredPills[0];
-                const lastPill = nonHoveredPills[nonHoveredPills.length - 1];
+            if (hoveredIndex !== -1) {
+                // Finde die äußersten nicht-gehoverten Pills
+                let leftmostX = Number.MAX_VALUE;
+                let rightmostX = 0;
                 
-                const firstPillRect = firstPill.getBoundingClientRect();
-                const lastPillRect = lastPill.getBoundingClientRect();
+                pillArray.forEach((pill, index) => {
+                    if (index !== hoveredIndex) {
+                        const rect = pill.getBoundingClientRect();
+                        const leftEdge = rect.left - containerRect.left;
+                        const rightEdge = rect.right - containerRect.left;
+                        
+                        if (leftEdge < leftmostX) leftmostX = leftEdge;
+                        if (rightEdge > rightmostX) rightmostX = rightEdge;
+                    }
+                });
                 
-                const lineStartX = Math.max(startX, firstPillRect.left - containerRect.left - 50);
-                const lineEndX = Math.min(endX, lastPillRect.right - containerRect.left + 50);
-                
-                line.style.left = `${lineStartX}px`;
-                line.style.width = `${lineEndX - lineStartX}px`;
-                line.classList.add('hover-active');
+                // Setze die Linie, nur wenn wir tatsächlich Pills gefunden haben
+                if (leftmostX < Number.MAX_VALUE && rightmostX > 0) {
+                    line.style.left = `${leftmostX}px`;
+                    line.style.width = `${rightmostX - leftmostX}px`;
+                    line.classList.add('hover-active');
+                }
+            } else {
+                // Defaultzustand zwischen Logo und Portfoliotext
+                resetBackgroundLineToDefault();
             }
         }
 
