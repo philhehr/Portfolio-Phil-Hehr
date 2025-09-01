@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bahnschrift:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         * {
             margin: 0;
@@ -42,6 +43,7 @@
             background-size: cover; /* Oder contain, je nach gewünschtem Effekt */
             background-repeat: repeat; /* Oder no-repeat, je nach Textur */
             background-blend-mode: multiply; /* Oder overlay, screen, color-burn, usw. */
+            opacity: 0.5; /* Füge diese Zeile hinzu */
         }
 
         /* Header */
@@ -200,6 +202,22 @@
             position: relative;
         }
 
+        .project-pill[data-project="babyphone"] .project-number {
+            color: rgba(0, 0, 0, 0.15); /* Ändere die Farbe hier */
+        }
+
+        .project-pill[data-project="glasses"] .project-number {
+            position: relative; /* Setze die Position auf relativ */
+            top: auto; /* Setze den oberen Abstand zurück */
+            left: auto; /* Setze den linken Abstand zurück */
+            color: rgba(0, 0, 0, 0.08); /* Ändere die Farbe und Opazität */
+            z-index: 2; /* Stelle sicher, dass die Zahl unter dem Overlay liegt */
+        }
+
+        .project-pill[data-project="portfolio"] .project-number {
+            color: rgba(255, 255, 255, 0.15); /* Ändere die Farbe und Opazität */
+        }
+
         .project-overlay {
             position: absolute;
             top: 0;
@@ -223,11 +241,13 @@
         .project-pill:hover .project-overlay {
             opacity: 1;
             pointer-events: all;
+            background: rgba(0, 0, 0, 0.6); /* Ändere die Opazität hier */
         }
 
         .project-pill:hover .project-number {
-            color: rgba(0, 0, 0, 0.15);
+            color: rgba(255, 255, 255, 1); /* Ändere die Farbe hier */
             transform: scale(1.1);
+            text-shadow: 0 8px 22px rgba(255, 255, 255, 0.4);
         }
 
         .project-pill.dimmed {
@@ -264,9 +284,9 @@
         /* Gear Animation for Caveman Moto */
         .project-pill[data-project="caveman"] .gear {
             position: absolute;
-            top: 30%;
+            top: 10%; /* Füge diese Zeile hinzu */
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) scale(1.3); /* Ändere diese Zeile */
             width: 60px;
             height: 60px;
             z-index: 10;
@@ -658,139 +678,136 @@
             font-weight: 400;
         }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .projects-container {
-                gap: 2.5rem;
-            }
-            
-            .header {
-                padding: 2rem 10%;
-            }
-            
-            .project-pill {
-                width: 120px;
-                height: 480px;
-                border-radius: 60px;
-                box-shadow: 
-                    inset 8px 8px 16px rgba(0, 0, 0, 0.15),
-                    inset -8px -8px 16px rgba(255, 255, 255, 0.7);
-            }
-            
-            .project-number {
-                font-size: 6rem;
-            }
+        /* Welcome Screen Styles */
+        .welcome-screen {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 144px; /* Breite der mittleren Pille */
+            height: 576px; /* Höhe der mittleren Pille */
+            background: rgba(224, 225, 226, 0.85);
+            border-radius: 72px; /* Radius für die Pillenform */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            padding: 2rem;
+            box-shadow: 
+                inset 10px 10px 20px rgba(0, 0, 0, 0.15),
+                inset -10px -10px 20px rgba(255, 255, 255, 0.7);
+            text-align: center;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1rem;
-            }
-            
-            .header {
-                position: relative;
-                top: auto;
-                transform: none;
-                padding: 2rem 10%;
-            }
-            
-            .main-content {
-                padding: 1rem 0 3rem 0;
-            }
-            
-            .logo {
-                font-size: 1rem;
-                letter-spacing: 2px;
-            }
-            
-            .portfolio-text {
-                font-size: 1.2rem;
-            }
-            
-            .portfolio-date {
-                font-size: 0.7rem;
-            }
-            
-            .background-line {
-                display: none;
-            }
-            
-            .projects-container {
-                flex-direction: row;
-                justify-content: center;
-                gap: 1rem;
-                max-width: 100%;
-                overflow-x: auto;
-                padding: 0 1rem;
-            }
-            
-            .project-pill {
-                width: 70px;
-                height: 320px; /* Erhöhe die Höhe, z.B. auf 320px */
-                border-radius: 35px;
-                flex-shrink: 0;
-                align-items: flex-end;
-                padding-bottom: 2rem;
-                box-shadow: 
-                    inset 4px 4px 8px rgba(0, 0, 0, 0.15),
-                    inset -4px -4px 8px rgba(255, 255, 255, 0.7);
-            }
-            
-            .project-number {
-                font-size: 3rem;
-            }
-            
-            .gear {
-                width: 40px !important;
-                height: 40px !important;
-            }
+        .welcome-screen h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .welcome-screen input {
+            padding: 0.1rem 0.1rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 36px;
+            margin-bottom: 1.5rem;
+            width: 150%; /* Vergrößere die Breite des Eingabefensters */
+            text-align: center;
+            box-shadow: 
+                inset 3px 3px 6px rgba(0, 0, 0, 0.15),
+                inset -3px -3px 6px rgba(255, 255, 255, 0.7);
+        }
+
+        .welcome-screen button {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            background: white; /* Ändere die Farbe des Enter-Buttons */
+            color: var(--text-dark); /* Ändere die Textfarbe, um sie sichtbar zu machen */
+            border: none;
+            border-radius: 36px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15),
+                -3px -3px 6px rgba(255, 255, 255, 0.7);
+        }
+
+        .welcome-screen button:hover {
+            background: #f0f0f0; /* Ändere die Farbe des Enter-Buttons beim Hover */
+            transform: translateY(-2px);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .welcome-screen::before {
+            content: '\f084'; /* Unicode für das Schlüssel-Symbol */
+            font-family: FontAwesome;
+            position: absolute;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: var(--text-dark);
+        }
+
+        .project-pill[data-project="portfolio"] {
+            background-image: url('images/Trike_Homepage.png'); /* Füge diese Zeile hinzu */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .project-pill[data-project="glasses"] {
+            background-image: url('images/Glasses_Homepage.png'); /* Füge diese Zeile hinzu */
+            background-size: cover;
+            background-position: center;
         }
 
         @media (max-width: 480px) {
-            .projects-container {
-                gap: 0.8rem;
-                padding: 0 0.5rem;
-            }
-            
-            .logo {
-                font-size: 0.9rem;
-                letter-spacing: 1.5px;
-            }
-            
-            .project-pill {
-                width: 58px;
-                height: 300px; /* Erhöhe die Höhe, z.B. auf 300px */
-                border-radius: 29px;
-                align-items: flex-end;
-                padding-bottom: 1.5rem;
-                box-shadow: 
-                    inset 3px 3px 6px rgba(0, 0, 0, 0.15),
-                    inset -3px -3px 6px rgba(255, 255, 255, 0.7);
-            }
-            
-            .project-number {
-                font-size: 2.2rem;
-            }
-            
-            .gear {
-                width: 10px !important;
-                height: 10px !important;
-            }
-        }
+    .header {
+        position: static; /* Entferne die absolute Positionierung */
+        transform: none; /* Entferne die Transformation */
+        padding: 1rem; /* Reduziere das Padding */
+        flex-direction: column; /* Staple die Elemente vertikal */
+        align-items: center; /* Zentriere die Elemente horizontal */
+        text-align: center; /* Zentriere den Text */
+    }
 
-        /* Im <style>-Block ergänzen oder anpassen: */
-        .logo.whoami-hover {
-            outline: 2px solid var(--primary);
-            outline-offset: 2px;
-            cursor: pointer;
-            color: var(--primary);
-            background: #f6fff0;
-            transition: outline 0.2s, color 0.2s, background 0.2s;
-        }
+    .logo {
+        margin-bottom: 1rem; /* Füge einen Abstand unter dem Logo hinzu */
+    }
+
+    .portfolio-text {
+        align-items: center; /* Zentriere den Text horizontal */
+    }
+
+    .main-content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin-top: 2rem; /* Füge einen oberen Abstand hinzu */
+    }
+
+    .projects-container {
+        flex-direction: column; /* Staple die Pillen vertikal */
+        align-items: center; /* Zentriere die Pillen horizontal */
+    }
+}
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- Welcome Screen -->
+    <div class="welcome-screen" id="welcomeScreen">
+        <h1>Welcome</h1>
+        <input type="password" id="passwordInput" placeholder="Password">
+        <button onclick="checkPassword()">Enter</button>
+    </div>
+
+    <div class="container hidden" id="mainContent">
         <div class="header">
             <div class="logo" id="logoContainer" tabindex="0" style="outline: none;">
                 PHIL HEHR
@@ -808,7 +825,7 @@
                 <div class="project-pill" data-project="babyphone">
                     <div class="project-number">01</div>
                     <div class="project-overlay">
-                        <div class="project-title">Babyphone</div>
+                        <div class="project-title">Baby<br>Phone</div>
                         <div class="project-subtitle">Smart Baby Monitor</div>
                     </div>
                 </div>
@@ -816,7 +833,7 @@
                 <div class="project-pill" data-project="glasses">
                     <div class="project-number">02</div>
                     <div class="project-overlay">
-                        <div class="project-title">Smart Glasses</div>
+                       
                         <div class="project-subtitle">AR Interface Design</div>
                     </div>
                 </div>
@@ -824,8 +841,8 @@
                 <div class="project-pill" data-project="portfolio">
                     <div class="project-number">03</div>
                     <div class="project-overlay">
-                        <div class="project-title">Innovation</div>
-                        <div class="project-subtitle">Design Thinking</div>
+                        <div class="project-title">Trike</div> <!-- Geänderter Titel -->
+                        <div class="project-subtitle">Design in VR</div> <!-- Geänderter Subtitel -->
                     </div>
                 </div>
 
@@ -841,9 +858,15 @@
                      <div class="project-number">05</div>
                     <div class="gear">
                         <svg viewBox="0 0 24 24">
+        <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.98C19.47,12.66 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11.02L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.65 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11.02C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.66 4.57,12.98L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.98Z" />
+    </svg>
+                    </div>
+                    <div class="project-overlay">
+                        <div class="project-title">Caveman Moto</div>
+                        <div class="project-subtitle">Custom Builds</div>
+                    </div>
                 </div>
             </div>
-        </div>
 
         <!-- CV Modal -->
         <div class="cv-modal" id="cvModal">
@@ -1296,6 +1319,7 @@
                     const data = projectData[projectId];
                     openPill(project, data);
                 });
+                
             });
 
             pillClose.addEventListener('click', closePill);
@@ -1315,10 +1339,43 @@
                     }
                 }
             });
+
+            // Passwort mit Enter bestätigen
+            const passwordInput = document.getElementById('passwordInput');
+            passwordInput.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    checkPassword();
+                }
+            });
         });
 
         // Window resize handler
         window.addEventListener('resize', initializeBackgroundLine);
+
+        function checkPassword() {
+            const passwordInput = document.getElementById('passwordInput');
+            const welcomeScreen = document.getElementById('welcomeScreen');
+            const mainContent = document.getElementById('mainContent');
+
+            if (passwordInput.value === 'hello_guest') {
+                // Fade out Welcome Screen
+                welcomeScreen.style.transition = 'opacity 0.5s ease';
+                welcomeScreen.style.opacity = 0;
+
+                // Fade in Main Content
+                mainContent.style.transition = 'opacity 0.5s ease';
+                mainContent.style.opacity = 1;
+
+                setTimeout(() => {
+                    welcomeScreen.classList.add('hidden');
+                    mainContent.classList.remove('hidden');
+                    welcomeScreen.style.opacity = ''; // Reset opacity
+                    mainContent.style.opacity = ''; // Reset opacity
+                }, 500);
+            } else {
+                alert('Incorrect password');
+            }
+        }
     </script>
 </body>
 </html>
