@@ -14,7 +14,7 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            box-sizing: border-box; 
         }
 
         :root {
@@ -1014,6 +1014,39 @@
     .logo { font-size: 1rem; font-weight:800; }
     .portfolio-text { font-size: 0.95rem; font-weight:700; letter-spacing:1px; }
 }
+
++   /* Rotate hint overlay + blur while visible */
++   .rotate-hint {
++       position: fixed;
++       left: 50%;
++       top: 50%;
++       transform: translate(-50%, -50%) translateY(8px);
++       z-index: 9000;
++       background: rgba(255,255,255,0.96);
++       color: var(--text-dark);
++       padding: 12px 16px;
++       border-radius: 12px;
++       font-weight: 700;
++       box-shadow: 0 12px 40px rgba(0,0,0,0.12);
++       opacity: 0;
++       pointer-events: none;
++       transition: opacity .35s ease, transform .35s ease;
++   }
++   .rotate-hint.show {
++       opacity: 1;
++       transform: translate(-50%, -50%) translateY(0);
++   }
++
++   /* body state while hint visible: blur main content */
++   .hint-active .container,
++   .hint-active .pill-modal,
++   .hint-active .cv-modal {
++       filter: blur(6px) saturate(0.98);
++       transition: filter .35s ease;
++       pointer-events: none;
++   }
++   /* allow overlay elements (hint itself) to remain interactive */
++   .hint-active .rotate-hint { pointer-events: auto; }
     </style>
 </head>
 <body>
@@ -1023,6 +1056,9 @@
         <input type="password" id="passwordInput" placeholder="password">
         <button onclick="checkPassword()"><i class="fas fa-key"></i></button>
     </div>
+
+    <!-- Rotate hint (mobile) -->
+    <div id="rotateHint" class="rotate-hint hidden">Handy leicht kippen</div>
 
     <div class="container hidden" id="mainContent">
         <div class="header">
@@ -1620,6 +1656,49 @@
                 alert('Incorrect password');
             }
         }
+
+        /* Rotate hint logic: show briefly on mobile-portrait entry and on rotation */
+        (function() {
+            const QUERY = '(max-width:880px) and (orientation: portrait)';
+            const mql = window.matchMedia(QUERY);
+            const hint = document.getElementById('rotateHint');
+            let _timeout = null;
+
+            function showRotateHint() {
+                if (!mql.matches || !hint) return;
+                // make visible and blur background
+                hint.classList.remove('hidden');
+                // force reflow
+                void hint.offsetWidth;
+                document.body.classList.add('hint-active');
+                hint.classList.add('show');
+
+                // hide after 0.5s, then remove blur after fade
+                clearTimeout(_timeout);
+                _timeout = setTimeout(() => {
+                    hint.classList.remove('show');
+                    // wait for fade-out transition
+                    setTimeout(() => {
+                        hint.classList.add('hidden');
+                        document.body.classList.remove('hint-active');
+                    }, 350);
+                }, 500);
+            }
+
+            // show on initial load if mobile-portrait
+            document.addEventListener('DOMContentLoaded', () => {
+                if (mql.matches) showRotateHint();
+            });
+
+            // show on orientation / layout changes
+            if (mql.addEventListener) {
+                mql.addEventListener('change', e => { if (e.matches) showRotateHint(); });
+            } else {
+                mql.addListener(e => { if (e.matches) showRotateHint(); });
+            }
+            window.addEventListener('orientationchange', () => { if (mql.matches) showRotateHint(); });
+            window.addEventListener('resize', () => { if (mql.matches) showRotateHint(); });
+        })();
     </script>
 </body>
 </html>
