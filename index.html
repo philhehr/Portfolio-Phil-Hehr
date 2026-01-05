@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Bahnschrift:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        /* ___________________________ GLOBAL STYLES ___________________________ */
+        /* Hier werden allgemeine Stile für die gesamte Seite definiert. */
         * {
             margin: 0;
             padding: 0;
@@ -16,19 +18,90 @@
         }
 
         :root {
-            --primary: #7cb342;
-            --accent: #8bc34a;
-            --text-dark: #333;
+            /* Hier werden Farbvariablen definiert, die im gesamten Stylesheet verwendet werden können. */
+            --primary: #7cb342; /* Primärfarbe */
+            --accent: #8bc34a; /* Akzentfarbe */
+            --text-dark: #333; /* Dunkle Textfarbe */
         }
 
         body {
+            /* Allgemeine Stile für den Body */
             font-family: 'Bahnschrift', Arial, sans-serif;
             background: #fafafa;
             color: var(--text-dark);
-            overflow-x: hidden;
-            min-height: 100vh;
+            overflow-x: hidden; /* Verhindert horizontalen Scrollbalken */
+            min-height: 100vh; /* Sorgt dafür, dass der Body mindestens die Höhe des Viewports einnimmt */
         }
 
+        /* ___________________________ WELCOME SCREEN STYLES ___________________________ */
+        /* Hier werden Stile für den Welcome Screen definiert. */
+        .welcome-screen {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 144px; /* Breite der mittleren Pille */
+            height: 576px; /* Höhe der mittleren Pille */
+            background: rgba(224, 225, 226, 0.85);
+            border-radius: 72px; /* Radius für die Pillenform */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            padding: 2rem;
+            box-shadow: 
+                inset 10px 10px 20px rgba(0, 0, 0, 0.15),
+                inset -10px -10px 20px rgba(255, 255, 255, 0.7);
+            text-align: center;
+        }
+          /* Hier werden Stile für den Welcome Text definiert. */
+        .welcome-screen h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 5rem;
+            color: var(--text-dark);
+        }
+
+        .welcome-screen button {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            background: rgb(211, 211, 211); /* Ändere die Farbe des Enter-Buttons */
+            color: var(--text-dark); /* Ändere die Textfarbe, um sie sichtbar zu machen */
+            border: none;
+            border-radius: 36px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15),
+                -3px -3px 6px rgba(255, 255, 255, 0.7);
+        }
+
+        .welcome-screen button:hover {
+            background: #f0f0f0; /* Ändere die Farbe des Enter-Buttons beim Hover */
+            transform: translateY(-2px);
+        }
+
+        .welcome-screen input {
+            padding: 0.1rem 0.1rem;
+            font-size: 1rem;
+            border: none;
+            width: 180%; /* Vergrößere die Breite des Eingabefensters */
+            border-radius: 0px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            background-color: transparent; /* Füge diese Zeile hinzu */
+            border-bottom: 1px solid var(--text-dark); /* Füge diese Zeile hinzu */
+            outline: none; /* Füge diese Zeile hinzu */
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+    
+
+        /* ___________________________ CONTAINER ___________________________ */
+        /* Hier werden Stile für den Hauptcontainer der Seite definiert. */
         .container {
             width: 100%;
             max-width: 2000px;
@@ -39,14 +112,13 @@
             flex-direction: column;
             position: relative;
             transition: all 0.4s ease;
-            background-image: url('images/Dirt_texture.png'); /* Pfad zur Textur */
             background-size: cover; /* Oder contain, je nach gewünschtem Effekt */
             background-repeat: repeat; /* Oder no-repeat, je nach Textur */
             background-blend-mode: multiply; /* Oder overlay, screen, color-burn, usw. */
-            opacity: 0.5; /* Füge diese Zeile hinzu */
         }
 
-        /* Header */
+        /* ___________________________ HEADER ___________________________ */
+        /* Hier werden Stile für den Header der Seite definiert. */
         .header {
             display: flex;
             justify-content: space-between;
@@ -66,6 +138,8 @@
             pointer-events: auto;
         }
 
+        /* ___________________________ LOGO ___________________________ */
+        /* Hier werden Stile für das Logo definiert. */
         .logo {
             font-family: 'Bahnschrift', Arial, sans-serif;
             font-size: 1.2rem;
@@ -82,6 +156,8 @@
             transform: translateY(-2px);
         }
 
+        /* ___________________________ LOGO OVERLAY ___________________________ */
+        /* Hier werden Stile für das Logo-Overlay definiert. */
         .logo-overlay {
             position: absolute;
             top: 100%;
@@ -111,6 +187,8 @@
             background: rgba(124, 179, 66, 0.9);
         }
 
+        /* ___________________________ PORTFOLIO TEXT ___________________________ */
+        /* Hier werden Stile für den Portfolio-Text definiert. */
         .portfolio-text {
             font-size: 1.5rem;
             font-weight: 800;
@@ -122,6 +200,8 @@
             align-items: flex-end;
         }
 
+        /* ___________________________ PORTFOLIO DATE ___________________________ */
+        /* Hier werden Stile für das Portfolio-Datum definiert. */
         .portfolio-date {
             font-size: 0.8rem;
             font-weight: 300;
@@ -130,7 +210,8 @@
             letter-spacing: 1px;
         }
 
-        /* Main Content */
+        /* ___________________________ MAIN CONTENT ___________________________ */
+        /* Hier werden Stile für den Hauptinhaltsbereich definiert. */
         .main-content {
             flex: 1;
             display: flex;
@@ -139,6 +220,8 @@
             padding: 0;
         }
 
+        /* ___________________________ PROJECTS CONTAINER ___________________________ */
+        /* Hier werden Stile für den Container der Projekte definiert. */
         .projects-container {
             display: flex;
             gap: 3rem;
@@ -147,7 +230,8 @@
             width: 100%;
         }
 
-        /* Background Line */
+        /* ___________________________ BACKGROUND LINE ___________________________ */
+        /* Hier werden Stile für die Hintergrundlinie definiert. */
         .background-line {
             position: absolute;
             top: 50%;
@@ -171,7 +255,8 @@
             z-index: 1;
         }
 
-        /* Project Pills */
+        /* ___________________________ PROJECT PILLS - GENERAL STYLES ___________________________ */
+        /* Hier werden allgemeine Stile für die Projekt-Pillen definiert. */
         .project-pill {
             width: 144px;
             height: 576px;
@@ -191,33 +276,22 @@
             padding-bottom: 4rem;
         }
 
+        /* ___________________________ PROJECT PILLS - NUMBER STYLES ___________________________ */
+        /* Hier werden Stile für die Projektnummern definiert. */
         .project-number {
             font-size: 7.2rem;
             font-weight: 800;
             font-family: 'Bahnschrift', Arial, sans-serif;
-            color: rgba(0, 0, 0, 0.08);
+            color: rgba(0, 0, 0, 0.15);
             user-select: none;
             transition: all 0.6s ease;
-            z-index: 2; /* Zahl immer über dem Bild */
+            z-index: 2;
             position: relative;
+            bottom: -40px;
         }
 
-        .project-pill[data-project="babyphone"] .project-number {
-            color: rgba(0, 0, 0, 0.15); /* Ändere die Farbe hier */
-        }
-
-        .project-pill[data-project="glasses"] .project-number {
-            position: relative; /* Setze die Position auf relativ */
-            top: auto; /* Setze den oberen Abstand zurück */
-            left: auto; /* Setze den linken Abstand zurück */
-            color: rgba(0, 0, 0, 0.08); /* Ändere die Farbe und Opazität */
-            z-index: 2; /* Stelle sicher, dass die Zahl unter dem Overlay liegt */
-        }
-
-        .project-pill[data-project="portfolio"] .project-number {
-            color: rgba(255, 255, 255, 0.15); /* Ändere die Farbe und Opazität */
-        }
-
+        /* ___________________________ PROJECT PILLS - OVERLAY STYLES ___________________________ */
+        /* Hier werden Stile für das Overlay der Projekt-Pillen definiert. */
         .project-overlay {
             position: absolute;
             top: 0;
@@ -234,116 +308,18 @@
             transition: all 0.4s ease;
             padding: 2rem;
             text-align: center;
-            z-index: 3; /* Overlay über der Zahl beim Hover */
+            z-index: 3;
             pointer-events: none;
         }
 
         .project-pill:hover .project-overlay {
             opacity: 1;
             pointer-events: all;
-            background: rgba(0, 0, 0, 0.6); /* Ändere die Opazität hier */
+            background: rgba(0, 0, 0, 0.6);
         }
 
-        .project-pill:hover .project-number {
-            color: rgba(255, 255, 255, 1); /* Ändere die Farbe hier */
-            transform: scale(1.1);
-            text-shadow: 0 8px 22px rgba(255, 255, 255, 0.4);
-        }
-
-        .project-pill.dimmed {
-            opacity: 1;
-            filter: grayscale(0.3);
-            transform: scale(0.95);
-        }
-                                                                   Das hier ist die Project Pille wenn sie Fokussiert ist. 
-        .project-pill.focused {
-            transform: translateY(-8px) scale(2);
-            box-shadow: 
-                inset 15px 15px 30px rgba(0, 0, 0, 0.2),
-                inset -15px -15px 30px rgba(255, 255, 255, 0.8),
-            z-index: 10;
-        }
-
-        /* Babyphone Project Background */
-        .project-pill[data-project="babyphone"] {
-            background-image: url('https://github.com/philhehr/Portfolio-Phil-Hehr/blob/main/images/front.png?raw=true');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .project-pill[data-project="babyphone"]::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 72px;
-        }
-
-        /* Gear Animation for Caveman Moto */
-        .project-pill[data-project="caveman"] .gear {
-            position: absolute;
-            top: 10%; /* Füge diese Zeile hinzu */
-            left: 50%;
-            transform: translateX(-50%) scale(1.3); /* Ändere diese Zeile */
-            width: 60px;
-            height: 60px;
-            z-index: 10;
-            animation: rotate 6s linear infinite;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .project-pill[data-project="caveman"]:hover .gear {
-            opacity: 1;
-        }
-
-        .gear svg {
-            width: 100%;
-            height: 100%;
-            fill: rgba(255, 255, 255, 0.9);
-            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
-        }
-
-        @keyframes rotate {
-            from { transform: translateX(-50%) rotate(0deg); }
-            to { transform: translateX(-50%) rotate(360deg); }
-        }
-
-        /* Hover Effects */
-        .container.pills-hover .project-pill {
-            transform: scale(1.15);
-        }
-
-        .container.pills-hover .header {
-            opacity: 0.3;
-            transform: translateY(-50%) scale(0.85);
-        }
-
-        /* Project Overlays */
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 72px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: all 0.4s ease;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .project-pill:hover .project-overlay {
-            opacity: 1;
-        }
-
+        /* ___________________________ PROJECT PILLS - TITLE & SUBTITLE STYLES ___________________________ */
+        /* Hier werden Stile für den Titel und den Untertitel der Projekt-Pillen definiert. */
         .project-title {
             color: white;
             font-size: 1.8rem;
@@ -366,7 +342,221 @@
             transform: translateY(0);
         }
 
-        /* CV Modal */
+        /* ___________________________ PROJECT PILLS - FOCUSED STATE ___________________________ */
+        /* Hier werden Stile für den fokussierten Zustand der Projekt-Pillen definiert. */
+        .project-pill.focused {
+            transform: translateY(-8px) scale(2);
+            box-shadow: 
+                inset 15px 15px 30px rgba(0, 0, 0, 0.2),
+                inset -15px -15px 30px rgba(255, 255, 255, 0.8),
+            z-index: 10;
+        }
+
+        /* ___________________________ PROJECT PILLS - HOVER EFFECTS ___________________________ */
+        /* Hier werden Stile für die Hover-Effekte der Projekt-Pillen definiert. */
+        .container.pills-hover .project-pill {
+            transform: scale(1.15);
+        }
+
+        .container.pills-hover .header {
+            opacity: 0;
+            transform: translateY(-50%) scale(0.85);
+        }
+
+        /* ___________________________ PROJECT PILLS - SPECIFIC PROJECT STYLES ___________________________ */
+        /* Hier werden spezifische Stile für einzelne Projekte definiert. */
+
+        /* ___________________________ BABYPHONE PROJECT ___________________________ */
+        .project-pill[data-project="babyphone"] .project-number {
+            color: rgba(255, 255, 255, 0.219);
+        }
+
+        .babyphone-image-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            box-shadow: 
+                inset 10px 10px 20px rgba(0, 0, 0, 0.15),
+                inset -10px -10px 20px rgba(255, 255, 255, 0.7);
+            border-radius: 72px;
+        }
+
+        .babyphone-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            transform: scale(1.2);
+            border-radius: 72px;
+        }
+
+        .project-pill:hover .babyphone-image {
+            transform: scale(0.9);
+        }
+
+        /* ___________________________ GLASSES PROJECT ___________________________ */
+        .project-pill[data-project="glasses"] .project-number {
+            color: rgba(255, 255, 255, 0.178);
+        }
+
+        .glasses-image-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            box-shadow: 
+                inset 10px 10px 20px rgba(0, 0, 0, 0.15),
+                inset -10px -10px 20px rgba(255, 255, 255, 0.7);
+            border-radius: 72px;
+        }
+
+        .glasses-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 70% center;
+            transition: transform 0.3s ease;
+            transform: scale(1.2);
+            border-radius: 72px;
+        }
+
+        .project-pill:hover .glasses-image {
+            transform: scale(0.9);
+        }
+
+        /* ___________________________ TRIKE PROJECT ___________________________ */
+        .project-pill[data-project="portfolio"] .project-number {
+            color: rgba(255, 255, 255, 0.05);
+        }
+
+        .trike-image-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            box-shadow: 
+                inset 10px 10px 20px rgba(0, 0, 0, 0.15),
+                inset -10px -10px 20px rgba(255, 255, 255, 0.7);
+            border-radius: 72px;
+        }
+
+        .trike-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+            transform: scale(1.2);
+            border-radius: 72px;
+        }
+
+        .project-pill:hover .trike-image {
+            transform: scale(0.9);
+        }
+
+        /* ___________________________ HYPERLOOP PROJECT ___________________________ */
+        .project-pill[data-project="hyperloop"] .project-number {
+            color: rgba(255, 255, 255, 0.15);
+        }
+
+        .hyperloop-image-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            box-shadow: 
+                inset 10px 10px 20px rgba(0, 0, 0, 0.15),
+                inset -10px -10px 20px rgba(255, 255, 255, 0.7);
+            border-radius: 72px;
+        }
+
+        .hyperloop-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+            transform: scale(1.2);
+            border-radius: 72px;
+        }
+
+        .project-pill:hover .hyperloop-image {
+            transform: scale(0.9);
+        }
+
+        /* ___________________________ CAVEMAN PROJECT ___________________________ */
+        .project-pill[data-project="caveman"] .project-number {
+            color: rgba(255, 255, 255, 0.15);
+        }
+
+        .caveman-image-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            box-shadow: 
+                inset 10px 10px 20px rgba(0, 0, 0, 0.15),
+                inset -10px -10px 20px rgba(255, 255, 255, 0.7);
+            border-radius: 72px;
+        }
+
+        .caveman-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+            transform: scale(1.2);
+            border-radius: 72px;
+        }
+
+        .project-pill:hover .caveman-image {
+            transform: scale(0.9);
+        }
+
+        .project-pill[data-project="caveman"] .gear {
+            position: absolute;
+            top: 50%;
+            left: 1rem;
+            transform: translateY(-50%) scale(0.8);
+            width: 40px;
+            height: 40px;
+            z-index: 15;
+            animation: rotate 6s linear infinite;
+            opacity: 0.3;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-pill[data-project="caveman"]:hover .gear {
+            opacity: 1;
+            z-index: 15;
+        }
+
+        .gear svg {
+            width: 100%;
+            height: 100%;
+            fill: rgba(255, 255, 255, 0.9);
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+        }
+
+        @keyframes rotate {
+            from { transform: translateY(-50%) scale(0.8) rotate(0deg); }
+            to { transform: translateY(-50%) scale(0.8) rotate(360deg); }
+        }
+
+        /* ___________________________ CV MODAL ___________________________ */
+        /* Hier werden Stile für das CV Modal definiert. */
         .cv-modal {
             display: none;
             position: fixed;
@@ -511,8 +701,9 @@
             transform: translateY(-2px);
         }
 
-        /* Pill Opening Modal */
-        .pill-modal {
+        /* ___________________________ PILL OPENING MODAL ___________________________ */
+        /* Hier werden Stile für das Pill Opening Modal definiert. */
+        .pill-modal { /* Definiert das Modal-Fenster, das die expanded Pill enthält */
             display: none;
             position: fixed;
             top: 0;
@@ -524,36 +715,39 @@
             backdrop-filter: blur(20px);
         }
 
-        .pill-modal.active {
+        .pill-modal.active { /* Zeigt das Modal-Fenster an, wenn es aktiv ist */
             display: block;
         }
 
-        .pill-expanding {
+        .pill-expanding { /* Definiert die animierte Pille, die sich ausdehnt */
             position: fixed;
             background: rgba(224, 225, 226, 0.85);
-            border-radius: 72px;
+            border-radius: 0px;
             z-index: 1001;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             box-shadow: 
                 inset 10px 10px 20px rgba(0, 0, 0, 0.15),
                 inset -10px -10px 20px rgba(255, 255, 255, 0.7),
                 0 30px 80px rgba(0, 0, 0, 0.3);
         }
 
-        .pill-expanding.mid-expand {
+        .pill-expanding.mid-expand { /* Definiert den Zustand während der Animation */
             border-radius: 75px;
         }
 
-        .pill-expanding.expanded {
-            width: 400px !important;
-            height: 90% !important;
-            top: 5% !important;
-            left: 5% !important;
-            transform: none;
-            border-radius: 200px;
+        .pill-expanding.expanded { /* Definiert den Zustand, wenn die Pille vollständig ausgedehnt ist */
+            width: 100vw !important;
+            height: 100vh !important;
+            top: 0 !important;
+            left: 0 !important;
+            transform: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            border: 0 !important;
+            z-index: 3000 !important;
         }
 
-        .pill-content {
+        .pill-content { /* Definiert den Inhalt der Pille */
             position: absolute;
             top: 0;
             left: 0;
@@ -567,18 +761,18 @@
             flex-direction: column;
         }
 
-        .pill-content.visible {
+        .pill-content.visible { /* Macht den Inhalt sichtbar, wenn die Pille vollständig ausgedehnt ist */
             opacity: 1;
         }
 
-        .pill-header {
+        .pill-header { /* Definiert den Header-Bereich der Pille */
             position: center;
             border-radius: 200px 200px 0 0;
             flex-shrink: 0;
             text-align: center;
         }
 
-        .pill-title {
+        .pill-title { /* Definiert den Titel der Pille */
             font-size: 1.8rem;
             font-weight: 800;
             color: #333;
@@ -588,7 +782,7 @@
             line-height: 1.5;
         }
 
-        .pill-close {
+        .pill-close { /* Definiert den Schließen-Button der Pille */
             position: absolute;
             top: 1rem;
             right: 1rem;
@@ -612,147 +806,55 @@
             transform: rotate(90deg);
         }
 
-        .pill-body {
+        .pill-body { /* Definiert den Hauptinhaltsbereich der Pille */
             flex: 1;
             overflow-y: auto;
             padding: 2rem 2rem 3rem 2rem;
             background: #fafafa;
-            border-radius: 0 0 160px 160px;
+            border-radius: 0 0 0 0;
+            display: flex;
+            flex-direction: column; /* Geändert zu column */
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 2rem;
         }
 
-        .pill-images {
+        .pill-images { /* Definiert den Bereich für die Bilder in der Pille */
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 2rem;
             margin-bottom: 2.5rem;
+            width: 100%;
+            max-width: 500px;
+            justify-content: space-between; /* Füge diese Zeile hinzu */
         }
 
-        .pill-image {
+        .pill-image { /* Definiert die Bilder in der Pille */
             height: 200px;
             background: #f0f0f0;
             background-size: cover;
             background-position: center;
             transition: all 0.3s ease;
-            width: 100%;
+            width: 40%; /* Passe die Breite an */
         }
 
-        .pill-text-blocks {
+        .pill-image-right { /* Definiert die Bilder in der Pille */
+            height: 200px;
+            background: #f0f0f0;
+            background-size: cover;
+            background-position: center; /* Ändere diese Zeile */
+            transition: all 0.3s ease;
+            width: 40%; /* Passe die Breite an */
+        }
+
+        .pill-text-blocks { /* Definiert den Bereich für die Textblöcke in der Pille */
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
-        }
-
-        .pill-text-block {
-            padding: 1.8rem;
-            background: white;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            transform: translateY(30px);
-            opacity: 0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             width: 100%;
         }
 
-        .pill-text-block.visible {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .pill-text-block:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(124, 179, 66, 0.3);
-        }
-
-        .pill-text-block h4 {
-            margin: 0 0 1rem 0;
-            font-size: 1.4rem;
-            font-weight: 700;
-            font-family: 'Bahnschrift', Arial, sans-serif;
-        }
-
-        .pill-text-block p {
-            margin: 0;
-            line-height: 1.6;
-            font-weight: 400;
-        }
-
-        /* Welcome Screen Styles */
-        .welcome-screen {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 144px; /* Breite der mittleren Pille */
-            height: 576px; /* Höhe der mittleren Pille */
-            background: rgba(224, 225, 226, 0.85);
-            border-radius: 72px; /* Radius für die Pillenform */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 3000;
-            padding: 2rem;
-            box-shadow: 
-                inset 10px 10px 20px rgba(0, 0, 0, 0.15),
-                inset -10px -10px 20px rgba(255, 255, 255, 0.7);
-            text-align: center;
-        }
-
-        .welcome-screen h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--text-dark);
-        }
-
-        .welcome-screen input {
-            padding: 0.1rem 0.1rem;
-            font-size: 1rem;
-            border: none;
-            border-radius: 36px;
-            margin-bottom: 1.5rem;
-            width: 150%; /* Vergrößere die Breite des Eingabefensters */
-            text-align: center;
-            box-shadow: 
-                inset 3px 3px 6px rgba(0, 0, 0, 0.15),
-                inset -3px -3px 6px rgba(255, 255, 255, 0.7);
-        }
-
-        .welcome-screen button {
-            padding: 0.8rem 1.5rem;
-            font-size: 1rem;
-            background: white; /* Ändere die Farbe des Enter-Buttons */
-            color: var(--text-dark); /* Ändere die Textfarbe, um sie sichtbar zu machen */
-            border: none;
-            border-radius: 36px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15),
-                -3px -3px 6px rgba(255, 255, 255, 0.7);
-        }
-
-        .welcome-screen button:hover {
-            background: #f0f0f0; /* Ändere die Farbe des Enter-Buttons beim Hover */
-            transform: translateY(-2px);
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .welcome-screen::before {
-            content: '\f084'; /* Unicode für das Schlüssel-Symbol */
-            font-family: FontAwesome;
-            position: absolute;
-            top: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 2rem;
-            color: var(--text-dark);
-        }
-
+        /* ___________________________ PROJECT PILL STYLES ___________________________ */
         .project-pill[data-project="portfolio"] {
             background-image: url('images/Trike_Homepage.png'); /* Füge diese Zeile hinzu */
             background-size: cover;
@@ -762,49 +864,73 @@
         .project-pill[data-project="glasses"] {
             background-image: url('images/Glasses_Homepage.png'); /* Füge diese Zeile hinzu */
             background-size: cover;
-            background-position: center;
+            background-position: 70% center;
+            transform: scale(1); /* Füge diese Zeile hinzu */
         }
 
-        @media (max-width: 480px) {
-    .header {
-        position: static; /* Entferne die absolute Positionierung */
-        transform: none; /* Entferne die Transformation */
-        padding: 1rem; /* Reduziere das Padding */
-        flex-direction: column; /* Staple die Elemente vertikal */
-        align-items: center; /* Zentriere die Elemente horizontal */
-        text-align: center; /* Zentriere den Text */
-    }
+        .babyphone-image-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1; /* Unter dem Overlay, aber über dem Hintergrund */
+        }
 
-    .logo {
-        margin-bottom: 1rem; /* Füge einen Abstand unter dem Logo hinzu */
-    }
+        .babyphone-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Füllt den Container, ohne das Seitenverhältnis zu verzerren */
+            transition: transform 0.3s ease; /* Füge eine Transition hinzu */
+            transform: scale(1.2); /* Skaliere das Bild um 30% kleiner */
+        }
 
-    .portfolio-text {
-        align-items: center; /* Zentriere den Text horizontal */
-    }
+        .project-pill:hover .babyphone-image {
+            transform: scale(0.9); /* Skaliere das Bild beim Hover leicht */
+        }
 
-    .main-content {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
-        margin-top: 2rem; /* Füge einen oberen Abstand hinzu */
-    }
+        .project-pill[data-project="glasses"] .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: left center; /* Ändere diese Zeile */
+            transition: transform 0.3s ease;
+            transform: scale(1);
+        }
 
-    .projects-container {
-        flex-direction: column; /* Staple die Pillen vertikal */
-        align-items: center; /* Zentriere die Pillen horizontal */
-    }
-}
+        .image-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Füge diese Zeile hinzu */
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            transform: scale(1.0);
+            object-position: center;
+        }
+
+        .project-pill:hover .project-image {
+            transform: scale(1.2); /* Vergrößere das Bild beim Hovern auf 120% der Originalgröße */
+        }
     </style>
 </head>
 <body>
     <!-- Welcome Screen -->
     <div class="welcome-screen" id="welcomeScreen">
-        <h1>Welcome</h1>
-        <input type="password" id="passwordInput" placeholder="Password">
-        <button onclick="checkPassword()">Enter</button>
+        <h1>Welcome to Phil´s Portfolio.</h1>
+        <input type="password" id="passwordInput" placeholder="password">
+        <button onclick="checkPassword()"><i class="fas fa-key"></i></button>
     </div>
 
     <div class="container hidden" id="mainContent">
@@ -824,6 +950,9 @@
             <div class="projects-container">
                 <div class="project-pill" data-project="babyphone">
                     <div class="project-number">01</div>
+                    <div class="babyphone-image-container">
+                        <img src="https://github.com/philhehr/Portfolio-Phil-Hehr/blob/main/images/front.png?raw=true" alt="Babyphone" class="babyphone-image">
+                    </div>
                     <div class="project-overlay">
                         <div class="project-title">Baby<br>Phone</div>
                         <div class="project-subtitle">Smart Baby Monitor</div>
@@ -832,22 +961,31 @@
 
                 <div class="project-pill" data-project="glasses">
                     <div class="project-number">02</div>
+                    <div class="glasses-image-container">
+                        <img src="images/Glasses_Homepage.png" alt="Smart Glasses" class="glasses-image">
+                    </div>
                     <div class="project-overlay">
-                       
+                        <div class="project-title">Smart<br>Glasses</div>
                         <div class="project-subtitle">AR Interface Design</div>
                     </div>
                 </div>
 
                 <div class="project-pill" data-project="portfolio">
                     <div class="project-number">03</div>
+                    <div class="trike-image-container">
+                        <img src="images/Trike_Homepage.png" alt="Trike Design" class="trike-image">
+                    </div>
                     <div class="project-overlay">
-                        <div class="project-title">Trike</div> <!-- Geänderter Titel -->
-                        <div class="project-subtitle">Design in VR</div> <!-- Geänderter Subtitel -->
+                        <div class="project-title">Trike</div>
+                        <div class="project-subtitle">Design in VR</div>
                     </div>
                 </div>
 
                 <div class="project-pill" data-project="hyperloop">
                     <div class="project-number">04</div>
+                    <div class="hyperloop-image-container">
+                        <img src="images/Hyperloop_Homepage.png" alt="Hyperloop" class="hyperloop-image">
+                    </div>
                     <div class="project-overlay">
                         <div class="project-title">Hyperloop</div>
                         <div class="project-subtitle">Future Transport</div>
@@ -856,10 +994,11 @@
 
                 <div class="project-pill" data-project="caveman">
                      <div class="project-number">05</div>
+                    <div class="caveman-image-container">
+                        <img src="images/MellowXKawasaki-Zephyr750_SilverSmurf_EXAMPLE.jpeg" alt="Caveman Moto" class="caveman-image">
+                    </div>
                     <div class="gear">
                         <svg viewBox="0 0 24 24">
-        <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.98C19.47,12.66 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11.02L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.65 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11.02C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.66 4.57,12.98L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.98Z" />
-    </svg>
                     </div>
                     <div class="project-overlay">
                         <div class="project-title">Caveman Moto</div>
@@ -868,7 +1007,8 @@
                 </div>
             </div>
 
-        <!-- CV Modal -->
+        <!-- ___________________________ CV MODAL ___________________________ -->
+        <!-- Hier wird das CV Modal definiert. -->
         <div class="cv-modal" id="cvModal">
             <div class="cv-content">
                 <div class="cv-header" style="padding:0; background:none; color:inherit;">
@@ -938,7 +1078,8 @@
             </div>
         </div>
 
-        <!-- Pill Opening Modal -->
+        <!-- ___________________________ PILL OPENING MODAL ___________________________ -->
+        <!-- Hier wird das Modal für die sich öffnenden Pillen definiert. -->
         <div class="pill-modal" id="pillModal">
             <div class="pill-expanding" id="expandingPill">
                 <div class="pill-content" id="pillContent">
@@ -1111,7 +1252,7 @@
             const container = document.querySelector('.container');
 
             document.querySelectorAll('.project-pill').forEach((pill, index) => {
-                pill.addEventListener('mouseenter', () => {
+                pill.addEventListener('mouseenter', () => { /* Fügt einen Event Listener hinzu, der beim Hovern über die Pille ausgeführt wird */
                     // Global scaling effects
                     container.classList.add('pills-hover');
 
@@ -1136,7 +1277,7 @@
                     updateBackgroundLine(index);
                 });
 
-                pill.addEventListener('mouseleave', () => {
+                pill.addEventListener('mouseleave', () => { /* Fügt einen Event Listener hinzu, der beim Verlassen der Pille ausgeführt wird */
                     // Remove global effects
                     container.classList.remove('pills-hover');
 
@@ -1151,7 +1292,7 @@
                     resetBackgroundLineToDefault();
                 });
 
-                pill.addEventListener('click', (e) => {
+                pill.addEventListener('click', (e) => { /* Fügt einen Event Listener hinzu, der beim Klicken auf die Pille ausgeführt wird */
                     e.preventDefault();
                     const projectId = pill.dataset.project;
                     const data = projectData[projectId];
@@ -1161,23 +1302,26 @@
         }
 
         // Pill opening modal
-        const pillModal = document.getElementById('pillModal');
-        const expandingPill = document.getElementById('expandingPill');
-        const pillContent = document.getElementById('pillContent');
-        const pillTitle = document.getElementById('pillTitle');
-        const pillImages = document.getElementById('pillImages');
-        const pillTextBlocks = document.getElementById('pillTextBlocks');
-        const pillClose = document.getElementById('pillClose');
+        const pillModal = document.getElementById('pillModal'); /* Definiert das Modal-Fenster */
+        const expandingPill = document.getElementById('expandingPill'); /* Definiert die animierte Pille */
+        const pillContent = document.getElementById('pillContent'); /* Definiert den Inhalt der Pille */
+        const pillTitle = document.getElementById('pillTitle'); /* Definiert den Titel der Pille */
+        const pillImages = document.getElementById('pillImages'); /* Definiert den Bereich für die Bilder */
+        const pillTextBlocks = document.getElementById('pillTextBlocks'); /* Definiert den Bereich für die Textblöcke */
+        const pillClose = document.getElementById('pillClose'); /* Definiert den Schließen-Button */
 
-        function openPill(pillElement, data) {
+        function openPill(pillElement, data) { /* Öffnet die Pille */
             const pillRect = pillElement.getBoundingClientRect();
             
+            // set starting rect (viewport coords)
             expandingPill.style.width = pillRect.width + 'px';
             expandingPill.style.height = pillRect.height + 'px';
             expandingPill.style.top = pillRect.top + 'px';
             expandingPill.style.left = pillRect.left + 'px';
             expandingPill.style.borderRadius = '72px';
             expandingPill.style.transform = 'none';
+            expandingPill.style.position = 'fixed';
+            expandingPill.style.willChange = 'top, left, width, height';
             
             pillContent.classList.remove('visible');
             expandingPill.classList.remove('expanded', 'mid-expand');
@@ -1186,42 +1330,46 @@
             document.body.style.overflow = 'hidden';
             pillElement.style.opacity = '0';
             
+            // small delay to ensure starting styles applied, then animate
             setTimeout(() => {
                 expandingPill.classList.add('mid-expand');
-            }, 10); // War: 150
+            }, 10);
 
+            // expand to fullscreen (timing tuned for smooth effect)
             setTimeout(() => {
                 expandingPill.classList.add('expanded');
-            }, 20); // War: 300
+            }, 220);
 
             setTimeout(() => {
                 setupPillContent(data);
                 pillContent.classList.add('visible');
                 animatePillTextBlocks();
-            }, 150); // War: 1500
+            }, 420);
         }
 
-        function setupPillContent(data) {
-            pillTitle.textContent = data.title;
+        function setupPillContent(data) { /* Definiert den Inhalt der Pille */
+            pillTitle.textContent = "Hier ist der Titel"; // Füge eine statische Überschrift hinzu
             
             pillImages.innerHTML = '';
-            data.images.forEach(img => {
-                const imageDiv = document.createElement('div');
-                imageDiv.className = 'pill-image';
-                imageDiv.style.backgroundImage = `url(${img})`;
-                pillImages.appendChild(imageDiv);
-            });
+            // Erstelle ein einzelnes Bild-Element
+            const imageDiv1 = document.createElement('div');
+            imageDiv1.className = 'pill-image';
+            imageDiv1.style.backgroundImage = `url(images/Glasses_Homepage.png)`; // Füge ein statisches Bild hinzu
+            pillImages.appendChild(imageDiv1);
+
+            const imageDiv2 = document.createElement('div');
+            imageDiv2.className = 'pill-image-right'; // Verwende eine andere Klasse für das größere Bild
+            imageDiv2.style.backgroundImage = `url(images/Trike_Homepage.png)`; // Füge ein statisches Bild hinzu
+            pillImages.appendChild(imageDiv2);
             
             pillTextBlocks.innerHTML = '';
-            data.textBlocks.forEach(block => {
-                const textDiv = document.createElement('div');
-                textDiv.className = 'pill-text-block';
-                textDiv.innerHTML = `<h4>${block.title}</h4><p>${block.text}</p>`;
-                pillTextBlocks.appendChild(textDiv);
-            });
+            const textDiv = document.createElement('div');
+            textDiv.className = 'pill-text-block';
+            textDiv.innerHTML = `<p>Hier ist ein kurzer Textblock.</p>`;
+            pillTextBlocks.appendChild(textDiv);
         }
 
-        function animatePillTextBlocks() {
+        function animatePillTextBlocks() { /* Animiert die Textblöcke */
             const blocks = document.querySelectorAll('.pill-text-block');
             blocks.forEach((block, index) => {
                 setTimeout(() => {
@@ -1230,7 +1378,7 @@
             });
         }
 
-        function closePill() {
+        function closePill() { /* Schließt die Pille */
             pillContent.classList.remove('visible');
             
             setTimeout(() => {
@@ -1356,22 +1504,29 @@
             const passwordInput = document.getElementById('passwordInput');
             const welcomeScreen = document.getElementById('welcomeScreen');
             const mainContent = document.getElementById('mainContent');
+            const welcomeText = document.querySelector('.welcome-screen h1');
 
-            if (passwordInput.value === 'hello_guest') {
-                // Fade out Welcome Screen
-                welcomeScreen.style.transition = 'opacity 0.5s ease';
-                welcomeScreen.style.opacity = 0;
+            if (passwordInput.value === 'k') {
+                // Change welcome text
+                welcomeText.textContent = "A pleasant journey through the Projects.";
 
-                // Fade in Main Content
-                mainContent.style.transition = 'opacity 0.5s ease';
-                mainContent.style.opacity = 1;
-
+                // Wait 2 second
                 setTimeout(() => {
-                    welcomeScreen.classList.add('hidden');
-                    mainContent.classList.remove('hidden');
-                    welcomeScreen.style.opacity = ''; // Reset opacity
-                    mainContent.style.opacity = ''; // Reset opacity
-                }, 500);
+                    // Fade out Welcome Screen
+                    welcomeScreen.style.transition = 'opacity 2s ease'; // Transition auf 2 Sekunden setzen
+                    welcomeScreen.style.opacity = 0;
+
+                    // Fade in Main Content
+                    mainContent.style.transition = 'opacity 2s ease'; // Transition auf 2 Sekunden setzen
+                    mainContent.style.opacity = 1;
+
+                    setTimeout(() => {
+                        welcomeScreen.classList.add('hidden');
+                        mainContent.classList.remove('hidden');
+                        welcomeScreen.style.opacity = ''; // Reset opacity
+                        mainContent.style.opacity = ''; // Reset opacity
+                    }, 2000); // Timeout anpassen, damit es mit der Transition übereinstimmt
+                }, 2000); // Wartezeit vor dem Start der Animation
             } else {
                 alert('Incorrect password');
             }
