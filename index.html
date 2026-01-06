@@ -780,6 +780,7 @@
             border-radius: 200px 200px 0 0;
             flex-shrink: 0;
             text-align: center;
+            background: #fafafa;
         }
 
         .pill-title { /* Definiert den Titel der Pille */
@@ -787,9 +788,11 @@
             font-weight: 800;
             color: #333;
             margin: 0;
+            padding: 1rem;
             font-family: 'Bahnschrift', Arial, sans-serif;
             text-align: center;
             line-height: 1.5;
+            background: #fafafa;
         }
 
         .pill-close { /* Definiert den Schließen-Button der Pille */
@@ -908,13 +911,6 @@
             width: 100%;
             border-radius: 16px;
             overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .pill-featured:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
         }
 
         .pill-featured img {
@@ -935,13 +931,10 @@
             width: 100%;
             border-radius: 12px;
             overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .pill-gallery-item:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        .pill-gallery-item.half-size {
+            width: 50%;
         }
 
         .pill-gallery-item img {
@@ -1408,21 +1401,15 @@
                 textBlocks: []
             },
             glasses: {
-                title: 'Smart Glasses Interface',
+                title: 'short term Project: Glasses',
                 images: [
                     'https://github.com/philhehr/Portfolio-Phil-Hehr/blob/main/images/04_Glasses_Heroshot_Zeichenfl%C3%A4che%201.png?raw=true',
-                    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop',
-                    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop'
+                    'https://github.com/philhehr/Portfolio-Phil-Hehr/blob/main/images/Glasses_Homepage.png?raw=true'
                 ],
-                textBlocks: [
-                    { title: 'AR Display', text: 'Hochauflösendes Augmented Reality Display mit natürlicher Farbwiedergabe.' },
-                    { title: 'Gesture Control', text: 'Intuitive Gestensteuerung für nahtlose Interaktion ohne Berührung.' },
-                    { title: 'Voice Integration', text: 'Sprachsteuerung mit KI-Assistant für freihändige Bedienung.' },
-                    { title: 'Ergonomisches Design', text: 'Leichtes und komfortables Design für ganztägiges Tragen.' }
-                ]
+                textBlocks: []
             },
             portfolio: {
-                title: 'Innovation Design',
+                title: 'Trike Design <small style="font-size: 0.5em; font-weight: 400; display: block;">created in VR</small>',
                 images: [
                     'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&h=600&fit=crop',
                     'https://images.unsplash.com/photo-1586717799252-bd134ad00e26?w=800&h=600&fit=crop',
@@ -1724,7 +1711,7 @@
         }
 
         function setupPillContent(data) { /* Definiert den Inhalt der Pille */
-            pillTitle.textContent = data?.title || "Projekt Details";
+            pillTitle.innerHTML = data?.title || "Projekt Details";
 
             pillImages.innerHTML = '';
             const images = data?.images || [];
@@ -1736,7 +1723,6 @@
                 const featuredImg = document.createElement('img');
                 featuredImg.src = images[0];
                 featuredImg.alt = data?.title || 'Featured Image';
-                featuredImg.onclick = () => openLightbox(images[0]);
                 featured.appendChild(featuredImg);
                 pillImages.appendChild(featured);
                 
@@ -1748,10 +1734,13 @@
                     images.slice(1).forEach((url) => {
                         const item = document.createElement('div');
                         item.className = 'pill-gallery-item';
+                        // Glasses_Homepage halb so groß
+                        if (url.includes('Glasses_Homepage')) {
+                            item.classList.add('half-size');
+                        }
                         const img = document.createElement('img');
                         img.src = url;
                         img.alt = 'Gallery Image';
-                        img.onclick = () => openLightbox(url);
                         item.appendChild(img);
                         gallery.appendChild(item);
                     });
