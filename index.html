@@ -389,12 +389,12 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
-            transform: scale(1.2);
+            transform: scale(1.5);
             border-radius: 72px;
         }
 
         .project-pill:hover .babyphone-image {
-            transform: scale(0.9);
+            transform: scale(1.0);
         }
 
         /* ___________________________ GLASSES PROJECT ___________________________ */
@@ -426,7 +426,7 @@
         }
 
         .project-pill:hover .glasses-image {
-            transform: scale(0.9);
+            transform: scale(1.0);
         }
 
         /* ___________________________ TRIKE PROJECT ___________________________ */
@@ -458,7 +458,7 @@
         }
 
         .project-pill:hover .trike-image {
-            transform: scale(0.9);
+            transform: scale(1.0);
         }
 
         /* ___________________________ HYPERLOOP PROJECT ___________________________ */
@@ -490,7 +490,7 @@
         }
 
         .project-pill:hover .hyperloop-image {
-            transform: scale(0.9);
+            transform: scale(1.0);
         }
 
         /* ___________________________ CAVEMAN PROJECT ___________________________ */
@@ -522,7 +522,7 @@
         }
 
         .project-pill:hover .caveman-image {
-            transform: scale(0.9);
+            transform: scale(1.0);
         }
 
         .project-pill[data-project="caveman"] .gear {
@@ -780,16 +780,21 @@
             border-radius: 200px 200px 0 0;
             flex-shrink: 0;
             text-align: center;
+            border-bottom: none;
+            background: #fafafa;
+            padding-top: 2rem;
         }
 
         .pill-title { /* Definiert den Titel der Pille */
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
             color: #333;
             margin: 0;
             font-family: 'Bahnschrift', Arial, sans-serif;
             text-align: center;
-            line-height: 1.5;
+            line-height: 1.2;
+            border-bottom: none;
+            background: #fafafa;
         }
 
         .pill-close { /* Definiert den Schließen-Button der Pille */
@@ -829,32 +834,232 @@
             gap: 2rem;
         }
 
+        /* Custom Scrollbar - größer und besser bedienbar */
+        .pill-body::-webkit-scrollbar {
+            width: 16px;
+        }
+
+        .pill-body::-webkit-scrollbar-track {
+            background: linear-gradient(to bottom, #e0e0e0, #f5f5f5);
+            border-radius: 8px;
+        }
+
+        .pill-body::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #888, #bbb);
+            border-radius: 8px;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .pill-body::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #666, #999);
+            background-clip: padding-box;
+        }
+
+        /* Firefox Scrollbar */
+        .pill-body {
+            scrollbar-width: auto;
+            scrollbar-color: #999 #e0e0e0;
+        }
+
+        /* Scroll Progress Indicator */
+        .scroll-progress-container {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 200px;
+            width: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 4000;
+            pointer-events: none;
+        }
+
+        .scroll-progress-bar {
+            width: 8px;
+            height: 150px;
+            background: linear-gradient(to bottom, #e0e0e0, #f8f8f8);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-progress-fill {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, #666, #aaa);
+            border-radius: 4px;
+            transition: height 0.1s ease;
+        }
+
+        .scroll-progress-text {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #666;
+            margin-top: 8px;
+            font-family: 'Bahnschrift', Arial, sans-serif;
+        }
+
         .pill-images { /* Definiert den Bereich für die Bilder in der Pille */
             display: flex;
-            flex-direction: row;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
+            flex-direction: column;
+            gap: 0;
+            margin-bottom: 0;
             width: 100%;
-            max-width: 500px;
-            justify-content: space-between; /* Füge diese Zeile hinzu */
         }
 
-        .pill-image { /* Definiert die Bilder in der Pille */
-            height: 200px;
-            background: #f0f0f0;
-            background-size: cover;
-            background-position: center;
-            transition: all 0.3s ease;
-            width: 40%; /* Passe die Breite an */
+        .pill-images.align-right {
+            align-items: flex-end;
         }
 
-        .pill-image-right { /* Definiert die Bilder in der Pille */
-            height: 200px;
-            background: #f0f0f0;
-            background-size: cover;
-            background-position: center; /* Ändere diese Zeile */
+        .pill-image, .pill-image-right { /* Definiert die Bilder in der Pille */
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            display: block;
+        }
+
+        .pill-image img, .pill-image-right img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .pill-image-featured {
+            width: 180px;
+            height: 480px;
+            border-radius: 90px;
+            overflow: hidden;
+            box-shadow: 
+                inset 10px 10px 20px rgba(0, 0, 0, 0.15),
+                inset -10px -10px 20px rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .pill-image-featured img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .pill-bottom-section {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            padding: 3rem 2rem;
+            width: 100%;
+        }
+
+        .pill-bottom-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .project-nav-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .project-nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Bahnschrift', Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .project-nav-btn:hover {
+            background: #555;
+        }
+
+        .project-nav-btn:active {
+            background: #333;
+        }
+
+        .project-nav-btn i {
+            pointer-events: none;
+        }
+
+        .project-nav-btn.prev-btn {
+            background: #666;
+        }
+
+        .project-nav-btn.prev-btn:hover {
+            background: #888;
+        }
+
+        /* ___________________________ IMAGE LIGHTBOX ___________________________ */
+        .image-lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .image-lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.3s ease;
-            width: 40%; /* Passe die Breite an */
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
         }
 
         .pill-text-blocks { /* Definiert den Bereich für die Textblöcke in der Pille */
@@ -936,14 +1141,21 @@
 
         /* Default pill text block (desktop) */
 .pill-text-block {
-    background: white;
-    padding: 1rem 1.1rem;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    background: transparent;
+    padding: 1rem 0;
+    border-radius: 0;
+    box-shadow: none;
     transition: background 0.2s, box-shadow 0.2s, color 0.2s;
     color: var(--text-dark);
     font-size: 0.98rem;
     line-height: 1.45;
+}
+
+.pill-text-block h4 {
+    border-bottom: none;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
 /* Mobile: remove background & shadow and increase text size for better readability */
@@ -966,10 +1178,10 @@
         left: 50% !important;
         transform: translateX(-50%) !important;
         z-index: 8000 !important;
-        background: rgba(255,255,255,0.92);
+        background: #fafafa;
         padding: 8px 12px;
         border-radius: 10px;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        box-shadow: none;
         pointer-events: auto;
     }
 
@@ -980,7 +1192,7 @@
         left: 50% !important;
         transform: translateX(-50%) !important;
         z-index: 8000 !important;
-        background: rgba(255,255,255,0.94);
+        background: #fafafa;
         padding: 8px 12px;
         border-radius: 10px;
         text-align: center;
@@ -989,6 +1201,7 @@
         flex-direction: column;
         gap: 4px;
         max-width: calc(100% - 32px);
+        box-shadow: none;
     }
     .portfolio-date { font-size: 0.85rem; color:#666; }
 
@@ -1013,6 +1226,35 @@
     /* Kleine Typo-Anpassungen */
     .logo { font-size: 1rem; font-weight:800; }
     .portfolio-text { font-size: 0.95rem; font-weight:700; letter-spacing:1px; }
+
+    /* Bottom Section Mobile - vertikal stapeln */
+    .pill-bottom-section {
+        flex-direction: column !important;
+        gap: 2rem !important;
+        padding: 2rem 1rem !important;
+    }
+
+    .pill-bottom-left {
+        order: 2;
+    }
+
+    .pill-image-featured {
+        order: 1;
+        width: 120px !important;
+        height: 320px !important;
+        border-radius: 60px !important;
+    }
+
+    .project-nav-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .project-nav-btn {
+        font-size: 0.9rem;
+        padding: 0.8rem 1.5rem;
+        justify-content: center;
+    }
 }
 
 +   /* Rotate hint overlay + blur while visible */
@@ -1078,7 +1320,7 @@
                 <div class="project-pill" data-project="babyphone">
                     <div class="project-number">01</div>
                     <div class="babyphone-image-container">
-                        <img src="https://github.com/philhehr/Portfolio-Phil-Hehr/blob/main/images/front.png?raw=true" alt="Babyphone" class="babyphone-image">
+                        <img src="images/front.png" alt="Babyphone" class="babyphone-image">
                     </div>
                     <div class="project-overlay">
                         <div class="project-title">Baby<br>Phone</div>
@@ -1214,13 +1456,26 @@
                         <h2 class="pill-title" id="pillTitle">Projekt Details</h2>
                         <button class="pill-close" id="pillClose">&times;</button>
                     </div>
-                    <div class="pill-body">
+                    <div class="pill-body" id="pillBody">
                         <div class="pill-images" id="pillImages"></div>
                         <div class="pill-text-blocks" id="pillTextBlocks"></div>
                     </div>
                 </div>
             </div>
+            <!-- Scroll Progress Indicator -->
+            <div class="scroll-progress-container" id="scrollProgressContainer">
+                <div class="scroll-progress-bar">
+                    <div class="scroll-progress-fill" id="scrollProgressFill"></div>
+                </div>
+                <div class="scroll-progress-text" id="scrollProgressText">0%</div>
+            </div>
         </div>
+    </div>
+
+    <!-- Image Lightbox -->
+    <div class="image-lightbox" id="imageLightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <img src="" alt="Vollbild" id="lightboxImage">
     </div>
 
     <script>
@@ -1229,9 +1484,12 @@
             babyphone: {
                 title: 'Babyphone Design',
                 images: [
-                    'https://github.com/philhehr/Portfolio-Phil-Hehr/blob/main/images/front.png?raw=true',
-                    'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=800&h=600&fit=crop',
-                    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop'
+                    'images/front.png',
+                    'images/Portfolio%2020227_Babyphone.png',
+                    'images/Portfolio%2020228_Babyphone.png',
+                    'images/Portfolio%2020229_Babyphone.png',
+                    'images/Portfolio%20202210_Babyphone.png',
+                    'images/Portfolio%20202211_Babyphone.png'
                 ],
                 textBlocks: [
                     { title: 'Smart Monitoring', text: 'Intelligente Überwachung mit KI-gestützter Geräusch- und Bewegungserkennung für maximale Sicherheit.' },
@@ -1423,7 +1681,7 @@
                     e.preventDefault();
                     const projectId = pill.dataset.project;
                     const data = projectData[projectId];
-                    openPill(pill, data);
+                    openPill(pill, data, projectId);
                 });
             });
         }
@@ -1437,7 +1695,7 @@
         const pillTextBlocks = document.getElementById('pillTextBlocks'); /* Definiert den Bereich für die Textblöcke */
         const pillClose = document.getElementById('pillClose'); /* Definiert den Schließen-Button */
 
-        function openPill(pillElement, data) { /* Öffnet die Pille */
+        function openPill(pillElement, data, projectId) { /* Öffnet die Pille */
             const pillRect = pillElement.getBoundingClientRect();
             
             // set starting rect (viewport coords)
@@ -1468,30 +1726,123 @@
             }, 220);
 
             setTimeout(() => {
-                setupPillContent(data);
+                setupPillContent(data, projectId);
                 pillContent.classList.add('visible');
                 animatePillTextBlocks();
             }, 420);
         }
 
-        function setupPillContent(data) { /* Definiert den Inhalt der Pille */
+        let currentProjectId = null;
+
+        function setupPillContent(data, projectId) { /* Definiert den Inhalt der Pille */
+            currentProjectId = projectId;
             pillTitle.textContent = data?.title || "Projekt Details";
 
             pillImages.innerHTML = '';
-            (data?.images || []).slice(0,2).forEach((url, i) => {
+            // Für Babyphone: Bilder rechts anordnen
+            if (data?.title === 'Babyphone Design') {
+                pillImages.classList.add('align-right');
+            } else {
+                pillImages.classList.remove('align-right');
+            }
+            
+            const images = data?.images || [];
+            
+            // Bilder anzeigen (erstes Bild überspringen)
+            images.slice(1).forEach((url) => {
                 const div = document.createElement('div');
-                div.className = i === 0 ? 'pill-image' : 'pill-image-right';
-                div.style.backgroundImage = `url(${url})`;
+                div.className = 'pill-image-right';
+                const img = document.createElement('img');
+                img.src = url;
+                img.alt = 'Projektbild';
+                div.appendChild(img);
+                div.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openLightbox(url);
+                });
                 pillImages.appendChild(div);
             });
+
+            // Bottom Section erstellen mit Textblöcken und Next-Button
+            const bottomSection = document.createElement('div');
+            bottomSection.className = 'pill-bottom-section';
+
+            // Textblöcke und Next-Button
+            const bottomLeft = document.createElement('div');
+            bottomLeft.className = 'pill-bottom-left';
 
             pillTextBlocks.innerHTML = '';
             (data?.textBlocks || []).forEach(block => {
                 const textDiv = document.createElement('div');
                 textDiv.className = 'pill-text-block';
                 textDiv.innerHTML = `<h4>${block.title}</h4><p>${block.text}</p>`;
-                pillTextBlocks.appendChild(textDiv);
+                bottomLeft.appendChild(textDiv);
             });
+
+            // Navigation Buttons Container
+            const projectKeys = Object.keys(projectData);
+            const currentIndex = projectKeys.indexOf(projectId);
+            
+            const navContainer = document.createElement('div');
+            navContainer.className = 'project-nav-buttons';
+
+            // Next Project Button (links - immer anzeigen)
+            const nextIndex = (currentIndex + 1) % projectKeys.length;
+            const nextProjectId = projectKeys[nextIndex];
+            const nextProjectTitle = projectData[nextProjectId]?.title || 'Nächstes Projekt';
+
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'project-nav-btn';
+            nextBtn.innerHTML = `${nextProjectTitle} <i class="fas fa-arrow-right"></i>`;
+            nextBtn.setAttribute('type', 'button');
+            
+            nextBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                goToNextProject(nextProjectId);
+            }, { capture: true });
+            
+            navContainer.appendChild(nextBtn);
+
+            // Previous Project Button (rechts - nicht anzeigen wenn vorheriges Babyphone ist)
+            const prevIndex = (currentIndex - 1 + projectKeys.length) % projectKeys.length;
+            const prevProjectId = projectKeys[prevIndex];
+            const prevProjectTitle = projectData[prevProjectId]?.title || 'Vorheriges Projekt';
+
+            if (prevProjectId !== 'babyphone') {
+                const prevBtn = document.createElement('button');
+                prevBtn.className = 'project-nav-btn prev-btn';
+                prevBtn.innerHTML = `<i class="fas fa-arrow-left"></i> ${prevProjectTitle}`;
+                prevBtn.setAttribute('type', 'button');
+                
+                prevBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                    goToNextProject(prevProjectId);
+                }, { capture: true });
+                
+                navContainer.appendChild(prevBtn);
+            }
+
+            bottomLeft.appendChild(navContainer);
+
+            bottomSection.appendChild(bottomLeft);
+            pillImages.appendChild(bottomSection);
+        }
+
+        function goToNextProject(nextProjectId) {
+            const data = projectData[nextProjectId];
+            if (data) {
+                setupPillContent(data, nextProjectId);
+                animatePillTextBlocks();
+                // Scroll nach oben - mehrere Methoden für bessere Kompatibilität
+                pillContent.scrollTop = 0;
+                pillContent.scrollTo(0, 0);
+                document.querySelector('.pill-content-inner')?.scrollTo(0, 0);
+                document.getElementById('pillImages')?.scrollIntoView({ behavior: 'instant', block: 'start' });
+            }
         }
 
         function animatePillTextBlocks() { /* Animiert die Textblöcke */
@@ -1501,6 +1852,25 @@
                     block.classList.add('visible');
                 }, index * 25); // War: index * 100
             });
+        }
+
+        // Scroll Progress Indicator
+        function initScrollProgress() {
+            const pillBody = document.getElementById('pillBody');
+            const progressFill = document.getElementById('scrollProgressFill');
+            const progressText = document.getElementById('scrollProgressText');
+            const progressContainer = document.getElementById('scrollProgressContainer');
+            
+            if (pillBody && progressFill && progressText) {
+                pillBody.addEventListener('scroll', function() {
+                    const scrollTop = pillBody.scrollTop;
+                    const scrollHeight = pillBody.scrollHeight - pillBody.clientHeight;
+                    const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+                    
+                    progressFill.style.height = progress + '%';
+                    progressText.textContent = Math.round(progress) + '%';
+                });
+            }
         }
 
         function closePill() { /* Schließt die Pille */
@@ -1526,6 +1896,32 @@
             }, 550); // War: 2200
         }
 
+        // Lightbox Funktionen
+        const imageLightbox = document.getElementById('imageLightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        function openLightbox(imageUrl) {
+            lightboxImage.src = imageUrl;
+            imageLightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            imageLightbox.classList.remove('active');
+            lightboxImage.src = '';
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        imageLightbox.addEventListener('click', (e) => {
+            if (e.target === imageLightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && imageLightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
             updateDate();
@@ -1533,6 +1929,7 @@
             
             initializePills();
             setTimeout(initializeBackgroundLine, 100);
+            initScrollProgress();
             
             // Optional: change header text on hover without opening modal
             const logo = document.getElementById('logoContainer');
@@ -1635,23 +2032,23 @@
                 // Change welcome text
                 welcomeText.textContent = "A pleasant journey through the Projects.";
 
-                // Wait 2 second
+                // Wartezeit stark verkürzen (0.5s)
                 setTimeout(() => {
                     // Fade out Welcome Screen
-                    welcomeScreen.style.transition = 'opacity 2s ease'; // Transition auf 2 Sekunden setzen
+                    welcomeScreen.style.transition = 'opacity 0.5s ease';
                     welcomeScreen.style.opacity = 0;
 
                     // Fade in Main Content
-                    mainContent.style.transition = 'opacity 2s ease'; // Transition auf 2 Sekunden setzen
+                    mainContent.style.transition = 'opacity 0.5s ease';
                     mainContent.style.opacity = 1;
 
                     setTimeout(() => {
                         welcomeScreen.classList.add('hidden');
                         mainContent.classList.remove('hidden');
-                        welcomeScreen.style.opacity = ''; // Reset opacity
-                        mainContent.style.opacity = ''; // Reset opacity
-                    }, 2000); // Timeout anpassen, damit es mit der Transition übereinstimmt
-                }, 2000); // Wartezeit vor dem Start der Animation
+                        welcomeScreen.style.opacity = '';
+                        mainContent.style.opacity = '';
+                    }, 500); // Timeout anpassen, damit es mit der Transition übereinstimmt
+                }, 500); // Wartezeit vor dem Start der Animation
             } else {
                 alert('Incorrect password');
             }
