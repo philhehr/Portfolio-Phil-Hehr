@@ -138,6 +138,17 @@
             pointer-events: auto;
         }
 
+        /* ___________________________ CLICK HERE IMAGE ___________________________ */
+        .click-here-image {
+            position: absolute;
+            top: -94px;
+            left: 30%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: auto;
+            pointer-events: none;
+        }
+
         /* ___________________________ LOGO ___________________________ */
         /* Hier werden Stile für das Logo definiert. */
         .logo {
@@ -773,6 +784,10 @@
             background: #fafafa;
         }
 
+        .caveman-pill .pill-header {
+            background: #000;
+        }
+
         .pill-title { /* Definiert den Titel der Pille */
             font-size: 1.8rem;
             font-weight: 800;
@@ -783,6 +798,11 @@
             text-align: center;
             line-height: 1.5;
             background: #fafafa;
+        }
+
+        .caveman-pill .pill-title {
+            background: #000;
+            color: #fff;
         }
 
         .pill-close { /* Definiert den Schließen-Button der Pille */
@@ -886,6 +906,15 @@
             align-items: flex-start;
             justify-content: flex-start;
             gap: 2rem;
+        }
+
+        .caveman-pill .pill-body {
+            background: #000;
+        }
+
+        .caveman-pill .pill-text-block h4,
+        .caveman-pill .pill-text-block p {
+            color: #fff;
         }
 
         .pill-images { /* Definiert den Bereich für die Bilder in der Pille */
@@ -1194,7 +1223,8 @@
     <div class="container hidden" id="mainContent">
         <div class="header">
             <div class="logo" id="logoContainer" tabindex="0" style="outline: none;">
-                PHIL HEHR
+                <img src="images/´Click here.png" alt="Click here" class="click-here-image">
+                <span class="logo-text">PHIL HEHR</span>
             </div>
             <div class="portfolio-text">
                 PORTFOLIO
@@ -1424,10 +1454,9 @@
             },
             caveman: {
                 title: 'Caveman Moto',
+                video: 'videos/Moto_Cave_Animation_Line.mp4',
                 images: [
-                    'https://raw.githubusercontent.com/philhehr/Portfolio-Phil-Hehr/c489381a6f20326a7db203847646d8a63cfac46/images/MellowXKawasaki-Zephyr750_SilverSmurf_EXAMPLE.jpeg',
-                    'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop',
-                    'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=800&h=600&fit=crop'
+                    'images/My_Moped.png'
                 ],
                 textBlocks: [
                     { title: 'Custom Builds', text: 'Individuelle Motorrad-Umbauten mit höchster Handwerkskunst und Liebe zum Detail.' },
@@ -1563,6 +1592,14 @@
                     e.preventDefault();
                     const projectId = pill.dataset.project;
                     const data = projectData[projectId];
+                    
+                    // Caveman-Projekt: schwarzer Hintergrund
+                    if (projectId === 'caveman') {
+                        expandingPill.classList.add('caveman-pill');
+                    } else {
+                        expandingPill.classList.remove('caveman-pill');
+                    }
+                    
                     openPill(pill, data);
                 });
             });
@@ -1634,6 +1671,13 @@
                 if (nextProjectElement && nextProjectData) {
                     closePill();
                     setTimeout(() => {
+                        // Caveman-Projekt: schwarzer Hintergrund
+                        if (nextProjectId === 'caveman') {
+                            expandingPill.classList.add('caveman-pill');
+                        } else {
+                            expandingPill.classList.remove('caveman-pill');
+                        }
+                        
                         openPill(nextProjectElement, nextProjectData);
                         updateFixedNextButton(nextProjectId);
                     }, 600);
@@ -1688,15 +1732,58 @@
         }
 
         function setupPillContent(data) { /* Definiert den Inhalt der Pille */
-            pillTitle.innerHTML = data?.title || "Projekt Details";
+            // Titel für Caveman Moto entfernen
+            if (data?.title && data.title === 'Caveman Moto') {
+                pillTitle.innerHTML = '';
+            } else {
+                pillTitle.innerHTML = data?.title || "Projekt Details";
+            }
 
             pillImages.innerHTML = '';
+            
+            // Video anzeigen falls vorhanden (rückwärts abspielen)
+            if (data?.video) {
+                const videoContainer = document.createElement('div');
+                videoContainer.className = 'pill-featured pill-video';
+                videoContainer.style.position = 'relative';
+                videoContainer.style.width = '100%';
+                videoContainer.style.display = 'flex';
+                videoContainer.style.justifyContent = 'flex-start';
+                videoContainer.style.alignItems = 'flex-start';
+                videoContainer.style.marginTop = '32px';
+                videoContainer.style.marginLeft = '32px';
+                const video = document.createElement('video');
+                video.src = data.video;
+                video.muted = true;
+                video.playsInline = true;
+                video.style.width = '650px'; // 25% größer als 520px
+                video.style.width = '780px'; // 20% größer als 650px
+                video.style.height = 'auto';
+                video.style.borderRadius = '16px';
+                video.style.boxShadow = '0 8px 32px rgba(0,0,0,0.18)';
+                video.addEventListener('loadedmetadata', () => {
+                    const fps = 25; // Annahme: 25fps
+                    const stopFrame = 99;
+                    const stopTime = stopFrame / fps;
+                    video.play();
+                    video.addEventListener('timeupdate', () => {
+                        if (video.currentTime >= stopTime) {
+                            video.pause();
+                            video.currentTime = stopTime;
+                        }
+                    });
+                });
+                videoContainer.appendChild(video);
+                pillImages.appendChild(videoContainer);
+            }
+            
             const images = data?.images || [];
             
             if (images.length > 0) {
                 // Featured erstes Bild
                 const featured = document.createElement('div');
                 featured.className = 'pill-featured';
+                featured.style.marginTop = '320px'; // Noch mehr Abstand nach oben für das Video
                 const featuredImg = document.createElement('img');
                 featuredImg.src = images[0];
                 featuredImg.alt = data?.title || 'Featured Image';
@@ -1795,22 +1882,18 @@
             // Optional: change header text on hover without opening modal
             const logo = document.getElementById('logoContainer');
             const cvModal = document.getElementById('cvModal');
+            const logoText = logo ? logo.querySelector('.logo-text') : null;
             let original = 'PHIL HEHR';
             let isWhoAmI = false;
 
-            if (logo) {
-                // Textnode finden
-                const getTextNode = () => Array.from(logo.childNodes).find(n => n.nodeType === Node.TEXT_NODE);
-
+            if (logo && logoText) {
                 logo.addEventListener('mouseenter', () => {
-                    const textNode = getTextNode();
-                    if (textNode) textNode.textContent = ' WHO AM I ';
+                    logoText.textContent = 'WHO AM I';
                     logo.classList.add('whoami-hover');
                     isWhoAmI = true;
                 });
                 logo.addEventListener('mouseleave', () => {
-                    const textNode = getTextNode();
-                    if (textNode) textNode.textContent = ' ' + original + ' ';
+                    logoText.textContent = original;
                     logo.classList.remove('whoami-hover');
                     isWhoAmI = false;
                 });
