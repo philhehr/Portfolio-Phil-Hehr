@@ -1135,54 +1135,106 @@
     }
     .header > * { pointer-events: auto; }
 
-    /* PHIL HEHR fixed oben, immer über den Pillen */
-    .logo {
+    /* Header oben zentriert, beide Elemente nebeneinander */
+    .header {
         position: fixed !important;
-        top: 12px !important;
-        left: 50% !important;
+        top: 28px !important;
+        left: 35% !important;
         transform: translateX(-50%) !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 1rem !important;
         z-index: 8000 !important;
-        background: rgba(255,255,255,0.92);
-        padding: 8px 12px;
-        border-radius: 10px;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-        pointer-events: auto;
-    }
-
-    /* PORTFOLIO + Datum fixed BOTTOM, immer unter den Pillen */
-    .portfolio-text {
-        position: fixed !important;
-        bottom: 12px !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        z-index: 8000 !important;
-        background: rgba(255,255,255,0.94);
-        padding: 8px 12px;
-        border-radius: 10px;
-        text-align: center;
-        pointer-events: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        max-width: calc(100% - 32px);
-    }
-    .portfolio-date { font-size: 0.85rem; color:#666; }
-
-    /* Abstand oben/unten damit die Pillen nicht unter Header/Footer liegen */
-    .main-content { padding-top: 88px !important; padding-bottom: 88px !important; }
-
-    /* Stelle sicher, dass Hover-Effekte Header/Portfolio nicht ausblenden */
-    .container.pills-hover .header,
-    .container.pills-hover .portfolio-text,
-    .container.pills-hover .logo,
-    .container.pills-hover .portfolio-text {
-        opacity: 1 !important;
-        transform: none !important;
+        background: none !important;
+        padding: 0 !important;
         pointer-events: auto !important;
     }
 
-    /* Z-reihenfolge: Header/Portfolio über Pillen */
-    .logo, .portfolio-text { z-index: 8000 !important; }
+    /* Click-here Bild für Mobile anpassen */
+    .click-here-image {
+        position: absolute !important;
+        top: -50px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 70px !important;
+        height: auto !important;
+        opacity: 1 !important;
+        display: block !important;
+    }
+
+    /* PHIL HEHR - links, wie auf PC */
+    .logo {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        z-index: 8000 !important;
+        background: none !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        pointer-events: auto;
+        font-size: 0.76rem !important;
+        font-weight: 800 !important;
+        letter-spacing: 1.8px !important;
+    }
+
+    /* PORTFOLIO + Datum - rechts neben Logo */
+    .portfolio-text {
+        position: relative !important;
+        margin-left: 0 !important;
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+        z-index: 8000 !important;
+        background: none !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        text-align: left !important;
+        pointer-events: auto;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        max-width: none !important;
+        font-size: 0.9rem !important;
+        font-weight: 800 !important;
+        letter-spacing: 2px !important;
+    }
+
+    /* Trennstrich vor dem Datum */
+    .portfolio-date::before {
+        content: '' !important;
+        display: inline-block !important;
+        width: 0.5px !important;
+        height: 1em !important;
+        background: var(--text-dark) !important;
+        margin-right: 0.6rem !important;
+        vertical-align: middle !important;
+        opacity: 0.25 !important;
+    }
+
+    .portfolio-date { 
+        font-size: 0.7rem !important; 
+        color: #666 !important;
+        margin-top: 0 !important;
+    }
+
+    /* Abstand oben damit die Pillen nicht unter Header liegen */
+    .main-content { padding-top: 60px !important; padding-bottom: 20px !important; }
+
+    /* Stelle sicher, dass Hover-Effekte Header nicht ausblenden */
+    .container.pills-hover .header,
+    .container.pills-hover .portfolio-text,
+    .container.pills-hover .logo {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+
+    /* Z-reihenfolge: Header über Pillen */
+    .header { z-index: 8000 !important; }
     .project-pill { z-index: 2000; }
     .background-line { z-index: 1000; }
 
@@ -1210,10 +1262,10 @@
 
     /* Pillen: Horizontal liegend (Dimensionen tauschen) */
     .project-pill {
-        width: 90vw !important;
-        max-width: 400px !important;
-        height: 80px !important;
-        border-radius: 40px !important;
+        width: calc(100vw - 2rem) !important;
+        max-width: 340px !important;
+        height: 70px !important;
+        border-radius: 35px !important;
         flex-direction: row !important;
         align-items: center !important;
         justify-content: flex-start !important;
@@ -1375,9 +1427,6 @@
         <input type="password" id="passwordInput" placeholder="password">
         <button onclick="checkPassword()"><i class="fas fa-key"></i></button>
     </div>
-
-    <!-- Rotate hint (mobile) -->
-    <div id="rotateHint" class="rotate-hint hidden">Handy leicht kippen</div>
 
     <div class="container hidden" id="mainContent">
         <div class="header">
