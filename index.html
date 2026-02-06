@@ -290,20 +290,24 @@
         /* ___________________________ PROJECT PILLS - NUMBER STYLES ___________________________ */
         /* Hier werden Stile für die Projektnummern definiert. */
         .project-number {
-            font-size: 7.2rem;
+            font-size: 8rem;
             font-weight: 800;
             font-family: 'Bahnschrift', Arial, sans-serif;
-            color: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.08);
             user-select: none;
-            transition: all 0.6s ease;
-            z-index: 2;
-            position: relative;
-            bottom: -40px;
+            transition: all 0.5s ease;
+            z-index: 10;
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
             opacity: 0;
+            pointer-events: none;
         }
 
         .project-pill:hover .project-number {
-            opacity: 0.6;
+            opacity: 1;
+            color: rgba(255, 255, 255, 0.12);
         }
 
         /* ___________________________ PROJECT PILLS - OVERLAY STYLES ___________________________ */
@@ -441,7 +445,8 @@
 
         /* ___________________________ TRIKE PROJECT ___________________________ */
         .project-pill[data-project="portfolio"] .project-number {
-            color: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.12);
+            z-index: 10;
         }
 
         .trike-image-container {
@@ -554,6 +559,45 @@
         @keyframes rotate {
             from { transform: translateX(-50%) rotate(0deg); }
             to { transform: translateX(-50%) rotate(360deg); }
+        }
+
+        /* ___________________________ HOVERCRAFT PROJECT ___________________________ */
+        .project-pill[data-project="hovercraft"] .project-number {
+            color: rgba(100, 180, 255, 0.25);
+        }
+
+        .hovercraft-image-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-radius: 72px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hovercraft-placeholder {
+            font-size: 3rem;
+            opacity: 0.5;
+            color: #64b4ff;
+        }
+
+        .hovercraft-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+            transform: scale(1);
+        }
+
+        .project-pill:hover .hovercraft-image {
+            transform: scale(1.1);
         }
 
         /* ___________________________ CV MODAL ___________________________ */
@@ -1138,30 +1182,33 @@
     /* Header oben zentriert, beide Elemente nebeneinander */
     .header {
         position: fixed !important;
-        top: 28px !important;
-        left: 35% !important;
+        top: 55px !important;
+        left: 50% !important;
         transform: translateX(-50%) !important;
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
-        justify-content: flex-start !important;
+        justify-content: center !important;
         gap: 1rem !important;
         z-index: 8000 !important;
         background: none !important;
         padding: 0 !important;
         pointer-events: auto !important;
+        width: 100% !important;
     }
 
     /* Click-here Bild für Mobile anpassen */
     .click-here-image {
-        position: absolute !important;
-        top: -50px !important;
-        left: 50% !important;
+        position: fixed !important;
+        top: -40px !important;
+        left: 20% !important;
+        right: auto !important;
         transform: translateX(-50%) !important;
-        width: 70px !important;
+        width: 60px !important;
         height: auto !important;
         opacity: 1 !important;
         display: block !important;
+        z-index: 8001 !important;
     }
 
     /* PHIL HEHR - links, wie auf PC */
@@ -1178,6 +1225,9 @@
         font-size: 0.76rem !important;
         font-weight: 800 !important;
         letter-spacing: 1.8px !important;
+        display: flex !important;
+        align-items: center !important;
+        line-height: 1 !important;
     }
 
     /* PORTFOLIO + Datum - rechts neben Logo */
@@ -1202,6 +1252,7 @@
         font-size: 0.9rem !important;
         font-weight: 800 !important;
         letter-spacing: 2px !important;
+        line-height: 1 !important;
     }
 
     /* Trennstrich vor dem Datum */
@@ -1223,7 +1274,7 @@
     }
 
     /* Abstand oben damit die Pillen nicht unter Header liegen */
-    .main-content { padding-top: 60px !important; padding-bottom: 20px !important; }
+    .main-content { padding-top: 80px !important; padding-bottom: 20px !important; }
 
     /* Stelle sicher, dass Hover-Effekte Header nicht ausblenden */
     .container.pills-hover .header,
@@ -1237,6 +1288,18 @@
     .header { z-index: 8000 !important; }
     .project-pill { z-index: 2000; }
     .background-line { z-index: 1000; }
+
+    /* Pillen ausblenden wenn Modal geöffnet ist */
+    .pill-modal.active ~ .container .projects-container,
+    body:has(.pill-modal.active) .projects-container {
+        display: none !important;
+    }
+
+    /* Header und Click-here Bild ausblenden wenn Modal geöffnet ist */
+    body:has(.pill-modal.active) .header,
+    body:has(.pill-modal.active) .click-here-image {
+        display: none !important;
+    }
 
     /* Kleine Typo-Anpassungen */
     .logo { font-size: 1rem; font-weight:800; }
@@ -1263,7 +1326,7 @@
     /* Pillen: Horizontal liegend (Dimensionen tauschen) */
     .project-pill {
         width: calc(100vw - 2rem) !important;
-        max-width: 340px !important;
+        max-width: 374px !important;
         height: 70px !important;
         border-radius: 35px !important;
         flex-direction: row !important;
@@ -1275,17 +1338,21 @@
 
     /* Projektnummer links positionieren */
     .project-number {
-        font-size: 2.5rem !important;
+        font-size: 3rem !important;
         position: absolute !important;
-        left: 1.2rem !important;
+        left: 1rem !important;
         bottom: auto !important;
-        top: 50% !important;
+        top: 55% !important;
         transform: translateY(-50%) !important;
-        opacity: 0.4 !important;
+        opacity: 0 !important;
+        color: rgba(255, 255, 255, 0.15) !important;
+        line-height: 1 !important;
     }
 
     .project-pill:hover .project-number {
-        opacity: 0.7 !important;
+        opacity: 1 !important;
+        color: rgba(255, 255, 255, 0.2) !important;
+        transform: translateY(-50%) !important;
     }
 
     /* Overlay anpassen für horizontale Pillen */
@@ -1295,11 +1362,12 @@
 
     /* Bilder rechts in der Pille positionieren */
     .image-container,
-    .babyphone-image-container {
+    .babyphone-image-container,
+    .hovercraft-image-container {
         width: 70px !important;
         height: 70px !important;
         position: absolute !important;
-        right: 5px !important;
+        right: 30px !important;
         left: auto !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
@@ -1307,25 +1375,70 @@
         overflow: hidden !important;
     }
 
+    /* Babyphone Container größer für bessere Bilddarstellung */
+    .babyphone-image-container {
+        width: 65px !important;
+        height: 65px !important;
+        overflow: visible !important;
+    }
+
     .project-image,
     .babyphone-image,
     .glasses-image,
     .trike-image,
     .hyperloop-image,
-    .caveman-image {
+    .caveman-image,
+    .hovercraft-image {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important;
         transform: scale(1.2) !important;
     }
 
+    /* Individuelle Bildpositionierung */
+    .babyphone-image {
+        object-position: center center !important;
+        object-fit: contain !important;
+        transform: scale(1.8) !important;
+        background: transparent !important;
+    }
+
+    .glasses-image {
+        object-position: 100% center !important;
+        transform: scale(1.5) !important;
+    }
+
+    .hyperloop-image {
+        object-position: 40% right !important;
+    }
+
+    .caveman-image {
+        object-position: center 50% !important;
+    }
+
     .project-pill:hover .project-image,
     .project-pill:hover .babyphone-image,
     .project-pill:hover .glasses-image,
     .project-pill:hover .trike-image,
-    .project-pill:hover .hyperloop-image,
-    .project-pill:hover .caveman-image {
+    .project-pill:hover .caveman-image,
+    .project-pill:hover .hovercraft-image {
         transform: scale(1.35) !important;
+    }
+
+    .project-pill:hover .babyphone-image {
+        transform: scale(1.95) !important;
+    }
+
+    .project-pill:hover .glasses-image {
+        transform: scale(1.6) !important;
+    }
+
+    .project-pill:hover .hyperloop-image {
+        transform: none !important;
+    }
+
+    .hovercraft-placeholder {
+        font-size: 1.5rem !important;
     }
 
     /* Titel und Untertitel für horizontale Ansicht */
@@ -1355,17 +1468,25 @@
     }
 
     /* Gear-Animation für Caveman anpassen */
-    .gear {
+    .project-pill[data-project="caveman"] .gear {
         width: 25px !important;
         height: 25px !important;
-        right: 85px !important;
+        left: auto !important;
+        right: 15px !important;
         bottom: auto !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
+        margin-top: 0 !important;
+        animation: rotateMobile 6s linear infinite !important;
+    }
+
+    @keyframes rotateMobile {
+        from { transform: translateY(-50%) rotate(0deg); }
+        to { transform: translateY(-50%) rotate(360deg); }
     }
 
     .project-pill[data-project="caveman"]:hover .gear {
-        transform: translateY(-50%) rotate(45deg) !important;
+        animation: rotateMobile 6s linear infinite !important;
     }
 
     /* Hover-Effekte für Mobile anpassen */
@@ -1387,25 +1508,54 @@
 }
 
 +   /* Rotate hint overlay + blur while visible */
++   @keyframes pillRotate {
++       0% { transform: rotate(0deg); }
++       25% { transform: rotate(90deg); }
++       50% { transform: rotate(90deg); }
++       100% { transform: rotate(90deg); }
++   }
++   
 +   .rotate-hint {
 +       position: fixed;
 +       left: 50%;
 +       top: 50%;
-+       transform: translate(-50%, -50%) translateY(8px);
++       transform: translate(-50%, -50%);
 +       z-index: 9000;
-+       background: rgba(255,255,255,0.96);
-+       color: var(--text-dark);
-+       padding: 12px 16px;
-+       border-radius: 12px;
-+       font-weight: 700;
-+       box-shadow: 0 12px 40px rgba(0,0,0,0.12);
++       display: flex;
++       flex-direction: column;
++       align-items: center;
++       justify-content: center;
++       gap: 1rem;
 +       opacity: 0;
 +       pointer-events: none;
-+       transition: opacity .35s ease, transform .35s ease;
++       transition: opacity .35s ease;
 +   }
++   
++   .rotate-hint-text {
++       color: var(--text-dark);
++       font-weight: 700;
++       font-size: 0.9rem;
++       text-align: center;
++       max-width: 180px;
++   }
++   
++   .rotate-hint-pill {
++       width: 40px;
++       height: 80px;
++       background: rgba(224, 225, 226, 0.9);
++       border-radius: 20px;
++       box-shadow: 
++           inset 5px 5px 10px rgba(0, 0, 0, 0.1),
++           inset -5px -5px 10px rgba(255, 255, 255, 0.7),
++           0 8px 24px rgba(0,0,0,0.15);
++   }
++   
 +   .rotate-hint.show {
 +       opacity: 1;
-+       transform: translate(-50%, -50%) translateY(0);
++   }
++   
++   .rotate-hint.show .rotate-hint-pill {
++       animation: pillRotate 0.6s ease-out forwards;
 +   }
 +
 +   /* body state while hint visible: blur main content */
@@ -1421,6 +1571,12 @@
     </style>
 </head>
 <body>
+    <!-- Rotate Hint für Mobile -->
+    <div class="rotate-hint hidden" id="rotateHint">
+        <div class="rotate-hint-pill"></div>
+        <span class="rotate-hint-text">Drehe dein Handy für bessere Übersicht</span>
+    </div>
+
     <!-- Welcome Screen -->
     <div class="welcome-screen" id="welcomeScreen">
         <h1>Welcome to Phil´s Portfolio.</h1>
@@ -1503,6 +1659,17 @@
                     <div class="project-subtitle">Custom Builds</div>
                 </div>
                 </div>
+
+                <div class="project-pill" data-project="hovercraft">
+                    <div class="project-number">06</div>
+                    <div class="hovercraft-image-container">
+                        <span class="hovercraft-placeholder"><i class="fas fa-gamepad"></i></span>
+                    </div>
+                    <div class="project-overlay">
+                        <div class="project-title">Hover<br>Craft</div>
+                        <div class="project-subtitle">UE5 Konfigurator</div>
+                    </div>
+                </div>
             </div>
 
         <!-- ___________________________ CV MODAL ___________________________ -->
@@ -1535,8 +1702,8 @@
                         
                         <div class="cv-item">
                             <div class="cv-item-header">
-                                <h4>Produkt Designer</h4>
-                                <span class="cv-date">vor 12/2022</span>
+                                <h4>Praktikum Produkt Designer</h4>
+                                <span class="cv-date">ca. 4½ Monate</span>
                             </div>
                             <p class="cv-company">RSW Design Hannover</p>
                             <p>Produktdesign und Konzeptentwicklung.</p>
@@ -1558,22 +1725,6 @@
                     <div class="cv-section">
                         <h3>Fähigkeiten</h3>
                         <div class="cv-skills">
-                            <span class="skill-tag">
-                                <svg width="48" height="48" viewBox="0 0 70 70">
-                                    <circle cx="35" cy="35" r="30" fill="#f5f5f5"/>
-                                    <circle cx="35" cy="35" r="27" fill="none" stroke="url(#pd)" stroke-width="6" stroke-dasharray="169.65" stroke-dashoffset="16.96"/>
-                                    <circle cx="35" cy="35" r="20" fill="#fafafa"/>
-                                    <defs>
-                                        <linearGradient id="pd" x1="0" y1="0" x2="70" y2="70">
-                                            <stop offset="0%" stop-color="#FFBE98"/>
-                                            <stop offset="100%" stop-color="#FFD6B2"/>
-                                        </linearGradient>
-                                    </defs>
-                                </svg>
-                                <span style="margin-left:0.7rem;display:inline-block;min-width:90px;">
-                                    <span style="font-size:1.05rem;font-weight:700;">Product Design</span>
-                                </span>
-                            </span>
                             <span class="skill-tag">
                                 <svg width="48" height="48" viewBox="0 0 70 70">
                                     <circle cx="35" cy="35" r="30" fill="#f5f5f5"/>
@@ -1622,20 +1773,20 @@
                                     <span style="font-size:1.05rem;font-weight:700;">User Research</span>
                                 </span>
                             </span>
-                            <span class="skill-tag">
+                            <span class="skill-tag" style="background:linear-gradient(135deg, #fff8f0 0%, #ffe8d6 100%); box-shadow: 0 4px 16px rgba(255,190,152,0.3);">
                                 <svg width="48" height="48" viewBox="0 0 70 70">
                                     <circle cx="35" cy="35" r="30" fill="#f5f5f5"/>
-                                    <circle cx="35" cy="35" r="27" fill="none" stroke="url(#blender)" stroke-width="6" stroke-dasharray="169.65" stroke-dashoffset="50.90"/>
+                                    <circle cx="35" cy="35" r="27" fill="none" stroke="url(#blender)" stroke-width="6" stroke-dasharray="169.65" stroke-dashoffset="16.96"/>
                                     <circle cx="35" cy="35" r="20" fill="#fafafa"/>
                                     <defs>
                                         <linearGradient id="blender" x1="0" y1="0" x2="70" y2="70">
-                                            <stop offset="0%" stop-color="#F9CBA7"/>
-                                            <stop offset="100%" stop-color="#FFD6B2"/>
+                                            <stop offset="0%" stop-color="#FFBE98"/>
+                                            <stop offset="100%" stop-color="#FF9B5C"/>
                                         </linearGradient>
                                     </defs>
                                 </svg>
                                 <span style="margin-left:0.7rem;display:inline-block;min-width:90px;">
-                                    <span style="font-size:1.05rem;font-weight:700;">Blender</span>
+                                    <span style="font-size:1.1rem;font-weight:800;color:#d47a3e;">Blender</span>
                                 </span>
                             </span>
                             <span class="skill-tag">
@@ -1670,36 +1821,53 @@
                                     <span style="font-size:1.05rem;font-weight:700;">Alias Autostudio</span>
                                 </span>
                             </span>
-                            <span class="skill-tag">
+                            <span class="skill-tag" style="background:linear-gradient(135deg, #fff8f0 0%, #ffe8d6 100%); box-shadow: 0 4px 16px rgba(255,190,152,0.3);">
                                 <svg width="48" height="48" viewBox="0 0 70 70">
                                     <circle cx="35" cy="35" r="30" fill="#f5f5f5"/>
-                                    <circle cx="35" cy="35" r="27" fill="none" stroke="url(#sketches)" stroke-width="6" stroke-dasharray="169.65" stroke-dashoffset="59.38"/>
+                                    <circle cx="35" cy="35" r="27" fill="none" stroke="url(#sketches)" stroke-width="6" stroke-dasharray="169.65" stroke-dashoffset="16.96"/>
                                     <circle cx="35" cy="35" r="20" fill="#fafafa"/>
                                     <defs>
                                         <linearGradient id="sketches" x1="0" y1="0" x2="70" y2="70">
-                                            <stop offset="0%" stop-color="#F7C9A7"/>
-                                            <stop offset="100%" stop-color="#FFD6B2"/>
+                                            <stop offset="0%" stop-color="#FFBE98"/>
+                                            <stop offset="100%" stop-color="#FF9B5C"/>
                                         </linearGradient>
                                     </defs>
                                 </svg>
                                 <span style="margin-left:0.7rem;display:inline-block;min-width:90px;">
-                                    <span style="font-size:1.05rem;font-weight:700;">Sketches</span>
+                                    <span style="font-size:1.1rem;font-weight:800;color:#d47a3e;">Sketches</span>
+                                </span>
+                            </span>
+                            <span class="skill-tag" style="background:linear-gradient(135deg, #fff8f0 0%, #ffe8d6 100%); box-shadow: 0 4px 16px rgba(255,190,152,0.3);">
+                                <svg width="48" height="48" viewBox="0 0 70 70">
+                                    <circle cx="35" cy="35" r="30" fill="#f5f5f5"/>
+                                    <circle cx="35" cy="35" r="27" fill="none" stroke="url(#concept)" stroke-width="6" stroke-dasharray="169.65" stroke-dashoffset="16.96"/>
+                                    <circle cx="35" cy="35" r="20" fill="#fafafa"/>
+                                    <defs>
+                                        <linearGradient id="concept" x1="0" y1="0" x2="70" y2="70">
+                                            <stop offset="0%" stop-color="#FFBE98"/>
+                                            <stop offset="100%" stop-color="#FF9B5C"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                                <span style="margin-left:0.7rem;display:inline-block;min-width:90px;">
+                                    <span style="font-size:1.1rem;font-weight:800;color:#d47a3e;">Concept Creation</span>
                                 </span>
                             </span>
                             <span class="skill-tag">
                                 <svg width="48" height="48" viewBox="0 0 70 70">
                                     <circle cx="35" cy="35" r="30" fill="#f5f5f5"/>
-                                    <circle cx="35" cy="35" r="27" fill="none" stroke="url(#concept)" stroke-width="6" stroke-dasharray="169.65" stroke-dashoffset="33.93"/>
+                                    <circle cx="35" cy="35" r="27" fill="none" stroke="url(#ue5)" stroke-width="6" stroke-dasharray="169.65" stroke-dashoffset="118.76"/>
                                     <circle cx="35" cy="35" r="20" fill="#fafafa"/>
                                     <defs>
-                                        <linearGradient id="concept" x1="0" y1="0" x2="70" y2="70">
-                                            <stop offset="0%" stop-color="#FFD6B2"/>
-                                            <stop offset="100%" stop-color="#FFBE98"/>
+                                        <linearGradient id="ue5" x1="0" y1="0" x2="70" y2="70">
+                                            <stop offset="0%" stop-color="#E8D4C4"/>
+                                            <stop offset="100%" stop-color="#FFD6B2"/>
                                         </linearGradient>
                                     </defs>
                                 </svg>
                                 <span style="margin-left:0.7rem;display:inline-block;min-width:90px;">
-                                    <span style="font-size:1.05rem;font-weight:700;">Concept Creation</span>
+                                    <span style="font-size:1.05rem;font-weight:700;">Unreal Engine 5</span><br>
+                                    <span style="font-size:0.75rem;color:#888;">Grundkenntnisse</span>
                                 </span>
                             </span>
                         </div>
@@ -1800,6 +1968,16 @@
                     { title: 'Cafe Racer Style', text: 'Klassische Cafe Racer Ästhetik kombiniert mit moderner Technik und Performance.' },
                     { title: 'Vintage Engineering', text: 'Restauration klassischer Motorräder mit modernen Sicherheits- und Performance-Standards.' },
                     { title: 'Unique Design', text: 'Jedes Bike ist ein Unikat - designed und gebaut nach individuellen Wünschen.' }
+                ]
+            },
+            hovercraft: {
+                title: 'Hovercraft Konfigurator',
+                images: [],
+                textBlocks: [
+                    { title: 'Unreal Engine 5', text: 'Interaktiver Fahrzeugkonfigurator entwickelt in Unreal Engine 5.' },
+                    { title: 'Realtime Rendering', text: 'Fotorealistische Echtzeit-Visualisierung mit Raytracing und Lumen.' },
+                    { title: 'Interaktive Konfiguration', text: 'Farben, Materialien und Komponenten in Echtzeit anpassen.' },
+                    { title: 'Virtual Showroom', text: 'Immersive Präsentation des Fahrzeugs in virtueller Umgebung.' }
                 ]
             }
         };
@@ -2346,7 +2524,7 @@
                 document.body.classList.add('hint-active');
                 hint.classList.add('show');
 
-                // hide after 0.5s, then remove blur after fade
+                // hide after 0.75s, then remove blur after fade
                 clearTimeout(_timeout);
                 _timeout = setTimeout(() => {
                     hint.classList.remove('show');
@@ -2355,7 +2533,7 @@
                         hint.classList.add('hidden');
                         document.body.classList.remove('hint-active');
                     }, 350);
-                }, 500);
+                }, 750);
             }
 
             // show on initial load if mobile-portrait
