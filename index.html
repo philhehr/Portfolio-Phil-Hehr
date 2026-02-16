@@ -1217,6 +1217,13 @@
 
 /* Mobile: remove background & shadow and increase text size for better readability */
 @media (max-width: 880px) and (orientation: portrait) {
+    /* Header und Portfolio-Text ausblenden, wenn Modal (Über mich/Projekt) offen ist */
+    body:has(.pill-modal.active) .header,
+    body:has(.pill-modal.active) .portfolio-text,
+    body:has(.cv-modal.active) .header,
+    body:has(.cv-modal.active) .portfolio-text {
+        display: none !important;
+    }
     /* Header container normal im Flow (vermeidet Layout-Verschiebungen) */
     .header {
         position: relative !important;
