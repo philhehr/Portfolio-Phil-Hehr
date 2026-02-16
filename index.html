@@ -1413,15 +1413,9 @@
     .image-container,
     .babyphone-image-container,
     .hovercraft-image-container {
-        width: 70px !important;
-        height: 70px !important;
-        position: absolute !important;
-        right: 30px !important;
-        left: auto !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        border-radius: 50% !important;
-        overflow: hidden !important;
+        width: 100% !important;
+        height: 100% !important;
+        position: static !important;
     }
 
     /* Babyphone Container größer für bessere Bilddarstellung */
@@ -1556,78 +1550,12 @@
     }
 }
 
-+   /* Rotate hint overlay + blur while visible */
-+   @keyframes pillRotate {
-+       0% { transform: rotate(0deg); }
-+       25% { transform: rotate(90deg); }
-+       50% { transform: rotate(90deg); }
-+       100% { transform: rotate(90deg); }
-+   }
-+   
-+   .rotate-hint {
-+       position: fixed;
-+       left: 50%;
-+       top: 50%;
-+       transform: translate(-50%, -50%);
-+       z-index: 9000;
-+       display: flex;
-+       flex-direction: column;
-+       align-items: center;
-+       justify-content: center;
-+       gap: 1rem;
-+       opacity: 0;
-+       pointer-events: none;
-+       transition: opacity .35s ease;
-+   }
-+   
-+   .rotate-hint-text {
-+       color: var(--text-dark);
-+       font-weight: 700;
-+       font-size: 0.9rem;
-+       text-align: center;
-+       max-width: 180px;
-+   }
-+   
-+   .rotate-hint-pill {
-+       width: 40px;
-+       height: 80px;
-+       background: rgba(224, 225, 226, 0.9);
-+       border-radius: 20px;
-+       box-shadow: 
-+           inset 5px 5px 10px rgba(0, 0, 0, 0.1),
-+           inset -5px -5px 10px rgba(255, 255, 255, 0.7),
-+           0 8px 24px rgba(0,0,0,0.15);
-+   }
-+   
-+   .rotate-hint.show {
-+       opacity: 1;
-+   }
-+   
-+   .rotate-hint.show .rotate-hint-pill {
-+       animation: pillRotate 0.6s ease-out forwards;
-+   }
-+
-+   /* body state while hint visible: blur main content */
-+   .hint-active .container,
-+   .hint-active .pill-modal,
-+   .hint-active .cv-modal {
-+       filter: blur(6px) saturate(0.98);
-+       transition: filter .35s ease;
-+       pointer-events: none;
-+   }
-+   /* allow overlay elements (hint itself) to remain interactive */
-+   .hint-active .rotate-hint { pointer-events: auto; }
     </style>
 </head>
 <body>
     <!-- Logo oben auf der Welcome Page -->
     <!-- Kein Logo mehr oben auf der Seite -->
 
-    <!-- Rotate Hint für Mobile -->
-    <div class="rotate-hint hidden" id="rotateHint">
-        <div class="rotate-hint-pill"></div>
-        <span class="rotate-hint-text">Drehe dein Handy für bessere Übersicht</span>
-    </div>
 
     <!-- Welcome Screen -->
     <div class="welcome-screen" id="welcomeScreen" style="overflow:hidden;">
@@ -1636,7 +1564,6 @@
         <button onclick="checkPassword()"><i class="fas fa-key"></i></button>
     </div>
     <!-- Logo absolut auf der Welcome Page, ohne Scrollen zu verursachen -->
-    <img id="welcomeLogo" src="images/logo.png" alt="Logo" style="position:absolute;left:50%;top:85%;transform:translate(-50%,0);width:90px;height:auto;z-index:3500;pointer-events:none;transition:opacity 1.2s cubic-bezier(.4,0,.2,1);opacity:1;">
     <script>
     // Logo ausfaden, wenn Welcome Screen verschwindet
     (function() {
@@ -1739,7 +1666,7 @@
                 <div class="project-pill" data-project="hovercraft">
                     <div class="project-number">06</div>
                     <div class="hovercraft-image-container">
-                        <img src="images/Hover Craft Project.png" alt="Hovercraft" class="hovercraft-image" style="object-fit:cover;object-position:-300px center;">
+                        <img src="images/Hover Craft Project.png" alt="Hovercraft" class="hovercraft-image">
                     </div>
                     <div class="project-overlay">
                         <div class="project-title">Hover<br>Craft</div>
@@ -2676,48 +2603,6 @@
             }
         }
 
-        /* Rotate hint logic: show briefly on mobile-portrait entry and on rotation */
-        (function() {
-            const QUERY = '(max-width:880px) and (orientation: portrait)';
-            const mql = window.matchMedia(QUERY);
-            const hint = document.getElementById('rotateHint');
-            let _timeout = null;
-
-            function showRotateHint() {
-                if (!mql.matches || !hint) return;
-                // make visible and blur background
-                hint.classList.remove('hidden');
-                // force reflow
-                void hint.offsetWidth;
-                document.body.classList.add('hint-active');
-                hint.classList.add('show');
-
-                // hide after 0.75s, then remove blur after fade
-                clearTimeout(_timeout);
-                _timeout = setTimeout(() => {
-                    hint.classList.remove('show');
-                    // wait for fade-out transition
-                    setTimeout(() => {
-                        hint.classList.add('hidden');
-                        document.body.classList.remove('hint-active');
-                    }, 350);
-                }, 750);
-            }
-
-            // show on initial load if mobile-portrait
-            document.addEventListener('DOMContentLoaded', () => {
-                if (mql.matches) showRotateHint();
-            });
-
-            // show on orientation / layout changes
-            if (mql.addEventListener) {
-                mql.addEventListener('change', e => { if (e.matches) showRotateHint(); });
-            } else {
-                mql.addListener(e => { if (e.matches) showRotateHint(); });
-            }
-            window.addEventListener('orientationchange', () => { if (mql.matches) showRotateHint(); });
-            window.addEventListener('resize', () => { if (mql.matches) showRotateHint(); });
-        })();
 
         // Lightbox event listeners
         document.addEventListener('DOMContentLoaded', function() {
