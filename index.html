@@ -683,17 +683,21 @@
         }
 
         .cv-item {
-            margin-bottom: 1.5rem;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
+            margin-bottom: 2.3rem;
+            padding: 0 0 1.2rem 0;
+            background: none;
+            border-radius: 0;
+            box-shadow: none;
+            transition: none;
+        }
+
+        /* Add extra space above the first item in each section */
+        .cv-section .cv-item:first-child {
+            margin-top: 1.2rem;
         }
 
         .cv-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            /* no hover effect */
         }
 
         .cv-item-header {
@@ -712,16 +716,16 @@
 
         .cv-date {
             font-size: 0.9rem;
-            color: var(--primary);
+            color: #666;
             font-weight: 600;
-            background: rgba(124, 179, 66, 0.1);
+            background: rgba(100, 100, 100, 0.1);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
         }
 
         .cv-company {
             font-weight: 600;
-            color: var(--primary);
+            color: #555;
             margin: 0.3rem 0;
         }
 
@@ -996,6 +1000,50 @@
             width: 100%;
             height: auto;
             display: block;
+        }
+
+        /* Caveman: Bild 50% kleiner, links + Text daneben */
+        .caveman-image-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            width: 100%;
+            margin: 1.5rem 0 1.5rem calc(32px + 3rem);
+        }
+
+        .caveman-image-row .caveman-featured {
+            width: 50%;
+            flex-shrink: 0;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .caveman-image-row .caveman-featured img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .caveman-image-row .caveman-description {
+            flex: 1;
+            padding-top: 1rem;
+            padding-right: 12rem;
+        }
+
+        .caveman-image-row .caveman-description h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #232323;
+            font-family: 'Bahnschrift', Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .caveman-image-row .caveman-description p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #555;
         }
 
         /* Galerie für weitere Bilder - volle Breite untereinander */
@@ -1682,10 +1730,10 @@
                 <div class="cv-body">
                     <div style="display:flex;align-items:flex-start;gap:2rem;margin-bottom:2rem;">
                         <img src="images/PH.png" alt="Phil Hehr Portrait"
-                            style="width:180px;height:400px;object-fit:cover;object-position:center;display:block;border-radius:0;box-shadow:none;flex-shrink:0;">
-                        <div style="margin-top:160px;">
-                            <h3>Über mich</h3>
-                            <p>Leidenschaftlicher Produkt Designer mit Fokus auf innovative Benutzerfreundlichkeit und ästhetisches Design.</p>
+                            style="width:180px;height:400px;object-fit:cover;object-position:center;display:block;border-radius:12px;box-shadow:none;flex-shrink:0;">
+                        <div style="margin-top:120px; margin-bottom:2.8rem;">
+                            <h3 style="color:#888; margin-bottom:1.1rem;">Über mich</h3>
+                            <p>Produktdesigner mit Leidenschaft für nutzerzentrierte Lösungen und ästhetisches, funktionales Design. Auf der Suche nach neuen Synergien zwischen Innovation und Markengeschichte.</p>
                         </div>
                     </div>
                     
@@ -1732,8 +1780,8 @@
                                     <circle cx="35" cy="35" r="20" fill="#fafafa"/>
                                     <defs>
                                         <linearGradient id="proto" x1="0" y1="0" x2="70" y2="70">
-                                            <stop offset="0%" stop-color="#FFD6B2"/>
-                                            <stop offset="100%" stop-color="#FFBE98"/>
+                                            <stop offset="0%" stop-color="#b0b0b0"/>
+                                            <stop offset="100%" stop-color="#909090"/>
                                         </linearGradient>
                                     </defs>
                                 </svg>
@@ -1748,8 +1796,8 @@
                                     <circle cx="35" cy="35" r="20" fill="#fafafa"/>
                                     <defs>
                                         <linearGradient id="mod" x1="0" y1="0" x2="70" y2="70">
-                                            <stop offset="0%" stop-color="#FFE7D1"/>
-                                            <stop offset="100%" stop-color="#FFBE98"/>
+                                            <stop offset="0%" stop-color="#c0c0c0"/>
+                                            <stop offset="100%" stop-color="#909090"/>
                                         </linearGradient>
                                     </defs>
                                 </svg>
@@ -1764,8 +1812,8 @@
                                     <circle cx="35" cy="35" r="20" fill="#fafafa"/>
                                     <defs>
                                         <linearGradient id="ur" x1="0" y1="0" x2="70" y2="70">
-                                            <stop offset="0%" stop-color="#F9D7C3"/>
-                                            <stop offset="100%" stop-color="#FFD6B2"/>
+                                            <stop offset="0%" stop-color="#b8b8b8"/>
+                                            <stop offset="100%" stop-color="#a0a0a0"/>
                                         </linearGradient>
                                     </defs>
                                 </svg>
@@ -1773,20 +1821,20 @@
                                     <span style="font-size:1.05rem;font-weight:700;">User Research</span>
                                 </span>
                             </span>
-                            <span class="skill-tag" style="background:linear-gradient(135deg, #fff8f0 0%, #ffe8d6 100%); box-shadow: 0 4px 16px rgba(255,190,152,0.3);">
+                            <span class="skill-tag" style="background:linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%); box-shadow: 0 4px 16px rgba(100,100,100,0.2);">
                                 <svg width="48" height="48" viewBox="0 0 70 70">
                                     <circle cx="35" cy="35" r="30" fill="#f5f5f5"/>
                                     <circle cx="35" cy="35" r="27" fill="none" stroke="url(#blender)" stroke-width="6" stroke-dasharray="169.65" stroke-dashoffset="16.96"/>
                                     <circle cx="35" cy="35" r="20" fill="#fafafa"/>
                                     <defs>
                                         <linearGradient id="blender" x1="0" y1="0" x2="70" y2="70">
-                                            <stop offset="0%" stop-color="#FFBE98"/>
-                                            <stop offset="100%" stop-color="#FF9B5C"/>
+                                            <stop offset="0%" stop-color="#707070"/>
+                                            <stop offset="100%" stop-color="#505050"/>
                                         </linearGradient>
                                     </defs>
                                 </svg>
                                 <span style="margin-left:0.7rem;display:inline-block;min-width:90px;">
-                                    <span style="font-size:1.1rem;font-weight:800;color:#d47a3e;">Blender</span>
+                                    <span style="font-size:1.1rem;font-weight:800;color:#444;">Blender</span>
                                 </span>
                             </span>
                             <span class="skill-tag">
@@ -1796,8 +1844,8 @@
                                     <circle cx="35" cy="35" r="20" fill="#fafafa"/>
                                     <defs>
                                         <linearGradient id="ps" x1="0" y1="0" x2="70" y2="70">
-                                            <stop offset="0%" stop-color="#F7BFA3"/>
-                                            <stop offset="100%" stop-color="#FFD6B2"/>
+                                            <stop offset="0%" stop-color="#c5c5c5"/>
+                                            <stop offset="100%" stop-color="#a8a8a8"/>
                                         </linearGradient>
                                     </defs>
                                 </svg>
@@ -1808,49 +1856,49 @@
                             <span class="skill-tag">
                                 <svg width="48" height="48" viewBox="0 0 70 70">
                                     <circle cx="35" cy="35" r="30" fill="#f5f5f5"/>
-                                    <circle cx="35" cy="35" r="27" fill="none" stroke="url(#alias)" stroke-width="6" stroke-dasharray="169.65" stroke-dashoffset="76.35"/>
+                                    <circle cx="35" cy="35" r="27" fill="none" stroke="url(#alias)" stroke-width="6" stroke-dasharray="169.65" stroke-dashoffset="20"/>
                                     <circle cx="35" cy="35" r="20" fill="#fafafa"/>
                                     <defs>
                                         <linearGradient id="alias" x1="0" y1="0" x2="70" y2="70">
-                                            <stop offset="0%" stop-color="#F5A97A"/>
-                                            <stop offset="100%" stop-color="#FFD6B2"/>
+                                            <stop offset="0%" stop-color="#9a9a9a"/>
+                                            <stop offset="100%" stop-color="#b8b8b8"/>
                                         </linearGradient>
                                     </defs>
                                 </svg>
                                 <span style="margin-left:0.7rem;display:inline-block;min-width:90px;">
-                                    <span style="font-size:1.05rem;font-weight:700;">Alias Autostudio</span>
+                                    <span style="font-size:1.15rem;font-weight:900;">Alias Autostudio</span>
                                 </span>
                             </span>
-                            <span class="skill-tag" style="background:linear-gradient(135deg, #fff8f0 0%, #ffe8d6 100%); box-shadow: 0 4px 16px rgba(255,190,152,0.3);">
+                            <span class="skill-tag" style="background:linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%); box-shadow: 0 4px 16px rgba(100,100,100,0.2);">
                                 <svg width="48" height="48" viewBox="0 0 70 70">
                                     <circle cx="35" cy="35" r="30" fill="#f5f5f5"/>
                                     <circle cx="35" cy="35" r="27" fill="none" stroke="url(#sketches)" stroke-width="6" stroke-dasharray="169.65" stroke-dashoffset="16.96"/>
                                     <circle cx="35" cy="35" r="20" fill="#fafafa"/>
                                     <defs>
                                         <linearGradient id="sketches" x1="0" y1="0" x2="70" y2="70">
-                                            <stop offset="0%" stop-color="#FFBE98"/>
-                                            <stop offset="100%" stop-color="#FF9B5C"/>
+                                            <stop offset="0%" stop-color="#707070"/>
+                                            <stop offset="100%" stop-color="#505050"/>
                                         </linearGradient>
                                     </defs>
                                 </svg>
                                 <span style="margin-left:0.7rem;display:inline-block;min-width:90px;">
-                                    <span style="font-size:1.1rem;font-weight:800;color:#d47a3e;">Sketches</span>
+                                    <span style="font-size:1.1rem;font-weight:800;color:#444;">Sketches</span>
                                 </span>
                             </span>
-                            <span class="skill-tag" style="background:linear-gradient(135deg, #fff8f0 0%, #ffe8d6 100%); box-shadow: 0 4px 16px rgba(255,190,152,0.3);">
+                            <span class="skill-tag" style="background:linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%); box-shadow: 0 4px 16px rgba(100,100,100,0.2);">
                                 <svg width="48" height="48" viewBox="0 0 70 70">
                                     <circle cx="35" cy="35" r="30" fill="#f5f5f5"/>
                                     <circle cx="35" cy="35" r="27" fill="none" stroke="url(#concept)" stroke-width="6" stroke-dasharray="169.65" stroke-dashoffset="16.96"/>
                                     <circle cx="35" cy="35" r="20" fill="#fafafa"/>
                                     <defs>
                                         <linearGradient id="concept" x1="0" y1="0" x2="70" y2="70">
-                                            <stop offset="0%" stop-color="#FFBE98"/>
-                                            <stop offset="100%" stop-color="#FF9B5C"/>
+                                            <stop offset="0%" stop-color="#707070"/>
+                                            <stop offset="100%" stop-color="#505050"/>
                                         </linearGradient>
                                     </defs>
                                 </svg>
                                 <span style="margin-left:0.7rem;display:inline-block;min-width:90px;">
-                                    <span style="font-size:1.1rem;font-weight:800;color:#d47a3e;">Concept Creation</span>
+                                    <span style="font-size:1.1rem;font-weight:800;color:#444;">Concept Creation</span>
                                 </span>
                             </span>
                             <span class="skill-tag">
@@ -1860,8 +1908,8 @@
                                     <circle cx="35" cy="35" r="20" fill="#fafafa"/>
                                     <defs>
                                         <linearGradient id="ue5" x1="0" y1="0" x2="70" y2="70">
-                                            <stop offset="0%" stop-color="#E8D4C4"/>
-                                            <stop offset="100%" stop-color="#FFD6B2"/>
+                                            <stop offset="0%" stop-color="#d0d0d0"/>
+                                            <stop offset="100%" stop-color="#b8b8b8"/>
                                         </linearGradient>
                                     </defs>
                                 </svg>
@@ -1871,6 +1919,23 @@
                                 </span>
                             </span>
                         </div>
+                    </div>
+                    <!-- Paul Rand quote as a simple left-aligned blockquote under skills -->
+                    <div style="max-width:420px;margin:3.5rem 0 0 0;">
+                        <div style="font-size:0.93rem;color:#999;margin-bottom:1.5rem;line-height:1.4;">
+                            Good reminders while working:
+                        </div>
+                        <blockquote style="font-style:italic;color:#666;border-left:4px solid #bbb;padding-left:1.2rem;margin:0 0 3.5rem 0;max-width:420px;text-align:left;">
+                            <span style="font-size:1.1rem;">“Design is so simple, that’s why it is so complicated.” <span style="font-size:0.95rem;float:right;margin-left:1.2rem;">– Paul Rand</span></span>
+                        </blockquote>
+                        <blockquote style="font-style:italic;color:#666;border-left:4px solid #bbb;padding-left:1.2rem;margin:0 0 3.5rem 0;max-width:420px;text-align:left;">
+                            <span style="font-size:1.1rem;">„Designing a product is designing a relationship.“</span><br>
+                            <span style="font-size:0.95rem;float:right;margin-top:0.5rem;">– Steve Rogers, Interaction Designer</span>
+                        </blockquote>
+                        <blockquote style="font-style:italic;color:#666;border-left:4px solid #bbb;padding-left:1.2rem;margin:0 0 3.5rem 0;max-width:420px;text-align:left;">
+                            <span style="font-size:1.1rem;">„Das Design gibt uns eine emotionale Heimat.“</span><br>
+                            <span style="font-size:0.95rem;float:right;margin-top:0.5rem;">– Gordon Wagener, Automobildesigner, 2013</span>
+                        </blockquote>
                     </div>
                 </div>
             </div>
@@ -1921,7 +1986,13 @@
                     'https://github.com/philhehr/Portfolio-Phil-Hehr/blob/main/images/04_Glasses_Heroshot_Zeichenfl%C3%A4che%201.png?raw=true',
                     'https://github.com/philhehr/Portfolio-Phil-Hehr/blob/main/images/Glasses_Homepage.png?raw=true'
                 ],
-                textBlocks: []
+                textBlocks: [
+                    {},
+                    {
+                        title: '',
+                        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur consectetur, nisl nisi consectetur nisi, euismod euismod nisi nisi euismod.'
+                    }
+                ]
             },
             portfolio: {
                 title: 'Trike Design <small style="font-size: 0.5em; font-weight: 400; display: block;">created in VR</small>',
@@ -1950,12 +2021,7 @@
                     'https://github.com/philhehr/Portfolio-Phil-Hehr/blob/main/images/Hyperloop_Portfolio%20202233.png?raw=true',
                     'https://github.com/philhehr/Portfolio-Phil-Hehr/blob/main/images/Hyperloop_Portfolio%20202234.png?raw=true'
                 ],
-                textBlocks: [
-                    { title: 'Passenger Experience', text: 'Komfortable und sichere Reiseerfahrung bei Höchstgeschwindigkeit.' },
-                    { title: 'Interface Design', text: 'Futuristische Bedienoberfläche für nahtlose Buchung und Navigation.' },
-                    { title: 'Safety Systems', text: 'Modernste Sicherheitstechnik und Notfallprotokolle für alle Szenarien.' },
-                    { title: 'Sustainable Transport', text: 'Umweltfreundliche Transportlösung mit minimaler CO2-Bilanz.' }
-                ]
+                textBlocks: []
             },
             caveman: {
                 title: 'Caveman Moto',
@@ -1963,22 +2029,12 @@
                 images: [
                     'images/My_Moped.png'
                 ],
-                textBlocks: [
-                    { title: 'Custom Builds', text: 'Individuelle Motorrad-Umbauten mit höchster Handwerkskunst und Liebe zum Detail.' },
-                    { title: 'Cafe Racer Style', text: 'Klassische Cafe Racer Ästhetik kombiniert mit moderner Technik und Performance.' },
-                    { title: 'Vintage Engineering', text: 'Restauration klassischer Motorräder mit modernen Sicherheits- und Performance-Standards.' },
-                    { title: 'Unique Design', text: 'Jedes Bike ist ein Unikat - designed und gebaut nach individuellen Wünschen.' }
-                ]
+                textBlocks: []
             },
             hovercraft: {
                 title: 'Hovercraft Konfigurator',
                 images: [],
-                textBlocks: [
-                    { title: 'Unreal Engine 5', text: 'Interaktiver Fahrzeugkonfigurator entwickelt in Unreal Engine 5.' },
-                    { title: 'Realtime Rendering', text: 'Fotorealistische Echtzeit-Visualisierung mit Raytracing und Lumen.' },
-                    { title: 'Interaktive Konfiguration', text: 'Farben, Materialien und Komponenten in Echtzeit anpassen.' },
-                    { title: 'Virtual Showroom', text: 'Immersive Präsentation des Fahrzeugs in virtueller Umgebung.' }
-                ]
+                textBlocks: []
             }
         };
 
@@ -2270,15 +2326,18 @@
                 video.style.boxShadow = '0 8px 32px rgba(0,0,0,0.18)';
                 video.addEventListener('loadedmetadata', () => {
                     const fps = 25; // Annahme: 25fps
-                    const stopFrame = 99;
+                    const stopFrame = 104;
                     const stopTime = stopFrame / fps;
+                    video.playbackRate = 1.35;
                     video.play();
-                    video.addEventListener('timeupdate', () => {
+                    function checkStop() {
                         if (video.currentTime >= stopTime) {
                             video.pause();
-                            video.currentTime = stopTime;
+                        } else {
+                            requestAnimationFrame(checkStop);
                         }
-                    });
+                    }
+                    requestAnimationFrame(checkStop);
                 });
                 videoContainer.appendChild(video);
                 pillImages.appendChild(videoContainer);
@@ -2287,20 +2346,87 @@
             const images = data?.images || [];
             
             if (images.length > 0) {
-                // Featured erstes Bild
-                const featured = document.createElement('div');
-                featured.className = 'pill-featured';
-                const featuredImg = document.createElement('img');
-                featuredImg.src = images[0];
-                featuredImg.alt = data?.title || 'Featured Image';
-                featured.appendChild(featuredImg);
-                pillImages.appendChild(featured);
-                
-                // Galerie für restliche Bilder
-                if (images.length > 1) {
+                // Caveman: Bild 50% kleiner, links mit Text daneben
+                if (data?.video && data?.title === 'Caveman Moto') {
+                    const row = document.createElement('div');
+                    row.className = 'caveman-image-row';
+
+                    const imgWrap = document.createElement('div');
+                    imgWrap.className = 'caveman-featured';
+                    const img = document.createElement('img');
+                    img.src = images[0];
+                    img.alt = data.title;
+                    imgWrap.appendChild(img);
+                    row.appendChild(imgWrap);
+
+                    const desc = document.createElement('div');
+                    desc.className = 'caveman-description';
+                    desc.innerHTML = `
+                        <h3>About the Project</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <p style="margin-top:1rem;">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    `;
+                    row.appendChild(desc);
+                    pillImages.appendChild(row);
+                } else if (data?.title === 'Glasses') {
+                    // Featured erstes Bild
+                    const featured = document.createElement('div');
+                    featured.className = 'pill-featured';
+                    const featuredImg = document.createElement('img');
+                    featuredImg.src = images[0];
+                    featuredImg.alt = data?.title || 'Featured Image';
+                    featured.appendChild(featuredImg);
+                    pillImages.appendChild(featured);
+
+                    // Zweites Bild mit Abstand und Text rechts
+                    if (images[1]) {
+                        const row = document.createElement('div');
+                        row.style.display = 'flex';
+                        row.style.alignItems = 'center';
+                        row.style.marginTop = '2.5rem';
+
+                        const imgWrap = document.createElement('div');
+                        imgWrap.style.marginLeft = '2.5rem';
+                        imgWrap.style.flex = '0 0 90%';
+                        imgWrap.style.maxWidth = '630px';
+                        imgWrap.style.display = 'block';
+                        const img = document.createElement('img');
+                        img.src = images[1];
+                        img.alt = 'Gallery Image';
+                        img.style.width = '100%';
+                        img.style.borderRadius = '12px';
+                        imgWrap.appendChild(img);
+                        row.appendChild(imgWrap);
+
+                        const textWrap = document.createElement('div');
+                        textWrap.style.flex = '1';
+                        textWrap.style.marginLeft = '4.2rem';
+                        textWrap.style.marginTop = '0.2rem';
+                        textWrap.style.color = '#444';
+                        textWrap.style.fontSize = '1.32rem';
+                        textWrap.style.lineHeight = '1.22';
+                        textWrap.style.marginRight = '3.5rem';
+                        textWrap.innerHTML = data.textBlocks && data.textBlocks[1] && data.textBlocks[1].text ? data.textBlocks[1].text : '';
+                        row.appendChild(textWrap);
+
+                        pillImages.appendChild(row);
+                    }
+                } else {
+                    // Standard: Featured erstes Bild
+                    const featured = document.createElement('div');
+                    featured.className = 'pill-featured';
+                    const featuredImg = document.createElement('img');
+                    featuredImg.src = images[0];
+                    featuredImg.alt = data?.title || 'Featured Image';
+                    featured.appendChild(featuredImg);
+                    pillImages.appendChild(featured);
+                }
+
+                // Galerie für restliche Bilder (außer bei Glasses, da handled)
+                if (images.length > 1 && data?.title !== 'Glasses') {
                     const gallery = document.createElement('div');
                     gallery.className = 'pill-gallery';
-                    
+
                     images.slice(1).forEach((url) => {
                         const item = document.createElement('div');
                         item.className = 'pill-gallery-item';
@@ -2314,7 +2440,7 @@
                         item.appendChild(img);
                         gallery.appendChild(item);
                     });
-                    
+
                     pillImages.appendChild(gallery);
                 }
             }
