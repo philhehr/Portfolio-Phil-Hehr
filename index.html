@@ -27,7 +27,7 @@
         body {
             /* Allgemeine Stile für den Body */
             font-family: 'Bahnschrift', Arial, sans-serif;
-            background: #fafafa;
+            background: #fff;
             color: var(--text-dark);
             overflow-x: hidden; /* Verhindert horizontalen Scrollbalken */
             min-height: 100vh; /* Sorgt dafür, dass der Body mindestens die Höhe des Viewports einnimmt */
@@ -112,6 +112,7 @@
             flex-direction: column;
             position: relative;
             transition: all 0.4s ease;
+            background: #fff;
             background-size: cover; /* Oder contain, je nach gewünschtem Effekt */
             background-repeat: repeat; /* Oder no-repeat, je nach Textur */
             background-blend-mode: multiply; /* Oder overlay, screen, color-burn, usw. */
@@ -1619,6 +1620,9 @@
     </style>
 </head>
 <body>
+    <!-- Logo oben auf der Welcome Page -->
+    <!-- Kein Logo mehr oben auf der Seite -->
+
     <!-- Rotate Hint für Mobile -->
     <div class="rotate-hint hidden" id="rotateHint">
         <div class="rotate-hint-pill"></div>
@@ -1626,11 +1630,13 @@
     </div>
 
     <!-- Welcome Screen -->
-    <div class="welcome-screen" id="welcomeScreen">
-        <img src="images/´Click here.png" alt="Logo" style="width:90px;height:auto;margin-bottom:2.2rem;display:block;margin-left:auto;margin-right:auto;">
+    <div class="welcome-screen" id="welcomeScreen" style="overflow:hidden;">
         <h1>Welcome to Phil´s Portfolio.</h1>
         <input type="password" id="passwordInput" placeholder="password">
         <button onclick="checkPassword()"><i class="fas fa-key"></i></button>
+    </div>
+    <!-- Logo außerhalb und unterhalb der Pille -->
+    <img src="images/logo.png" alt="Logo" style="width:90px;height:auto;margin:64.4rem auto 0 auto;display:block;">
     </div>
 
     <div class="container hidden" id="mainContent">
@@ -1932,10 +1938,6 @@
                         <blockquote style="font-style:italic;color:#666;border-left:4px solid #bbb;padding-left:1.2rem;margin:0 0 3.5rem 0;max-width:420px;text-align:left;">
                             <span style="font-size:1.1rem;">„Designing a product is designing a relationship.“</span><br>
                             <span style="font-size:0.95rem;float:right;margin-top:0.5rem;">– Steve Rogers, Interaction Designer</span>
-                        </blockquote>
-                        <blockquote style="font-style:italic;color:#666;border-left:4px solid #bbb;padding-left:1.2rem;margin:0 0 3.5rem 0;max-width:420px;text-align:left;">
-                            <span style="font-size:1.1rem;">„Das Design gibt uns eine emotionale Heimat.“</span><br>
-                            <span style="font-size:0.95rem;float:right;margin-top:0.5rem;">– Gordon Wagener, Automobildesigner, 2013</span>
                         </blockquote>
                     </div>
                 </div>
