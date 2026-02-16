@@ -1217,6 +1217,30 @@
 
 /* Mobile: remove background & shadow and increase text size for better readability */
 @media (max-width: 880px) and (orientation: portrait) {
+    /* Über-mich Bild rechteckig und Text darunter */
+    .pill-content {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    .pill-image {
+        width: 90% !important;
+        max-width: 340px !important;
+        height: 160px !important;
+        border-radius: 18px !important;
+        margin: 1.2rem auto 0.5rem auto !important;
+        display: block !important;
+        object-fit: cover !important;
+        object-position: center !important;
+    }
+    .pill-title, .pill-text-blocks, .pill-body {
+        width: 100% !important;
+        max-width: 420px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    .pill-text-blocks {
+        margin-top: 0.5rem !important;
+    }
     /* Über-mich/Projekt-Inhalt auf 80% skalieren */
     .pill-modal .pill-content {
         transform: scale(0.8);
@@ -1386,8 +1410,9 @@
 
     /* Pillen: Horizontal liegend (Dimensionen tauschen) */
     .project-pill {
-        width: calc(100vw - 2rem) !important;
-        max-width: 374px !important;
+        width: 90vw !important;
+        max-width: 320px !important;
+        min-width: 220px !important;
         height: 70px !important;
         border-radius: 35px !important;
         flex-direction: row !important;
@@ -1395,6 +1420,8 @@
         justify-content: flex-start !important;
         padding: 0 !important;
         padding-left: 1rem !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
     }
 
     /* Projektnummer links positionieren */
